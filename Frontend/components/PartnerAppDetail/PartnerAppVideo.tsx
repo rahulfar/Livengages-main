@@ -1,4 +1,5 @@
 'use client';
+import { Icon } from '@/components/ui/Icon';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -115,7 +116,7 @@ export function PartnerAppVideo({ data }: { data: any }) {
               className="absolute top-4 right-4 z-10 w-12 h-12 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-colors border border-white/20"
               aria-label="Close video"
             >
-              <span className="material-symbols-outlined">close</span>
+              <Icon name="close" className="" aria-hidden="true" />
             </button>
             <video 
               src={actualVideoUrl} 

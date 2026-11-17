@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { ScoutingProcessStep } from '@/types/talent-recruitment';
 
 interface ScoutingProcessProps {

@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import Image from 'next/image';
 import type { TestimonialProps } from './Testimonials.types';
 

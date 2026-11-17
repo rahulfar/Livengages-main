@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import Link from 'next/link';
 
 export function PartnerAppSupport({ data }: { data: any }) {
@@ -31,7 +32,7 @@ export function PartnerAppSupport({ data }: { data: any }) {
           <div className="max-w-xl">
             {badgeText && (
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 rounded-full mb-8 font-bold text-xs text-primary uppercase tracking-[0.2em] backdrop-blur-md border border-primary/20">
-                <span className="material-symbols-outlined text-sm">support_agent</span>
+                <Icon name="support_agent" className="text-sm" aria-hidden="true" />
                 {badgeText}
               </div>
             )}
@@ -46,7 +47,7 @@ export function PartnerAppSupport({ data }: { data: any }) {
               <div className="flex flex-col sm:flex-row gap-4">
                 {showPrimaryBtn && (
                   <Link href={primaryCtaUrl} className="btn-gradient px-8 py-4 rounded-full text-white font-bold text-lg flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-[0_4px_15px_rgba(124,58,237,0.3)] dark:shadow-[0_0_20px_rgba(124,58,237,0.3)]">
-                    <span className="material-symbols-outlined text-[20px]">phone_callback</span>
+                    <Icon name="phone_callback" className="text-[20px]" aria-hidden="true" />
                     {primaryCtaLabel}
                   </Link>
                 )}
@@ -70,7 +71,7 @@ export function PartnerAppSupport({ data }: { data: any }) {
               {phone && (
                 <div className={`flex items-center gap-5 relative z-10 ${email ? 'mb-6 pb-6 border-b border-outline-variant/30 dark:border-white/10' : ''}`}>
                   <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center border border-primary/30 shrink-0">
-                    <span className="material-symbols-outlined text-primary text-2xl drop-shadow-md">contact_phone</span>
+                    <Icon name="contact_phone" className="text-primary text-2xl drop-shadow-md" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-sm font-medium uppercase tracking-widest text-on-surface-variant dark:text-[#94A3B8] mb-1">Direct Line</p>
@@ -81,7 +82,7 @@ export function PartnerAppSupport({ data }: { data: any }) {
               {email && (
                 <div className="flex items-center gap-5 relative z-10">
                   <div className="w-14 h-14 bg-tertiary/20 rounded-2xl flex items-center justify-center border border-tertiary/30 shrink-0">
-                    <span className="material-symbols-outlined text-tertiary text-2xl drop-shadow-md">mail</span>
+                    <Icon name="mail" className="text-tertiary text-2xl drop-shadow-md" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-sm font-medium uppercase tracking-widest text-on-surface-variant dark:text-[#94A3B8] mb-1">Email Support</p>

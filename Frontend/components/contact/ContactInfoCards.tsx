@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 interface ContactChannelItem {
   id?: number;
   icon?: string;
@@ -33,15 +34,7 @@ export function ContactInfoCards({ data }: ContactInfoCardsProps) {
               <div
                 className={`w-16 h-16 ${bgClass} rounded-2xl flex items-center justify-center ${colorClass} mb-stack-md`}
               >
-                <span
-                  className="material-symbols-outlined text-4xl"
-                  style={{
-                    fontVariationSettings: channel.icon === 'location_on' ? "'FILL' 1" : undefined,
-                  }}
-                  aria-hidden="true"
-                >
-                  {channel.icon}
-                </span>
+                <Icon name={channel.icon} className="w-8 h-8" aria-hidden="true" />
               </div>
             )}
             {channel.title && <h3 className="text-2xl font-bold mb-2 text-on-surface dark:text-white">{channel.title}</h3>}

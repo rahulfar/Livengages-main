@@ -1,4 +1,6 @@
+import { Icon } from '@/components/ui/Icon';
 import Link from 'next/link';
+import { CheckCircle2 } from 'lucide-react';
 import { PartnershipTier } from '@/types/agent-ecosystem';
 
 interface PartnershipTiersProps {
@@ -65,13 +67,10 @@ export function PartnershipTiers({ tiers }: PartnershipTiersProps) {
                   <ul className="space-y-5 text-on-surface dark:text-white/80 mb-10 flex-grow font-body-md">
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <span 
-                          className={`material-symbols-outlined shrink-0 text-xl ${isHighlight ? 'text-primary' : 'text-secondary'}`}
-                          style={{ fontVariationSettings: "'FILL' 1" }}
+                        <CheckCircle2
+                          className={`w-5 h-5 shrink-0 ${isHighlight ? 'text-primary' : 'text-secondary'}`}
                           aria-hidden="true"
-                        >
-                          check_circle
-                        </span> 
+                        />
                         <span className="leading-tight pt-0.5">{feature}</span>
                       </li>
                     ))}

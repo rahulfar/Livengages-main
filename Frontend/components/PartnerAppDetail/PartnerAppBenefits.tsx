@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { Fragment } from 'react';
 
 export function PartnerAppBenefits({ data }: { data: any }) {

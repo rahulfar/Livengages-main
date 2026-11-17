@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { Send } from 'lucide-react';
 
 /**
  * Newsletter subscription form.
@@ -52,9 +53,7 @@ export function NewsletterForm() {
         className="bg-primary cursor-pointer text-white p-3 rounded-full hover:bg-primary/90 transition-colors"
         aria-label="Subscribe to newsletter"
       >
-        <span className="material-symbols-outlined text-sm" aria-hidden="true">
-          send
-        </span>
+        <Send className="w-4 h-4" aria-hidden="true" />
       </button>
     </form>
   );

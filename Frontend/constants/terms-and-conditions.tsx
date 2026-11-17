@@ -1,3 +1,5 @@
+import React from 'react';
+import { Info, CheckCircle2, CreditCard, Wallet } from 'lucide-react';
 import {
   TermsHeroContent,
   TermsNavItem,
@@ -7,7 +9,7 @@ import {
 export const TERMS_HERO: TermsHeroContent = {
   title: 'Terms & Conditions',
   description:
-    'Effective Date: January 1, 2024. Please read these terms carefully before joining the Livengage agency network.',
+    'Effective Date: November 17, 2026. Please read these terms carefully before joining the Livengage agency network.',
 };
 
 export const TERMS_NAV_ITEMS: TermsNavItem[] = [
@@ -32,9 +34,7 @@ export const TERMS_SECTIONS: TermsSection[] = [
           By submitting an application or signing up to be managed by Livengage on any partner streaming application, you agree to be bound by these Terms. If you do not agree, you may not join our network.
         </p>
         <div className="flex items-start gap-4 bg-primary/5 p-6 rounded-lg border-l-4 border-primary">
-          <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }} aria-hidden="true">
-            info
-          </span>
+          <Info className="w-6 h-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
           <p className="text-primary font-medium">
             Livengage acts as an official talent agency connecting creators with third-party live streaming applications. We do not own or operate the streaming platforms themselves.
           </p>
@@ -52,25 +52,19 @@ export const TERMS_SECTIONS: TermsSection[] = [
         </p>
         <ul className="list-none space-y-4">
           <li className="flex gap-4">
-            <span className="material-symbols-outlined text-secondary shrink-0" aria-hidden="true">
-              check_circle
-            </span>
+            <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" aria-hidden="true" />
             <span>
               <strong>Authenticity:</strong> You must not use bots, click-farms, or fraudulent methods to inflate your viewership or virtual gifts.
             </span>
           </li>
           <li className="flex gap-4">
-            <span className="material-symbols-outlined text-secondary shrink-0" aria-hidden="true">
-              check_circle
-            </span>
+            <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" aria-hidden="true" />
             <span>
               <strong>Compliance:</strong> You must strictly adhere to the Community Guidelines and Terms of Service of whichever third-party application you are streaming on.
             </span>
           </li>
           <li className="flex gap-4">
-            <span className="material-symbols-outlined text-secondary shrink-0" aria-hidden="true">
-              check_circle
-            </span>
+            <CheckCircle2 className="w-5 h-5 text-secondary shrink-0 mt-0.5" aria-hidden="true" />
             <span>
               <strong>Professionalism:</strong> Agents managing their own sub-teams under Livengage must pay their hosts fairly and on time, maintaining transparent communication.
             </span>
@@ -98,15 +92,15 @@ export const TERMS_SECTIONS: TermsSection[] = [
         <div className="grid md:grid-cols-2 gap-6 mt-8">
           <div className="border border-outline-variant p-6 rounded-xl bg-surface-container-low">
             <h4 className="text-primary font-bold mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined" aria-hidden="true">payments</span> Host Payouts
+              <CreditCard className="w-5 h-5" aria-hidden="true" /> Host Payouts
             </h4>
             <p className="text-sm">
-              Your earnings are calculated based on the virtual gifts received and hours streamed. Livengage facilitates these payouts based on the specific app's settlement cycle (daily or weekly).
+              Your earnings are calculated based on the virtual gifts received and hours streamed. Livengage facilitates these payouts based on the specific app's settlement cycle (daily or weekly via UPI and bank deposit).
             </p>
           </div>
           <div className="border border-outline-variant p-6 rounded-xl bg-surface-container-low">
             <h4 className="text-primary font-bold mb-3 flex items-center gap-2">
-              <span className="material-symbols-outlined" aria-hidden="true">account_balance_wallet</span> Agent Commissions
+              <Wallet className="w-5 h-5" aria-hidden="true" /> Agent Commissions
             </h4>
             <p className="text-sm">
               Agents earn a percentage of their recruited hosts' revenue. Payouts are dispatched promptly once funds are cleared from the respective streaming platform.
@@ -125,7 +119,7 @@ export const TERMS_SECTIONS: TermsSection[] = [
     content: (
       <div className="space-y-6 text-on-surface-variant font-body-md text-body-md leading-relaxed">
         <p>
-          Livengage places you on independent platforms (e.g., Chamet, Poppo, Bigo Live, etc.). We do not control these applications.
+          Livengage places you on independent platforms (e.g., Chill Chat (Chamet), Vone App (Poppo Live), Niki Live, Bigo Live, etc.). We do not control these applications.
         </p>
         <p>
           If your account is suspended or banned by a third-party app for violating their rules, Livengage will attempt to appeal on your behalf as an official agency. However, we cannot guarantee account reinstatement and we hold no liability for lost earnings resulting from platform bans.

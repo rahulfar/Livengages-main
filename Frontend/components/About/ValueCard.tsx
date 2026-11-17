@@ -1,3 +1,5 @@
+import { Icon } from '@/components/ui/Icon';
+
 interface ValueCardProps {
   icon?: string;
   title?: string;
@@ -29,13 +31,11 @@ export function ValueCard({
         <div
           className={`w-16 h-16 rounded-full flex items-center justify-center mb-stack-md ${bgColor || currentFallback.bg}`}
         >
-          <span
-            className={`material-symbols-outlined ${iconColor || currentFallback.icon}`}
-            data-weight="fill"
+          <Icon
+            name={icon}
+            className={`w-8 h-8 ${iconColor || currentFallback.icon}`}
             aria-hidden="true"
-          >
-            {icon}
-          </span>
+          />
         </div>
       )}
       {title && (

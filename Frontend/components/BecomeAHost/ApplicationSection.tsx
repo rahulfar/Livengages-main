@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { HostApplicationForm } from './HostApplicationForm';
 
 interface ApplicationStep {

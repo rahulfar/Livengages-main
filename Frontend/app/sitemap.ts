@@ -1,137 +1,154 @@
 import { MetadataRoute } from 'next';
-import { blogService } from '@/lib/strapi/services/blogs';
+import { DEFAULT_BLOGS } from '@/data/blogs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.livengage.com';
-  const now = new Date();
+  const siteLastModified = new Date('2026-11-17T12:00:00Z');
 
   // 1. Core High-Priority Landing Pages
   const mainPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/become-a-host`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.95,
     },
     {
       url: `${baseUrl}/become-an-agent`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.95,
     },
     {
       url: `${baseUrl}/agent-ecosystem`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/growth-strategy`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/talent-recruitment`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/about-us`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/contact-us`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'monthly',
       priority: 0.75,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'daily',
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/earning-apps`,
+      lastModified: siteLastModified,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/agent-help`,
+      lastModified: siteLastModified,
+      changeFrequency: 'weekly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/hi`,
+      lastModified: siteLastModified,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/privacy-policy`,
-      lastModified: now,
+      lastModified: new Date('2026-11-17T00:00:00Z'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms-and-conditions`,
-      lastModified: now,
+      lastModified: new Date('2026-11-17T00:00:00Z'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
   ];
 
-  // 2. Keyword-Rich Partner App Pages (Item 5 in audit)
+  // 2. Keyword-Rich Partner App Pages (poppo-live-agency is excluded until international copy is ready)
   const partnerAppPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/vone-app-agency`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/chill-chat-agency`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/niki-live-agency`,
-      lastModified: now,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/poppo-live-agency`,
-      lastModified: now,
+      url: `${baseUrl}/chamet-agency`,
+      lastModified: siteLastModified,
       changeFrequency: 'weekly',
-      priority: 0.9,
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/bigo-live-agency`,
+      lastModified: siteLastModified,
+      changeFrequency: 'weekly',
+      priority: 0.85,
     },
   ];
 
-  // 3. Dynamic Blog Pages
-  let dynamicBlogPages: MetadataRoute.Sitemap = [];
-  try {
-    const strapiRes = await blogService.getBlogs(1, 100);
-    const blogs = strapiRes?.data || [];
+  // 3. Four Canonical Blog Guides & Author Page
+  const blogPages: MetadataRoute.Sitemap = DEFAULT_BLOGS.map((blog) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(blog.updatedAt || blog.publishedDate || siteLastModified),
+    changeFrequency: 'weekly' as const,
+    priority: 0.75,
+  }));
 
-    dynamicBlogPages = blogs.map((blog) => {
-      const titleSlug = (blog.title || 'post')
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)/g, '');
-      const urlSlug = blog.slug || (blog.documentId ? `${titleSlug}--${blog.documentId}` : titleSlug);
+  const authorPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/blog/author/priya-sharma`,
+      lastModified: siteLastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+  ];
 
-      return {
-        url: `${baseUrl}/blog/${urlSlug}`,
-        lastModified: new Date(blog.updatedAt || blog.publishedAt || now),
-        changeFrequency: 'weekly' as const,
-        priority: 0.7,
-      };
-    });
-  } catch (error) {
-    console.error('[Sitemap] Blog fetch failed', error);
-  }
-
-  return [...mainPages, ...partnerAppPages, ...dynamicBlogPages];
+  return [...mainPages, ...partnerAppPages, ...blogPages, ...authorPages];
 }

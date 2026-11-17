@@ -57,7 +57,7 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
       titlePart1: 'Earn on the Vone App (Poppo Live) as a Host or Agent',
       titleHighlight: '',
       description:
-        'Connect with global callers, convert gifts to cash, and scale your sub-agency with guaranteed high traffic and instant weekly settlements.',
+        'Connect with global callers, convert gifts to cash, and scale your sub-agency with high caller engagement and instant weekly settlements.',
       primaryCtaLabel: 'Apply as a Host',
       primaryCtaUrl: '/become-a-host',
       secondaryCtaLabel: 'Register Sub-Agency',
@@ -226,22 +226,22 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'poppo-live-agency',
     name: 'Poppo Live',
     appName: 'Poppo Live',
-    metaTitle: 'Vone App (Poppo Live) Agency India – Livengage',
+    metaTitle: 'Poppo Live Agency: Earn as a Host – Livengage',
     metaDescription:
-      'Join the Vone app (Poppo Live) as a host or agent in India. How Vone works, how hosts earn, payouts via UPI and bank, and free registration with Livengage.',
+      'Join the international Poppo Live agency program with Livengage. Global host opportunities, verified agency support. Indian creators should visit our official Vone App page.',
     operatingSystem: 'Android, iOS',
     ratingValue: '4.8',
     reviewCount: '4500',
     hero: {
-      badgeText: 'Official Agency Partner',
-      titlePart1: 'Earn on the Vone App (Poppo Live) as a Host or Agent',
+      badgeText: 'International Agency Program',
+      titlePart1: 'Earn on Poppo Live with a Verified Agency',
       titleHighlight: '',
       description:
-        'Start your live streaming career or build your sub-agency network on Poppo Live. Enjoy flexible hours, instant weekly payouts, and round-the-clock agency support.',
+        'Start your international live streaming career or build your sub-agency network on Poppo Live. Note: For creators based in India, please apply through our official Vone App program for direct UPI and Indian bank settlements.',
       primaryCtaLabel: 'Apply as a Host',
       primaryCtaUrl: '/become-a-host',
-      secondaryCtaLabel: 'Register Agency',
-      secondaryCtaUrl: '/become-an-agent',
+      secondaryCtaLabel: 'Indian Creators: Vone App',
+      secondaryCtaUrl: '/vone-app-agency',
       statsValue: '24/7',
       statsLabel: 'Active Host Community',
       heroImage: {
@@ -265,6 +265,11 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
       heading: 'Poppo Live FAQs',
       faqs: [
         {
+          question: 'Are you in India? Which app should you download?',
+          answer:
+            'If you are located in India, you should download and stream on Vone App, which is the official compliant Indian application for the Poppo Live network. Visit our Vone App Agency page for Indian host registration.',
+        },
+        {
           question: 'How do agency creators get verified on Poppo Live?',
           answer:
             'Livengage fast-tracks host verification with official agency recommendation badges within 24 hours of application.',
@@ -274,10 +279,10 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
   },
 };
 
-// Aliases mapping old slugs to fallback items
-FALLBACK_PARTNER_APPS['partner-app'] = FALLBACK_PARTNER_APPS['poppo-live-agency'];
-FALLBACK_PARTNER_APPS['partner-app-1'] = FALLBACK_PARTNER_APPS['vone-app-agency'];
-FALLBACK_PARTNER_APPS['partner-app-2'] = FALLBACK_PARTNER_APPS['chill-chat-agency'];
+// Aliases mapping old slugs to fallback items correctly
+FALLBACK_PARTNER_APPS['partner-app'] = FALLBACK_PARTNER_APPS['vone-app-agency'];
+FALLBACK_PARTNER_APPS['partner-app-1'] = FALLBACK_PARTNER_APPS['chill-chat-agency'];
+FALLBACK_PARTNER_APPS['partner-app-2'] = FALLBACK_PARTNER_APPS['niki-live-agency'];
 FALLBACK_PARTNER_APPS['partner-app-3'] = FALLBACK_PARTNER_APPS['niki-live-agency'];
 FALLBACK_PARTNER_APPS['poppo'] = FALLBACK_PARTNER_APPS['poppo-live-agency'];
 FALLBACK_PARTNER_APPS['vone'] = FALLBACK_PARTNER_APPS['vone-app-agency'];

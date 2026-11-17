@@ -1,3 +1,6 @@
+import { Icon } from '@/components/ui/Icon';
+import { CheckCircle2 } from 'lucide-react';
+
 export function PartnerAppTools({ data }: { data: any }) {
   if (!data?.tools || data.tools.length === 0) return null;
   const { title, titleHighlight, description, tools } = data;
@@ -55,9 +58,7 @@ export function PartnerAppTools({ data }: { data: any }) {
                 <ul className="space-y-4 font-body-md text-sm text-on-surface-variant dark:text-[#CBD5E1]">
                   {tool.features.map((feature: any) => (
                     <li key={feature.id} className="flex items-start gap-3">
-                      <span className={`material-symbols-outlined ${textColors[colorIdx]} text-lg shrink-0 mt-0.5`}>
-                        check_circle
-                      </span>
+                      <CheckCircle2 className={`w-4 h-4 ${textColors[colorIdx]} shrink-0 mt-0.5`} aria-hidden="true" />
                       <span className="leading-relaxed">{feature.text}</span>
                     </li>
                   ))}

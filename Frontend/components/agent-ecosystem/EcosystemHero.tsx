@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { EcosystemHeroContent } from '@/types/agent-ecosystem';
 
 export function EcosystemHero({
@@ -41,16 +42,14 @@ export function EcosystemHero({
                 className="btn-gradient px-8 py-4 rounded-full text-white font-bold text-lg flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-lg dark:shadow-[0_0_20px_rgba(124,58,237,0.3)]"
                 href="/become-an-agent"
               >
-                {primaryButtonText}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_forward
-                </span>
+                <span>{primaryButtonText}</span>
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
             )}
             {secondaryButtonText && (
               <Link
                 className="px-8 py-4 rounded-full border-2 border-outline-variant text-on-surface dark:text-white font-bold text-lg flex items-center justify-center hover:bg-surface-container dark:hover:border-primary-container transition-colors"
-                href="/become-an-agent"
+                href="/become-an-agent#benefits"
               >
                 {secondaryButtonText}
               </Link>

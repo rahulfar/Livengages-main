@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { User } from 'lucide-react';
 import { getMediaUrl } from '@/lib/api';
 
 interface TeamMemberCardProps {
@@ -32,7 +33,7 @@ export function TeamMemberCard({
           </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-primary/5 text-primary">
-            <span className="material-symbols-outlined text-5xl">person</span>
+            <User className="w-16 h-16 opacity-60" aria-hidden="true" />
           </div>
         )}
         

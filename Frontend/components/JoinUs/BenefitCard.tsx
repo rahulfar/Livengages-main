@@ -1,3 +1,5 @@
+import { Icon } from '@/components/ui/Icon';
+
 type BenefitSpan = 'single' | 'wide';
 
 interface BenefitCardProps {
@@ -7,13 +9,6 @@ interface BenefitCardProps {
   span?: BenefitSpan;
 }
 
-/**
- * BenefitCard — white bordered card for the "Why Live Stream with Us?" grid.
- * `span="wide"` applies `md:col-span-2` and a horizontal layout (icon left,
- * text right) for the featured Accelerated Onboarding card.
- *
- * Server Component.
- */
 export function BenefitCard({ icon, title, description, span = 'single' }: BenefitCardProps) {
   const isWide = span === 'wide';
 
@@ -27,7 +22,7 @@ export function BenefitCard({ icon, title, description, span = 'single' }: Benef
         /* Wide variant: horizontal icon + text layout */
         <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
           {icon && (
-            <span className="material-symbols-outlined text-primary mb-4 md:mb-0 text-5xl block flex-shrink-0">{icon}</span>
+            <Icon name={icon} className="w-12 h-12 text-primary mb-4 md:mb-0 shrink-0" aria-hidden="true" />
           )}
           <div>
             {title && <h3 className="text-2xl font-semibold text-on-surface dark:text-white mb-2">{title}</h3>}
@@ -42,7 +37,7 @@ export function BenefitCard({ icon, title, description, span = 'single' }: Benef
         /* Single variant: stacked icon + text layout */
         <>
           {icon && (
-            <span className="material-symbols-outlined text-primary mb-4 text-4xl block">{icon}</span>
+            <Icon name={icon} className="w-9 h-9 text-primary mb-4 block" aria-hidden="true" />
           )}
           {title && <h3 className="text-2xl font-semibold text-on-surface dark:text-white mb-2">{title}</h3>}
           {description && (

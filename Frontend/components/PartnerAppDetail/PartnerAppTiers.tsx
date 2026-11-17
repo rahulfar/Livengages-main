@@ -1,3 +1,6 @@
+import { Icon } from '@/components/ui/Icon';
+import { CheckCircle2, Check } from 'lucide-react';
+
 export function PartnerAppTiers({ data }: { data: any }) {
   if (!data?.tiers || data.tiers.length === 0) return null;
   const { title, titleHighlight, description, tiers } = data;
@@ -52,9 +55,11 @@ export function PartnerAppTiers({ data }: { data: any }) {
                   <ul className="space-y-5 mb-8 relative z-10">
                     {tier.features.map((feature: any) => (
                       <li key={feature.id} className="flex items-start gap-4 text-body-md text-on-surface-variant dark:text-[#CBD5E1]">
-                        <span className={`material-symbols-outlined mt-0.5 text-xl ${isPopular ? 'text-primary drop-shadow-[0_0_8px_rgba(124,58,237,0.2)] dark:drop-shadow-[0_0_8px_rgba(124,58,237,0.8)]' : 'text-outline dark:text-white/40'}`}>
-                          {isPopular ? 'check_circle' : 'check'}
-                        </span>
+                        {isPopular ? (
+                          <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0 text-primary drop-shadow-[0_0_8px_rgba(124,58,237,0.2)]" aria-hidden="true" />
+                        ) : (
+                          <Check className="w-5 h-5 mt-0.5 shrink-0 text-outline dark:text-white/40" aria-hidden="true" />
+                        )}
                         <span className={`leading-relaxed ${isPopular && feature.id === tier.features[0]?.id ? "font-bold text-on-background dark:text-white" : ""}`}>
                           {feature.text}
                         </span>

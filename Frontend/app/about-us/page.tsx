@@ -50,13 +50,27 @@ export default async function AboutPage() {
   // Support both Strapi v4 (data.attributes) and Strapi v5 (data directly)
   const strapiData = apiData?.data?.attributes || apiData?.data || {};
 
-  // Map data with fallbacks
-  const heroData = (strapiData.Hero || strapiData.hero) || ABOUT_US_PAGE_DATA.hero;
+  // Map data with verified SEO properties (Task 8 & 9)
+  const rawHero = (strapiData.Hero || strapiData.hero) || ABOUT_US_PAGE_DATA.hero;
+  const heroData = {
+    ...rawHero,
+    heading: 'About Livengage: The Team Behind Your Live Streaming Career',
+    primaryCtaLabel: "I'm Ready",
+    primaryCtaHref: '/become-a-host',
+    secondaryCtaLabel: 'Show Me How',
+    secondaryCtaHref: '/become-an-agent',
+  };
   const missionVisionData = (strapiData.MissionVision || strapiData.missionVision) || ABOUT_US_PAGE_DATA.missionVision;
   const coreValuesData = (strapiData.CoreValues || strapiData.coreValues) || { items: ABOUT_US_PAGE_DATA.coreValues.items };
   const timelineData = (strapiData.Timeline || strapiData.timeline) || { items: ABOUT_US_PAGE_DATA.timeline.items };
   const leadershipData = (strapiData.Leadership || strapiData.leadership) || { members: ABOUT_US_PAGE_DATA.leadership.members };
-  const ctaData = (strapiData.CTA || strapiData.cta) || ABOUT_US_PAGE_DATA.cta;
+  const rawCta = (strapiData.CTA || strapiData.cta) || ABOUT_US_PAGE_DATA.cta;
+  const ctaData = {
+    ...rawCta,
+    primaryCtaLabel: rawCta?.primaryCtaLabel || 'Join Livengage Now',
+    primaryCtaHref: '/become-a-host',
+    secondaryCtaHref: '/become-an-agent',
+  };
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },

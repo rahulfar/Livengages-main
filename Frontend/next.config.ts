@@ -1,12 +1,9 @@
-// next.config.ts
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   compress: true,
   images: {
-    // This tells Next.js to bypass the local proxy optimizer for local images, 
-    // which completely fixes the "private ip" crash during development.
-    unoptimized: process.env.NODE_ENV === 'development', 
+    unoptimized: process.env.NODE_ENV === 'development',
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
@@ -46,7 +43,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // 1. Broken subfolder relative links from footer (Item 1 in audit)
+      // 1. Broken subfolder footer relative links
       {
         source: '/blogs/agent-ecosystem',
         destination: '/agent-ecosystem',
@@ -57,56 +54,59 @@ const nextConfig: NextConfig = {
         destination: '/agent-ecosystem',
         permanent: true,
       },
-      // 2. /join-us duplicates host page (Item 17 in audit)
+
+      // 2. /join-us duplicate of host page
       {
         source: '/join-us',
         destination: '/become-a-host',
         permanent: true,
       },
+
       // 3. /contact alias
       {
         source: '/contact',
         destination: '/contact-us',
         permanent: true,
       },
-      // 4. Partner app legacy URLs without keywords to keyword-rich URLs (Item 5 in audit)
+
+      // 4. Critical fix: Partner apps correct 1-to-1 redirect mapping (Audit Section 2.1 & 4 Task 1)
       {
-        source: '/partner-app',
-        destination: '/poppo-live-agency',
-        permanent: true,
-      },
-      {
-        source: '/partner-app-1',
+        source: '/partner-apps/partner-app',
         destination: '/vone-app-agency',
         permanent: true,
       },
       {
-        source: '/partner-app-2',
-        destination: '/chill-chat-agency',
-        permanent: true,
-      },
-      {
-        source: '/partner-app-3',
-        destination: '/niki-live-agency',
-        permanent: true,
-      },
-      {
-        source: '/partner-apps/partner-app',
-        destination: '/poppo-live-agency',
+        source: '/partner-app',
+        destination: '/vone-app-agency',
         permanent: true,
       },
       {
         source: '/partner-apps/partner-app-1',
-        destination: '/vone-app-agency',
-        permanent: true,
-      },
-      {
-        source: '/partner-apps/partner-app-2',
         destination: '/chill-chat-agency',
         permanent: true,
       },
       {
+        source: '/partner-app-1',
+        destination: '/chill-chat-agency',
+        permanent: true,
+      },
+      {
+        source: '/partner-apps/partner-app-2',
+        destination: '/niki-live-agency',
+        permanent: true,
+      },
+      {
+        source: '/partner-app-2',
+        destination: '/niki-live-agency',
+        permanent: true,
+      },
+      {
         source: '/partner-apps/partner-app-3',
+        destination: '/niki-live-agency',
+        permanent: true,
+      },
+      {
+        source: '/partner-app-3',
         destination: '/niki-live-agency',
         permanent: true,
       },
@@ -130,16 +130,48 @@ const nextConfig: NextConfig = {
         destination: '/poppo-live-agency',
         permanent: true,
       },
-      // 5. /blogs to /blog guides hub (Item 18 in audit)
+
+      // 5. Staging duplicate blog URLs (Section 2.3 & Task 1)
       {
-        source: '/blogs',
-        destination: '/blog',
+        source: '/blog/blog-3',
+        destination: '/blog/live-streaming-camera-setup-tips',
         permanent: true,
       },
-      // 6. Old blog slugs with random IDs and typos to clean keyword URLs (Section 5 & 13 in audit)
       {
-        source: '/blogs/livengage-camera-guide--di7bl9tg',
+        source: '/blog/blog-2',
+        destination: '/blog/how-to-build-a-live-streaming-agency',
+        permanent: true,
+      },
+      {
+        source: '/blog/blog-1',
+        destination: '/blog/how-to-earn-on-chill-chat-chamet',
+        permanent: true,
+      },
+      {
+        source: '/blog/blog',
+        destination: '/blog/how-to-start-live-streaming-and-earn',
+        permanent: true,
+      },
+
+      // 6. Old live blog URLs with random IDs & slugs to new canonical URLs (Section 2.3 & Task 1)
+      {
+        source: '/blogs/livengage-camera-guide-:slug(.*)',
         destination: '/blog/live-streaming-camera-setup-tips',
+        permanent: true,
+      },
+      {
+        source: '/blogs/a-practicaguide-to-building-a-successful-live-streaming-agency-:slug(.*)',
+        destination: '/blog/how-to-build-a-live-streaming-agency',
+        permanent: true,
+      },
+      {
+        source: '/blogs/how-to-earn-on-chamet-app-a-host-guide-:slug(.*)',
+        destination: '/blog/how-to-earn-on-chill-chat-chamet',
+        permanent: true,
+      },
+      {
+        source: '/blogs/how-to-start-streaming-build-an-audience-earn-:slug(.*)',
+        destination: '/blog/how-to-start-live-streaming-and-earn',
         permanent: true,
       },
       {
@@ -148,18 +180,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/blogs/a-practicaguide-to-building-a-successful-live-streaming-agency--e5uu',
-        destination: '/blog/how-to-build-a-live-streaming-agency',
-        permanent: true,
-      },
-      {
         source: '/blogs/how-to-start-and-scale-a-live-streaming-sub-agency',
         destination: '/blog/how-to-build-a-live-streaming-agency',
-        permanent: true,
-      },
-      {
-        source: '/blogs/how-to-earn-on-chamet-app-a-host-guide--zz6o',
-        destination: '/blog/how-to-earn-on-chill-chat-chamet',
         permanent: true,
       },
       {
@@ -173,11 +195,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/blogs/how-to-start-streaming-build-an-audience-earn--eiw2',
-        destination: '/blog/how-to-start-live-streaming-and-earn',
-        permanent: true,
-      },
-      {
         source: '/blogs/live-streamer-monetization-guide-gifts-targets-payouts',
         destination: '/blog/how-to-start-live-streaming-and-earn',
         permanent: true,
@@ -187,18 +204,22 @@ const nextConfig: NextConfig = {
         destination: '/blog/how-to-earn-on-chill-chat-chamet',
         permanent: true,
       },
+
+      // 7. Base /blogs and catch-all /blogs/:slug to /blog
+      {
+        source: '/blogs',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blogs/:slug*',
+        destination: '/blog',
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
     return [
-      {
-        source: '/blog',
-        destination: '/blogs',
-      },
-      {
-        source: '/blog/:slug',
-        destination: '/blogs/:slug',
-      },
       {
         source: '/vone-app-agency',
         destination: '/partner-apps/vone-app-agency',

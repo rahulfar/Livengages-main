@@ -1,3 +1,5 @@
+import { ChevronDown } from 'lucide-react';
+
 interface Props {
   data?: any;
 }
@@ -18,7 +20,7 @@ export function FAQ({ data }: Props) {
               <summary className="cursor-pointer w-full px-8 py-8 flex items-center justify-between text-left transition-colors list-none select-none dark:hover:bg-white/5">
                 <span className="font-headline-lg text-xl font-bold text-on-surface dark:text-white pr-8">{faq.question}</span>
                 <div className="w-12 h-12 rounded-full bg-primary-container/30 dark:bg-surface-container-lowest flex items-center justify-center shrink-0 border border-primary/20 dark:border-outline-variant group-open:bg-primary group-open:dark:bg-primary group-open:border-transparent transition-all group-open:rotate-180">
-                  <span className="material-symbols-outlined text-primary group-open:text-white transition-colors">keyboard_arrow_down</span>
+                  <ChevronDown className="w-6 h-6 text-primary group-open:text-white transition-colors" />
                 </div>
               </summary>
               <div className="pb-8 pt-0 text-on-surface-variant dark:text-white/70 leading-relaxed text-lg border-t border-outline-variant/50 dark:border-white/10 mt-2 mx-8 opacity-90">

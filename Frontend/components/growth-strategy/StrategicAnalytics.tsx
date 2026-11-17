@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { StrategicAnalyticsContent } from '@/types/growth-strategy';
 
 export function StrategicAnalytics({

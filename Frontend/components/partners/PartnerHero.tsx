@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -41,14 +42,14 @@ export function PartnerHero({ data }: PartnerHeroProps) {
             {data.primaryButtonText && (
               <button className="px-8 py-4 rounded-full btn-primary text-white font-semibold text-body-lg shadow-xl shadow-primary/20 hover-lift flex items-center gap-2 cursor-pointer">
                 {data.primaryButtonText}
-                <span className="material-symbols-outlined">arrow_forward</span>
+                <Icon name="arrow_forward" className="" aria-hidden="true" />
               </button>
             )}
             
             {data.secondaryButtonText && (
               <button className="px-8 py-4 rounded-full glass-card text-on-surface font-semibold text-body-lg hover-lift flex items-center gap-2 cursor-pointer">
                 {data.secondaryButtonText}
-                <span className="material-symbols-outlined">description</span>
+                <Icon name="description" className="" aria-hidden="true" />
               </button>
             )}
           </div>

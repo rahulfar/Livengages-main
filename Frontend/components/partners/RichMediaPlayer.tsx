@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { getMediaUrl } from '@/lib/api';
 import { cn } from '@/lib/utils';
 
@@ -44,8 +45,8 @@ export function RichMediaPlayer({ data }: RichMediaPlayerProps) {
                   </p>
                 </div>
                 <div className="hidden md:flex items-center gap-4 text-white">
-                  <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">fullscreen</span>
-                  <span className="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">volume_up</span>
+                  <Icon name="fullscreen" className="cursor-pointer hover:text-primary transition-colors" aria-hidden="true" />
+                  <Icon name="volume_up" className="cursor-pointer hover:text-primary transition-colors" aria-hidden="true" />
                 </div>
               </div>
             </div>

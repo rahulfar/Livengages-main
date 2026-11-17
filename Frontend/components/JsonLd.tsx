@@ -70,7 +70,7 @@ export function WebSiteJsonLd() {
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://www.livengage.com/blogs?q={search_term_string}',
+      target: 'https://www.livengage.com/blog?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
     inLanguage: ['en-IN', 'en'],
@@ -195,44 +195,57 @@ export function ArticleJsonLd({
 }
 
 /**
- * SoftwareApplication Schema (Item 7)
+ * SoftwareApplication Schema (Item 7, 2.6)
  */
 export function SoftwareApplicationJsonLd({
   name,
+  alternateName,
   operatingSystem = 'Android, iOS',
   applicationCategory = 'SocialNetworkingApplication',
   description,
   url,
-  ratingValue = '4.8',
-  reviewCount = '1250',
+  hasRealRating = false,
+  ratingValue,
+  reviewCount,
 }: {
   name: string;
+  alternateName?: string;
   operatingSystem?: string;
   applicationCategory?: string;
   description: string;
   url: string;
+  hasRealRating?: boolean;
   ratingValue?: string;
   reviewCount?: string;
 }) {
-  const schema = {
+  const cleanDescription = (description || '').replace(/with guaranteed high traffic/gi, 'with high caller activity');
+  const schema: any = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name,
     operatingSystem,
     applicationCategory,
-    description,
+    description: cleanDescription,
     url,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue,
-      reviewCount,
-    },
     offers: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
     },
   };
+
+  if (alternateName) {
+    schema.alternateName = alternateName;
+  }
+
+  // Self-made ratings are a structured data policy risk - only include if explicitly verified
+  if (hasRealRating && ratingValue && reviewCount) {
+    schema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue,
+      reviewCount,
+    };
+  }
 
   return (
     <script

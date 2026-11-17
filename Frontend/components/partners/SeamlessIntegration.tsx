@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 
 interface IntegrationFeature {
@@ -33,9 +34,7 @@ export function SeamlessIntegration({ data }: SeamlessIntegrationProps) {
             <div className="space-y-4">
               {(data.Features || []).map((feature, i) => (
                 <div key={feature.id || i} className="flex items-center gap-3 p-4 rounded-xl glass-card">
-                  <span className="material-symbols-outlined text-primary">
-                    {feature.icon || 'check_circle'}
-                  </span>
+                  <Icon name={feature.icon || 'check_circle'} className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
                   <span className="font-semibold text-on-surface">{feature.title}</span>
                 </div>
               ))}

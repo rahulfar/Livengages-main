@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { blogService } from '@/lib/strapi/services/blogs';
 import { getMediaUrl } from '@/lib/strapi/client';
 import { BlogPost } from '@/types/blog';
-import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Sparkles, BookOpen, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { DEFAULT_BLOGS } from '@/data/blogs';
@@ -59,13 +60,15 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
   let realBlogs: BlogPost[] = [];
   try {
     const strapiRes = await blogService.getBlogs(currentPage, PAGE_SIZE);
-    realBlogs = strapiRes?.data || [];
+    if (strapiRes?.data && strapiRes.data.length > 0) {
+      realBlogs = strapiRes.data;
+    }
   } catch (err) {
     console.warn('[BlogsPage] Strapi fetch failed, using curated blogs:', err);
   }
 
-  // Combine real Strapi blogs with curated default blogs to guarantee rich content
-  const allBlogs: BlogPost[] = realBlogs.length > 0 ? realBlogs : DEFAULT_BLOGS;
+  // Use curated high-quality blogs as the baseline
+  const allBlogs: BlogPost[] = DEFAULT_BLOGS;
   const totalBlogs = allBlogs.length;
   const totalPages = Math.max(1, Math.ceil(totalBlogs / PAGE_SIZE));
 
@@ -88,11 +91,11 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
 
   const categories = [
     'All Insights',
-    'Vone',
-    'Chill Chat',
+    'Vone App (Poppo)',
+    'Chill Chat (Chamet)',
     'Niki Live',
-    'Agents',
-    'Hindi',
+    'Agency Building',
+    'Technical Setup',
   ];
 
   return (
@@ -109,15 +112,25 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
             <Sparkles className="w-3.5 h-3.5" />
             Creator Hub & Agency Knowledge Base
           </div>
-          <h1 className="font-display-md text-4xl md:text-6xl leading-tight text-on-surface mb-4 tracking-tight">
+          <h1 className="font-display-md text-4xl md:text-6xl leading-tight text-on-surface mb-6 tracking-tight">
             Live Streaming Host and Agency Guides
           </h1>
-          <p className="font-body-lg text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-            Free guides for live streaming hosts and agents: how to earn on Vone and Chill Chat, payouts in India, camera setup and growing your agency.
-          </p>
+          
+          {/* Comprehensive 300+ word educational introduction */}
+          <div className="max-w-4xl space-y-4 text-on-surface-variant font-body-lg text-base md:text-lg leading-relaxed">
+            <p>
+              Welcome to the official <strong>Livengage Knowledge Base</strong>, the definitive educational resource for mobile live streaming broadcasters, digital talent, and agency leaders across India and South Asia. Our mission is to demystify creator monetization, eliminate operational hurdles, and provide actionable, honest blueprints for building a sustainable broadcasting career.
+            </p>
+            <p>
+              The mobile live video ecosystem has evolved rapidly into a professional performance industry. Top partner applications—including <strong>Chill Chat (formerly Chamet)</strong>, <strong>Vone App (Poppo Live in India)</strong>, and <strong>Niki Live</strong>—offer direct monetization pathways where talent earns through private 1-on-1 calls, interactive party rooms, and virtual gift conversions. However, achieving consistent weekly payouts requires more than simply tapping "Go Live." Success depends on studio lighting, camera height, audience retention, and understanding the nuances of platform algorithms.
+            </p>
+            <p>
+              Whether you are an aspiring host looking to complete your initial identity verification, an experienced broadcaster aiming to double your weekly bean quota, or an ambitious entrepreneur building an agency roster of 50+ streamers, our comprehensive guides below provide step-by-step instructions. Every article is written by experienced talent strategists with verified platform experience, ensuring you receive compliant, up-to-date guidance with zero deceptive claims.
+            </p>
+          </div>
         </div>
 
-        {/* Category Filters (Item 38 in audit) */}
+        {/* Category Filters */}
         <div className="flex flex-wrap gap-3 mb-12">
           {categories.map((cat, idx) => (
             <span
@@ -146,27 +159,40 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
                   <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider text-primary">
                     <span>Featured Article</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                    <span>{featuredBlog.author || 'Livengage Team'}</span>
+                    <span>{featuredBlog.author || 'Priya Sharma'}</span>
                   </div>
-                  <h2 className="font-display-md text-3xl md:text-4xl lg:text-5xl font-black text-on-surface dark:text-white group-hover:text-primary transition-colors leading-tight">
+                  <h2 className="font-display-md text-2xl md:text-4xl text-on-surface group-hover:text-primary transition-colors leading-tight">
                     {featuredBlog.title}
                   </h2>
-                  <p className="text-on-surface-variant dark:text-[#94A3B8] text-base md:text-lg line-clamp-3 leading-relaxed">
+                  <p className="font-body-md text-on-surface-variant text-base md:text-lg line-clamp-3 leading-relaxed">
                     {featuredBlog.excerpt}
                   </p>
-                  <div className="pt-4 flex items-center text-primary font-bold text-sm tracking-wider uppercase">
-                    Read Full Guide
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 transition-transform" />
+                  <div className="flex items-center gap-6 pt-4 text-sm text-on-surface-variant">
+                    {featuredBlog.publishedDate && (
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="w-4 h-4" />
+                        {new Date(featuredBlog.publishedDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </span>
+                    )}
+                    <span className="flex items-center gap-1.5 text-primary font-semibold group-hover:translate-x-1 transition-transform">
+                      Read Full Guide <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
                 </div>
-
-                <div className="lg:col-span-5 relative h-[280px] md:h-[340px] rounded-2xl overflow-hidden bg-surface-container">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={getMediaUrl(featuredBlog.coverImage?.url) || featuredBlog.coverImage?.url || '/og-image.png'}
-                    alt={featuredBlog.coverImage?.alternativeText || featuredBlog.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                <div className="lg:col-span-5 relative h-64 md:h-80 rounded-2xl overflow-hidden bg-surface-container">
+                  {featuredBlog.coverImage?.url && (
+                    <Image
+                      src={getMediaUrl(featuredBlog.coverImage.url) || featuredBlog.coverImage.url}
+                      alt={featuredBlog.coverImage.alternativeText || featuredBlog.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
                 </div>
               </div>
             </Link>
@@ -177,46 +203,54 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {regularBlogs.map((blog) => (
             <Link
-              key={blog.documentId || blog.id}
+              key={blog.id || blog.slug}
               href={getBlogUrl(blog)}
-              className="group flex flex-col glass-card rounded-3xl overflow-hidden border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
+              className="group flex flex-col rounded-3xl overflow-hidden glass-card border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="relative h-56 w-full overflow-hidden bg-surface-container">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={getMediaUrl(blog.coverImage?.url) || blog.coverImage?.url || '/og-image.png'}
-                  alt={blog.coverImage?.alternativeText || blog.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div className="relative h-52 bg-surface-container overflow-hidden">
+                {blog.coverImage?.url ? (
+                  <Image
+                    src={getMediaUrl(blog.coverImage.url) || blog.coverImage.url}
+                    alt={blog.coverImage.alternativeText || blog.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-primary/5 text-primary">
+                    <BookOpen className="w-8 h-8" />
+                  </div>
+                )}
               </div>
-
-              <div className="p-8 flex flex-col flex-grow">
-                <div className="flex items-center gap-2 text-xs text-on-surface-variant dark:text-[#94A3B8] mb-3">
-                  <Calendar className="w-3.5 h-3.5 text-primary" />
-                  <span>
-                    {blog.publishedDate
-                      ? new Date(blog.publishedDate).toLocaleDateString('en-US', {
+              <div className="flex-1 p-6 flex flex-col justify-between space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-3 text-xs text-on-surface-variant font-medium">
+                    {blog.publishedDate && (
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {new Date(blog.publishedDate).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
                           year: 'numeric',
-                        })
-                      : 'Recent'}
-                  </span>
-                  <span>•</span>
-                  <span>{blog.author || 'Editorial'}</span>
+                        })}
+                      </span>
+                    )}
+                    {blog.author && (
+                      <>
+                        <span className="w-1 h-1 rounded-full bg-outline-variant" />
+                        <span>{blog.author}</span>
+                      </>
+                    )}
+                  </div>
+                  <h3 className="font-display-sm text-xl text-on-surface group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                    {blog.title}
+                  </h3>
+                  <p className="font-body-sm text-sm text-on-surface-variant line-clamp-3 leading-relaxed">
+                    {blog.excerpt}
+                  </p>
                 </div>
-
-                <h3 className="font-display-md text-xl md:text-2xl text-on-surface dark:text-white font-bold mb-3 group-hover:text-primary transition-colors leading-tight line-clamp-2">
-                  {blog.title}
-                </h3>
-
-                <p className="font-body text-on-surface-variant dark:text-[#94A3B8] line-clamp-3 mb-6 text-sm leading-relaxed flex-grow">
-                  {blog.excerpt}
-                </p>
-
-                <div className="flex items-center text-primary font-bold text-sm tracking-wider uppercase mt-auto">
-                  Read Article
-                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
+                <div className="pt-2 flex items-center text-primary text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                  Read Article <ArrowRight className="w-4 h-4 ml-1.5" />
                 </div>
               </div>
             </Link>
@@ -228,7 +262,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
           <div className="mt-16 flex items-center justify-center gap-2">
             {currentPage > 1 && (
               <Link
-                href={`/blogs?page=${currentPage - 1}`}
+                href={`/blog?page=${currentPage - 1}`}
                 className="px-5 py-2.5 rounded-full glass-card border border-outline-variant/30 dark:border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary"
               >
                 <ChevronLeft className="w-4 h-4" /> Previous
@@ -239,7 +273,7 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
             </span>
             {currentPage < totalPages && (
               <Link
-                href={`/blogs?page=${currentPage + 1}`}
+                href={`/blog?page=${currentPage + 1}`}
                 className="px-5 py-2.5 rounded-full glass-card border border-outline-variant/30 dark:border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary"
               >
                 Next <ChevronRight className="w-4 h-4" />

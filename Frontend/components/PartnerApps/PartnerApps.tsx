@@ -2,11 +2,22 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-
+import { Star, Plus, Minus } from 'lucide-react';
 import { getMediaUrl } from '@/lib/strapi/client';
 
 interface Props {
   data?: any;
+}
+
+function resolveAppUrl(slug: string): string {
+  if (!slug) return '/services';
+  if (slug.startsWith('/')) return slug;
+  if (slug === 'chill-chat-agency' || slug === 'partner-app-1' || slug === 'chamet') return '/chill-chat-agency';
+  if (slug === 'niki-live-agency' || slug === 'partner-app-2' || slug === 'niki') return '/niki-live-agency';
+  if (slug === 'vone-app-agency' || slug === 'partner-app' || slug === 'vone') return '/vone-app-agency';
+  if (slug === 'poppo-live-agency' || slug === 'poppo') return '/poppo-live-agency';
+  if (slug.endsWith('-agency')) return `/${slug}`;
+  return `/${slug}-agency`;
 }
 
 export function PartnerApps({ data }: Props) {
@@ -37,6 +48,7 @@ export function PartnerApps({ data }: Props) {
             const bgUrl = hero.heroImage?.url;
             const videoUrl = videoPreview.video?.url;
             const isExpanded = expandedIdx === idx;
+            const directUrl = resolveAppUrl(app.slug);
             
             return (
               <div 
@@ -79,15 +91,17 @@ export function PartnerApps({ data }: Props) {
                   {/* Top / Header section */}
                   <div className={`flex w-full lg:flex-col lg:items-start items-center gap-4 lg:gap-0 transition-transform duration-500 ${isExpanded ? 'max-lg:-translate-y-2' : ''}`}>
                     <div className="w-12 h-12 lg:w-16 lg:h-16 shrink-0 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center lg:mb-8 border border-white/30 lg:group-hover:bg-white lg:group-hover:text-primary transition-colors">
-                      <span className="material-symbols-outlined text-2xl lg:text-3xl text-white lg:group-hover:text-primary transition-colors">star</span>
+                      <Star className="w-6 h-6 lg:w-8 lg:h-8 text-white lg:group-hover:text-primary transition-colors fill-white/20" />
                     </div>
                     <h4 className="font-headline-lg text-xl lg:text-2xl font-black uppercase tracking-tighter text-white drop-shadow-md lg:mb-4">{app.title}</h4>
                     
                     {/* Accordion +/- Indicator (Mobile Only) */}
                     <div className="ml-auto lg:hidden w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 shrink-0 transition-transform duration-300">
-                      <span className="material-symbols-outlined text-white text-xl">
-                        {isExpanded ? 'remove' : 'add'}
-                      </span>
+                      {isExpanded ? (
+                        <Minus className="w-4 h-4 text-white" />
+                      ) : (
+                        <Plus className="w-4 h-4 text-white" />
+                      )}
                     </div>
                   </div>
 
@@ -99,15 +113,13 @@ export function PartnerApps({ data }: Props) {
                     <p className="text-white/80 max-w-xs drop-shadow text-sm lg:text-base line-clamp-3">
                       {hero.description}
                     </p>
-                    {hero.primaryCtaLabel && (
-                      <Link 
-                        href={`/partner-apps/${app.slug}`} 
-                        onClick={(e) => e.stopPropagation()} // Prevent toggling accordion when clicking CTA
-                        className="cursor-pointer w-full py-3 lg:py-4 rounded-full bg-white text-primary font-bold hover:bg-primary-container hover:text-on-primary-container shadow-lg text-center"
-                      >
-                        Get more detail
-                      </Link>
-                    )}
+                    <Link 
+                      href={directUrl} 
+                      onClick={(e) => e.stopPropagation()} // Prevent toggling accordion when clicking CTA
+                      className="cursor-pointer w-full py-3 lg:py-4 rounded-full bg-white text-primary font-bold hover:bg-primary-container hover:text-on-primary-container shadow-lg text-center"
+                    >
+                      {hero.primaryCtaLabel || 'Explore Agency'}
+                    </Link>
                   </div>
 
                 </div>

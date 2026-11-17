@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { TalentHeroContent } from '@/types/talent-recruitment';
+import { SITE_STATS } from '@/constants/site-stats';
 
 export function TalentHero({
   badge,
@@ -46,16 +48,14 @@ export function TalentHero({
                 className="btn-gradient px-8 py-4 rounded-full text-white font-bold text-lg flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-lg dark:shadow-[0_0_20px_rgba(124,58,237,0.3)]"
                 href="/become-a-host"
               >
-                {primaryButtonText}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_forward
-                </span>
+                <span>{primaryButtonText}</span>
+                <ArrowRight className="w-5 h-5" aria-hidden="true" />
               </Link>
             )}
             {secondaryButtonText && (
               <Link
                 className="px-8 py-4 rounded-full border-2 border-outline-variant text-on-surface dark:text-white font-bold text-lg flex items-center justify-center hover:bg-surface-container dark:hover:border-primary-container transition-colors"
-                href="/become-an-agent"
+                href="/become-a-host"
               >
                 {secondaryButtonText}
               </Link>
@@ -81,9 +81,9 @@ export function TalentHero({
           {/* Stats Overlay */}
           <div className="absolute bottom-10 left-10 right-10 glass-card p-6 rounded-2xl flex justify-around items-center border border-white/30 backdrop-blur-xl">
             <div className="text-center">
-              <div className="text-primary font-bold text-3xl md:text-4xl">{retentionRate}</div>
+              <div className="text-primary font-bold text-3xl md:text-4xl">{SITE_STATS.creators}</div>
               <div className="text-on-surface-variant text-xs uppercase tracking-wider font-semibold mt-1">
-                Host Retention Rate
+                Active Creators
               </div>
             </div>
             <div className="h-12 w-[1px] bg-outline-variant/50"></div>

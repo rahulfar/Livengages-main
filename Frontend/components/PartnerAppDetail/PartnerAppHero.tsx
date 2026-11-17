@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getMediaUrl } from '@/lib/api';
@@ -43,7 +44,7 @@ export function PartnerAppHero({ data }: { data: any }) {
         <div className="space-y-8 max-w-2xl reveal-on-scroll order-2 lg:order-1">
           {badgeText && (
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md">
-              <span className="material-symbols-outlined text-primary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+              <Icon name="star" className="text-primary text-sm" aria-hidden="true" />
               <span className="font-bold text-xs text-primary uppercase tracking-[0.2em]">{badgeText}</span>
             </div>
           )}
@@ -63,13 +64,13 @@ export function PartnerAppHero({ data }: { data: any }) {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               {showPrimaryBtn && (
                 <Link href={primaryCtaUrl} className="btn-gradient px-8 py-4 rounded-full text-white font-bold text-lg flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-[0_4px_15px_rgba(124,58,237,0.3)] dark:shadow-[0_0_20px_rgba(124,58,237,0.3)]">
-                  <span className="material-symbols-outlined">download</span>
+                  <Icon name="download" className="" aria-hidden="true" />
                   {primaryCtaLabel}
                 </Link>
               )}
               {showSecondaryBtn && (
                 <Link href={secondaryCtaUrl} className="px-8 py-4 rounded-full border-2 border-primary/20 dark:border-white/20 text-primary dark:text-white font-bold text-lg flex items-center justify-center gap-2 hover:bg-primary/5 dark:hover:bg-white/10 transition-colors">
-                  <span className="material-symbols-outlined">play_circle</span>
+                  <Icon name="play_circle" className="" aria-hidden="true" />
                   {secondaryCtaLabel}
                 </Link>
               )}

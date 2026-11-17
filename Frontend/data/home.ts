@@ -21,9 +21,10 @@ export const HOME_PAGE_DATA = {
   },
   stats: {
     stats: [
-      { value: '10,000+', label: 'Active Hosts Worldwide' },
-      { value: '5,000+', label: 'Global Agents' },
-      { value: '24/7', label: 'Dedicated Support' }
+      { value: '6,500+', label: 'Active Creators Worldwide' },
+      { value: '50+', label: 'Countries Represented' },
+      { value: '20+', label: 'Partner Streaming Platforms' },
+      { value: '100% Free', label: 'To Join' }
     ]
   },
   services: {

@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 
 interface MetricItem {
@@ -48,15 +49,14 @@ export function TechSpecsGrid({ data }: TechSpecsGridProps) {
               )}
               style={metric.borderColor && metric.borderColor.startsWith('#') ? { borderLeftColor: metric.borderColor } : {}}
             >
-              <span 
+              <Icon 
+                name={metric.icon || 'trending_up'}
                 className={cn(
-                  "material-symbols-outlined mb-stack-md text-4xl",
+                  "mb-stack-md w-9 h-9",
                   getTextColor(metric.borderColor, i)
                 )}
                 style={metric.borderColor && metric.borderColor.startsWith('#') ? { color: metric.borderColor } : {}}
-              >
-                {metric.icon || 'trending_up'}
-              </span>
+              />
               <h4 className="font-display-lg text-[48px] text-on-surface mb-1">
                 {metric.value}
               </h4>

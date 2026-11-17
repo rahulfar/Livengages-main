@@ -1,31 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
+import { ShieldCheck, CreditCard, Headphones, Lock, ArrowRight } from 'lucide-react';
+import { SITE_STATS } from '@/constants/site-stats';
 
 export function TrustComplianceSection() {
   const complianceFeatures = [
     {
-      icon: 'verified',
+      icon: ShieldCheck,
       title: 'Official Platform Authorization',
       description:
         'Direct Tier-1 contracts on Chill Chat (Chamet), Vone App (Poppo Live), and Niki Live with VIP badges and zero middleman fee deductions.',
       tag: 'Direct Contract',
     },
     {
-      icon: 'payments',
+      icon: CreditCard,
       title: 'Automated Weekly Settlements',
       description:
         'Transparent weekly earnings delivered directly to your bank account, UPI, or Payoneer across 50+ global countries with zero delays.',
       tag: 'Fast Payouts',
     },
     {
-      icon: 'support_agent',
+      icon: Headphones,
       title: '24/7 Dedicated Agency Support',
       description:
         'Continuous talent coaching, stream optimization, lighting/audio guides, and priority dispute mediation from experienced managers.',
       tag: '24/7 Mentorship',
     },
     {
-      icon: 'lock',
+      icon: Lock,
       title: 'Zero Upfront Fees & Safety',
       description:
         '100% free registration for hosts and partner agents. No registration fees, no hidden startup costs, and full privacy protection.',
@@ -60,35 +62,38 @@ export function TrustComplianceSection() {
             </span>
           </h2>
           <p className="text-on-surface-variant dark:text-[#94A3B8] text-lg leading-relaxed">
-            Livengage connects over 10,000 creators and partner sub-agencies with verified global broadcasting apps, backed by official contracts and 24/7 dedicated support.
+            Livengage connects over {SITE_STATS.creators} creators and partner sub-agencies with verified global broadcasting apps, backed by official contracts and 24/7 dedicated support.
           </p>
         </div>
 
         {/* 4 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
-          {complianceFeatures.map((item, index) => (
-            <div
-              key={index}
-              className="glass-card p-8 rounded-3xl border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group shadow-sm hover:shadow-xl"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary dark:text-[#FF5E89] group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-2xl">{item.icon}</span>
+          {complianceFeatures.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <div
+                key={index}
+                className="glass-card p-8 rounded-3xl border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary/50 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group shadow-sm hover:shadow-xl"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary dark:text-[#FF5E89] group-hover:scale-110 transition-transform">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-surface-container dark:bg-white/5 text-on-surface-variant dark:text-[#CBD5E1]">
+                      {item.tag}
+                    </span>
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-surface-container dark:bg-white/5 text-on-surface-variant dark:text-[#CBD5E1]">
-                    {item.tag}
-                  </span>
+                  <h3 className="font-bold text-xl text-on-surface dark:text-white mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-on-surface-variant dark:text-[#94A3B8] leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="font-bold text-xl text-on-surface dark:text-white mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-on-surface-variant dark:text-[#94A3B8] leading-relaxed">
-                  {item.description}
-                </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Live Streaming App Quick Links Strip */}
@@ -98,27 +103,22 @@ export function TrustComplianceSection() {
               Explore Our Official Platform Partnerships
             </h4>
             <p className="text-xs text-on-surface-variant dark:text-[#94A3B8]">
-              Verified application guides, agency rules, and commission schedules.
+              Direct contracts, dedicated support managers, and weekly verified payouts.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2.5 justify-center md:justify-end">
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
             {partnerPills.map((pill, idx) => (
               <Link
                 key={idx}
                 href={pill.href}
-                className="px-4 py-2 rounded-full text-xs font-bold border border-outline-variant/40 dark:border-white/15 bg-white/60 dark:bg-white/5 hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white hover:border-primary transition-all duration-200"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all border border-outline-variant/40 dark:border-white/10 bg-surface dark:bg-white/5 text-on-surface dark:text-white hover:border-primary hover:text-primary dark:hover:text-[#FF5E89] shadow-sm hover:shadow"
               >
-                {pill.name} →
+                <span>{pill.name}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             ))}
           </div>
-        </div>
-
-        {/* Transparency / Income Disclaimer */}
-        <div className="mt-8 text-center">
-          <p className="text-xs text-on-surface-variant/70 dark:text-[#64748B] italic max-w-2xl mx-auto">
-            *Audited Performance & Income Disclaimer: Earnings depend on streamer broadcasting hours, audience interaction, and verified viewer gifting across each host platform. Livengage provides authorized contracts, talent coaching, and VIP badges with zero upfront fees.
-          </p>
         </div>
       </div>
     </section>

@@ -52,11 +52,18 @@ export default async function ServicesPage() {
   // Support both Strapi v4 (data.attributes) and Strapi v5 (data directly)
   const pageData = strapiRes?.data?.attributes || strapiRes?.data || {};
 
-  const heroData = pageData.hero || pageData.Hero || SERVICES_HERO;
+  const heroData = {
+    ...((pageData.hero || pageData.Hero) || SERVICES_HERO),
+    heading: 'Live Streaming Agency Services for Hosts and Agents',
+  };
   const servicesListData = pageData.servicesList || pageData.ServicesList || { items: SERVICES_LIST };
   const partnerAppsData = pageData.partnerApps || pageData.PartnerApps || PARTNER_APPS_SECTION;
   const statsData = pageData.stats || pageData.Stats || { stats: SERVICES_STATS };
-  const ctaData = pageData.cta || pageData.CTA || SERVICES_CTA;
+  const ctaData = {
+    ...((pageData.cta || pageData.CTA) || SERVICES_CTA),
+    primaryCtaLabel: 'Start My Journey Now',
+    primaryCtaHref: '/become-a-host',
+  };
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },

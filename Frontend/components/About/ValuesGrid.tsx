@@ -1,3 +1,5 @@
+import { Icon } from '@/components/ui/Icon';
+
 interface ValuesGridProps {
   data?: {
     heading?: string;
@@ -41,7 +43,7 @@ export function ValuesGrid({ data }: ValuesGridProps) {
       gradient: 'from-tertiary-container/10 to-transparent',
       iconBg: 'from-tertiary-container/10 to-tertiary-container/5 dark:from-tertiary-container/20 dark:to-tertiary-container/10',
       text: 'text-tertiary-container',
-      icon: 'groups',
+      icon: 'group_add',
     },
   ];
 
@@ -75,12 +77,11 @@ export function ValuesGrid({ data }: ValuesGridProps) {
 
               <div className="relative z-10">
                 <div className={`w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br ${style.iconBg} flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-inner border border-outline-variant/10 dark:border-white/10`}>
-                  <span
-                    className={`material-symbols-outlined text-[40px] ${style.text}`}
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    {item.icon || style.icon}
-                  </span>
+                  <Icon
+                    name={item.icon || style.icon}
+                    className={`w-10 h-10 ${style.text}`}
+                    aria-hidden="true"
+                  />
                 </div>
                 {item.title && (
                   <h3 className="font-display-sm text-2xl font-bold mb-4 tracking-tight text-on-surface dark:text-white group-hover:text-primary transition-colors duration-300">

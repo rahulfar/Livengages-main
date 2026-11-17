@@ -1,3 +1,5 @@
+import { HelpCircle } from 'lucide-react';
+
 export function PartnerAppFaq({ data }: { data: any }) {
   if (!data?.faqs || data.faqs.length === 0) return null;
   const { title, titleHighlight, faqs } = data;
@@ -27,9 +29,7 @@ export function PartnerAppFaq({ data }: { data: any }) {
             <div className="absolute top-8 bottom-8 left-0 w-1 bg-gradient-to-b from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-r-full"></div>
 
             <div className="flex gap-4">
-              <span className="material-symbols-outlined text-primary mt-1 shrink-0 drop-shadow-md">
-                help
-              </span>
+              <HelpCircle className="w-6 h-6 text-primary mt-1 shrink-0 drop-shadow-md" aria-hidden="true" />
               <div>
                 {faq.question && (
                   <h4 className="font-display-sm text-xl font-bold text-on-surface dark:text-white mb-3 tracking-wide group-hover:text-primary transition-colors">{faq.question}</h4>

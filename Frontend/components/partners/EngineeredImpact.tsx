@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { getMediaUrl } from '@/lib/api';
 import { cn } from '@/lib/utils';
 
@@ -39,7 +40,7 @@ export function EngineeredImpact({ data }: EngineeredImpactProps) {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-stack-lg flex flex-col justify-end">
               <div className="max-w-md">
-                <span className="material-symbols-outlined text-primary mb-stack-sm text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>security</span>
+                <Icon name="security" className="text-primary mb-stack-sm text-4xl" aria-hidden="true" />
                 <h3 className="font-headline-lg text-2xl md:text-headline-lg text-white mb-stack-sm">
                   {data.card1Title || 'AI Moderation'}
                 </h3>
@@ -54,7 +55,7 @@ export function EngineeredImpact({ data }: EngineeredImpactProps) {
           <div className="md:col-span-5 glass-card rounded-[32px] p-stack-lg flex flex-col justify-between hover-lift border border-white/20 dark:border-white/10">
             <div>
               <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-stack-lg">
-                <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>videocam</span>
+                <Icon name="videocam" className="text-3xl" aria-hidden="true" />
               </div>
               <h3 className="font-headline-lg text-2xl md:text-headline-lg mb-stack-md text-on-surface">
                 {data.card2Title || '1-on-1 Video'}
@@ -82,7 +83,7 @@ export function EngineeredImpact({ data }: EngineeredImpactProps) {
           <div className="md:col-span-12 glass-card rounded-[32px] overflow-hidden p-0 flex flex-col md:flex-row min-h-[400px] border border-white/20 dark:border-white/10">
             <div className="md:w-1/2 p-stack-lg flex flex-col justify-center">
               <div className="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary mb-stack-lg">
-                <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>card_giftcard</span>
+                <Icon name="card_giftcard" className="text-3xl" aria-hidden="true" />
               </div>
               <h3 className="font-headline-xl text-3xl md:text-headline-xl mb-stack-md text-on-surface">
                 {data.card3Title || 'Global Gifting'}
@@ -98,7 +99,7 @@ export function EngineeredImpact({ data }: EngineeredImpactProps) {
                   { id: 3, icon: 'check_circle', title: 'Creator-centric revenue distribution' }
                 ]).map((feature: any, i: number) => (
                   <li key={feature.id || i} className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary">{feature.icon || 'check_circle'}</span>
+                    <Icon name={feature.icon || 'check_circle'} className="text-primary" aria-hidden="true" />
                     {feature.title}
                   </li>
                 ))}

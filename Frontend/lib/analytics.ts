@@ -2,8 +2,23 @@
 
 /**
  * GA4 and GTM conversion event tracking
- * Item 31: host_form_submit, agent_form_submit, whatsapp_click, invite_link_click
+ * Audit Section 3.7 & Task 12:
+ * host_form_submit, agent_form_submit, whatsapp_click, invite_link_click
+ * MUST fire with an app parameter (chill_chat, vone, niki, bigo).
  */
+
+export type TrackedApp = 'chill_chat' | 'vone' | 'niki' | 'bigo' | 'other' | 'general';
+
+export function normalizeAppParameter(app?: string): TrackedApp {
+  if (!app) return 'general';
+  const lower = app.toLowerCase();
+  if (lower.includes('chill') || lower.includes('chamet')) return 'chill_chat';
+  if (lower.includes('vone') || lower.includes('poppo')) return 'vone';
+  if (lower.includes('niki')) return 'niki';
+  if (lower.includes('bigo')) return 'bigo';
+  return 'other';
+}
+
 export function trackEvent(eventName: string, params: Record<string, any> = {}) {
   if (typeof window === 'undefined') return;
 
@@ -11,6 +26,7 @@ export function trackEvent(eventName: string, params: Record<string, any> = {}) 
     // GA4 gtag
     if (typeof (window as any).gtag === 'function') {
       (window as any).gtag('event', eventName, params);
+      console.log(`[GA4 Event] ${eventName}:`, params);
     }
 
     // GTM dataLayer
@@ -19,6 +35,7 @@ export function trackEvent(eventName: string, params: Record<string, any> = {}) 
         event: eventName,
         ...params,
       });
+      console.log(`[DataLayer Event] ${eventName}:`, params);
     }
   } catch (err) {
     console.warn('[Analytics] Track event failed:', eventName, err);
@@ -26,7 +43,9 @@ export function trackEvent(eventName: string, params: Record<string, any> = {}) 
 }
 
 export function trackHostFormSubmit(data?: Record<string, any>) {
+  const appParam = normalizeAppParameter(data?.app || data?.targetApp || data?.platform);
   trackEvent('host_form_submit', {
+    app: appParam,
     category: 'Lead Generation',
     label: 'Host Application Submitted',
     ...data,
@@ -34,26 +53,32 @@ export function trackHostFormSubmit(data?: Record<string, any>) {
 }
 
 export function trackAgentFormSubmit(data?: Record<string, any>) {
+  const appParam = normalizeAppParameter(data?.app || data?.targetApp || data?.platform || 'general');
   trackEvent('agent_form_submit', {
+    app: appParam,
     category: 'Lead Generation',
     label: 'Agent Application Submitted',
     ...data,
   });
 }
 
-export function trackWhatsAppClick(source: string = 'unknown') {
+export function trackWhatsAppClick(appOrSource?: string, explicitSource?: string) {
+  const appParam = normalizeAppParameter(appOrSource);
+  const source = explicitSource || (appOrSource && !['chill_chat', 'vone', 'niki', 'bigo'].includes(appParam) ? appOrSource : 'floating_button');
   trackEvent('whatsapp_click', {
-    category: 'Engagement',
-    label: `WhatsApp Chat Started (${source})`,
+    app: appParam,
     source,
+    category: 'Engagement',
+    label: `WhatsApp Chat Started (${source} - ${appParam})`,
   });
 }
 
-export function trackInviteLinkClick(appName: string, targetUrl?: string) {
+export function trackInviteLinkClick(appName: string = 'vone', targetUrl?: string) {
+  const appParam = normalizeAppParameter(appName);
   trackEvent('invite_link_click', {
+    app: appParam,
     category: 'Outbound Referral',
-    label: `App Partner Link Clicked (${appName})`,
-    app_name: appName,
-    target_url: targetUrl,
+    label: `App Partner Link Clicked (${appParam})`,
+    target_url: targetUrl || '',
   });
 }

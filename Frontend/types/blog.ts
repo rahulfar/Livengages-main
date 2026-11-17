@@ -59,4 +59,5 @@ export interface BlogPost {
   updatedAt: string;
   publishedAt: string;
   coverImage?: StrapiImage | any;
+  faqs?: Array<{ question: string; answer: string }>;
 }

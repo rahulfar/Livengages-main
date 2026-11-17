@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Lock } from 'lucide-react';
 import { EcosystemCTAContent } from '@/types/agent-ecosystem';
 
 export function EcosystemCTA({
@@ -35,9 +36,7 @@ export function EcosystemCTA({
             </div>
             {footerText && (
               <p className="mt-12 text-sm text-on-surface-variant dark:text-[#94A3B8] flex items-center justify-center gap-2 italic">
-                <span className="material-symbols-outlined text-lg" aria-hidden="true">
-                  lock
-                </span>
+                <Lock className="w-4 h-4" aria-hidden="true" />
                 {footerText}
               </p>
             )}

@@ -1,4 +1,6 @@
+import { Icon } from '@/components/ui/Icon';
 import Link from 'next/link';
+import { Lock } from 'lucide-react';
 import { TalentCTAContent } from '@/types/talent-recruitment';
 
 export function TalentCTA({
@@ -44,9 +46,7 @@ export function TalentCTA({
             </div>
             {footerText && (
               <p className="mt-12 text-sm text-on-surface-variant dark:text-[#94A3B8] flex items-center justify-center gap-2 italic">
-                <span className="material-symbols-outlined text-lg" aria-hidden="true">
-                  lock
-                </span>
+                <Lock className="w-4 h-4" aria-hidden="true" />
                 {footerText}
               </p>
             )}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { SITE_STATS } from '@/constants/site-stats';
 
 interface StatItem {
   value: string;
@@ -12,8 +13,24 @@ interface Props {
 }
 
 export function Stats({ data }: Props) {
-  const stats = data?.stats || [];
-  if (stats.length === 0) return null;
+  // Filter out any broken stat like empty "$" or "Millions Earned Monthly"
+  const rawStats = data?.stats || [];
+  const filtered = rawStats.filter(
+    (s) =>
+      s.value &&
+      s.value.trim() !== '$' &&
+      !s.label?.toLowerCase().includes('millions')
+  );
+
+  // Standard audited verified stats
+  const defaultStats: StatItem[] = [
+    { value: SITE_STATS.creators, label: 'Active Creators' },
+    { value: SITE_STATS.countries, label: 'Countries' },
+    { value: SITE_STATS.partnerPlatforms, label: 'Partner Platforms' },
+    { value: '100% Free', label: 'To Join' },
+  ];
+
+  const stats = filtered.length >= 3 ? filtered : defaultStats;
 
   return (
     <section className="py-12 bg-surface-container border-y border-outline-variant/50 dark:bg-surface-container/30 dark:border-outline-variant/30 dark:backdrop-blur-md">

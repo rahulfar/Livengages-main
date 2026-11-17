@@ -1,3 +1,5 @@
+import { Icon } from '@/components/ui/Icon';
+
 export function PartnerAppSteps({ data }: { data: any }) {
   if (!data?.steps || data.steps.length === 0) return null;
   const { title, titleHighlight, description, steps } = data;
@@ -48,9 +50,9 @@ export function PartnerAppSteps({ data }: { data: any }) {
                   {/* Step Content Card */}
                   <div className={`relative backdrop-blur-xl rounded-[24px] w-full p-8 h-full transition-all duration-500 hover:-translate-y-2 hover:shadow-lg dark:group-hover:shadow-[0_8px_30px_rgba(124,58,237,0.15)] border ${cardClass}`}>
                     {displayIcon && (
-                      <span className={`material-symbols-outlined text-4xl mb-6 block drop-shadow-md transition-transform duration-500 group-hover:scale-110 ${iconColor}`} style={isLast ? { fontVariationSettings: "'FILL' 1" } : undefined}>
-                        {displayIcon}
-                      </span>
+                      <div className={`mb-6 flex justify-center transition-transform duration-500 group-hover:scale-110 ${iconColor}`}>
+                        <Icon name={displayIcon} className="w-10 h-10 drop-shadow-md" />
+                      </div>
                     )}
                     {step.title && (
                       <h4 className="font-display-sm text-xl font-bold text-on-background dark:text-white mb-3 tracking-wide">{step.title}</h4>

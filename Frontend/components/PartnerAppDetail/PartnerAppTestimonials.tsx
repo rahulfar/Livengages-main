@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { getMediaUrl } from '@/lib/api';
 
 export function PartnerAppTestimonials({ data }: { data: any }) {
@@ -40,7 +41,7 @@ export function PartnerAppTestimonials({ data }: { data: any }) {
             <div>
               <div className="flex text-[#FFD700] mb-4">
                 {[...Array(testimonial.rating || 5)].map((_, i) => (
-                  <span key={i} className="material-symbols-outlined text-xl drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  <Icon key={i} name="star" className="w-5 h-5 fill-current drop-shadow-[0_0_5px_rgba(255,215,0,0.5)]" aria-hidden="true" />
                 ))}
               </div>
               {testimonial.quote && (

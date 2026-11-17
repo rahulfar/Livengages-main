@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ChevronDown } from 'lucide-react';
 import {
   ContactHero,
   ContactForm,
@@ -124,9 +125,7 @@ export default function ContactPage() {
             >
               <summary className="font-bold text-lg text-on-surface dark:text-white list-none flex justify-between items-center select-none">
                 <span>{faq.question}</span>
-                <span className="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">
-                  keyboard_arrow_down
-                </span>
+                <ChevronDown className="w-5 h-5 text-primary group-open:rotate-180 transition-transform" />
               </summary>
               <p className="mt-4 text-on-surface-variant dark:text-[#94A3B8] leading-relaxed">
                 {faq.answer}

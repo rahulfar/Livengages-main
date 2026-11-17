@@ -20,13 +20,13 @@ export interface FeaturedAppItem {
 export const EXACT_FEATURED_PARTNER_APPS: FeaturedAppItem[] = [
   {
     id: 9,
-    title: 'Live Video Chat (Chamet)',
-    slug: 'partner-app-1',
+    title: 'Chill Chat (Chamet)',
+    slug: 'chill-chat-agency',
     hero: {
-      badgeText: 'Live Video Chat & Social App',
+      badgeText: 'Live Video Chat & Social Agency',
       description:
-        'Chamet is a social live-streaming and video chat app designed to help you connect with people from around the world. Discover live streams, start video chats, meet new people, and enjoy interactive social experiences from your mobile device.',
-      primaryCtaLabel: 'Download Chamet',
+        'Join Chill Chat (Chamet in India) as a verified host or agent partner. Connect with high-gifting international viewers, enjoy VIP host support, and receive automated weekly payouts directly via UPI and Indian bank transfer.',
+      primaryCtaLabel: 'Explore Chill Chat Agency',
       heroImage: {
         url: 'https://api.livengage.com/uploads/Gemini_Generated_Image_jluim4jluim4jlui_f29d4f72ca.png',
       },
@@ -39,13 +39,13 @@ export const EXACT_FEATURED_PARTNER_APPS: FeaturedAppItem[] = [
   },
   {
     id: 10,
-    title: 'Live Streaming & Social App ( Niki Live )',
-    slug: 'partner-app-2',
+    title: 'Niki Live',
+    slug: 'niki-live-agency',
     hero: {
-      badgeText: 'Live Streaming & Social App',
+      badgeText: 'Beginner Friendly Live Streaming Agency',
       description:
-        'Niki Live is a live streaming and social entertainment app that helps users discover live broadcasts, meet new people, and interact through video, voice, and chat features. Connect globally and enjoy real-time entertainment.',
-      primaryCtaLabel: 'Download Niki Live',
+        'Start broadcasting on Niki Live with Livengage. Ideal for new creators with accessible daily milestones, engaging party rooms, 1-on-1 coaching, and structured weekly agency settlements.',
+      primaryCtaLabel: 'Explore Niki Live Agency',
       heroImage: {
         url: 'https://api.livengage.com/uploads/Gemini_Generated_Image_rr644orr644orr64_b3d9f6f68f.png',
       },
@@ -58,13 +58,13 @@ export const EXACT_FEATURED_PARTNER_APPS: FeaturedAppItem[] = [
   },
   {
     id: 11,
-    title: 'Vone App – Live, Video Party & Fun',
-    slug: 'partner-app',
+    title: 'Vone App (Poppo Live)',
+    slug: 'vone-app-agency',
     hero: {
-      badgeText: 'Live Video Party & Fun',
+      badgeText: 'Official Indian Live Streaming Network',
       description:
-        'Vone, known internationally as Poppo Live, lets you watch live streams, join party rooms, meet new people, and engage with vibrant global creators with daily interactive rewards.',
-      primaryCtaLabel: 'Download Vone App',
+        'Vone App is the official Indian platform for Poppo Live. Stream live, participate in high-energy PK battles, build community party rooms, and scale your agency network with transparent diamond-to-INR conversions.',
+      primaryCtaLabel: 'Explore Vone App Agency',
       heroImage: {
         url: 'https://api.livengage.com/uploads/Gemini_Generated_Image_35wf8235wf8235wf_61fde5c937.png',
       },

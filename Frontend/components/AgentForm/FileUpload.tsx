@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import React, { useRef, useState } from 'react';
 import { useFormContext, useController } from 'react-hook-form';
 
@@ -74,7 +75,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ name, label, accept }) =
 
         {value ? (
           <div className="flex flex-col items-center gap-2 text-center">
-            <span className="material-symbols-outlined text-primary text-3xl">task</span>
+            <Icon name="task" className="text-primary text-3xl" aria-hidden="true" />
             <span className="text-on-surface font-semibold max-w-[250px] truncate">
               {(value as File).name}
             </span>

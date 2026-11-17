@@ -1,3 +1,5 @@
+import { Rocket, Eye } from 'lucide-react';
+
 interface MissionVisionProps {
   data?: {
     missionHeading?: string;
@@ -28,14 +30,8 @@ export function MissionVisionSection({ data }: MissionVisionProps) {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             <div className="relative z-10">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:bg-primary/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-inner border border-primary/10 dark:border-white/10">
-                <span
-                  className="material-symbols-outlined text-primary text-[40px]"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                  aria-hidden="true"
-                >
-                  rocket_launch
-                </span>
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:bg-primary/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-inner border border-primary/10 dark:border-white/10 text-primary">
+                <Rocket className="w-10 h-10" aria-hidden="true" />
               </div>
               {missionHeading && (
                 <h2 className="font-display-md text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
@@ -57,14 +53,8 @@ export function MissionVisionSection({ data }: MissionVisionProps) {
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-secondary-container/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             <div className="relative z-10">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary-container/10 to-secondary-container/5 dark:bg-secondary-container/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-inner border border-secondary-container/10 dark:border-white/10">
-                <span
-                  className="material-symbols-outlined text-secondary-container text-[40px]"
-                  style={{ fontVariationSettings: "'FILL' 1" }}
-                  aria-hidden="true"
-                >
-                  visibility
-                </span>
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary-container/10 to-secondary-container/5 dark:bg-secondary-container/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-inner border border-secondary-container/10 dark:border-white/10 text-secondary-container">
+                <Eye className="w-10 h-10" aria-hidden="true" />
               </div>
               {visionHeading && (
                 <h2 className="font-display-md text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight group-hover:text-secondary-container transition-colors duration-300">

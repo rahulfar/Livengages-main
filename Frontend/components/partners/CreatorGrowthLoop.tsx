@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { cn } from '@/lib/utils';
 
 interface GrowthStep {
@@ -48,7 +49,7 @@ export function CreatorGrowthLoop({ data }: CreatorGrowthLoopProps) {
                     getStepColorClass(i)
                   )}
                 >
-                  <span className="material-symbols-outlined text-3xl">{step.icon}</span>
+                  <Icon name={step.icon} className="text-3xl" aria-hidden="true" />
                 </div>
                 <div className="pt-2">
                   <h3 className="font-headline-lg text-2xl md:text-headline-lg mb-2 text-on-surface">{step.title}</h3>

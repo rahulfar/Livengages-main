@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 type BenefitSpan = 'featured-top' | 'standard' | 'featured-bottom';
 
 interface BenefitCardProps {

@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import { getMediaUrl } from '@/lib/api';
 
 interface GlobalMapData {
@@ -35,7 +36,7 @@ export function GlobalMap({ data }: GlobalMapProps) {
       
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 backdrop-blur-sm z-10">
          <div className="bg-white text-black px-6 py-3 rounded-full font-bold flex items-center gap-2 shadow-xl">
-           <span className="material-symbols-outlined">map</span>
+           <Icon name="map" className="" aria-hidden="true" />
            Open in Google Maps
          </div>
       </div>

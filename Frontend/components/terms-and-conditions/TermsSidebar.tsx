@@ -1,4 +1,7 @@
+import { Icon } from '@/components/ui/Icon';
 import { TermsNavItem } from '@/types/terms-and-conditions';
+
+import { ArrowRight } from 'lucide-react';
 
 interface TermsSidebarProps {
   navItems: TermsNavItem[];
@@ -39,13 +42,11 @@ export function TermsSidebar({ navItems, activeId }: TermsSidebarProps) {
             Our legal team is here to answer your questions.
           </p>
           <a
-            href="mailto:official.livengage@gmail.com"
+            href="mailto:support@livengage.com"
             className="text-primary font-semibold flex items-center gap-2 group"
           >
             Contact Support{' '}
-            <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" aria-hidden="true">
-              arrow_forward
-            </span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </a>
         </div>
       </div>

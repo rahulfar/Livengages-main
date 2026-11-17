@@ -29,18 +29,12 @@ export function ServicesHero({ data }: ServicesHeroProps) {
           </div>
         )}
 
-        {heading && lines.length > 0 && (
-          <h1 className="font-display-lg text-6xl md:text-[80px] font-black text-on-surface dark:text-white mb-8 tracking-tight leading-none drop-shadow-sm">
-            {lines.map((line, i) => (
-              <span 
-                key={i} 
-                className={i > 0 ? 'text-gradient italic pr-4' : 'block mb-2'}
-              >
-                {line}
-              </span>
-            ))}
-          </h1>
-        )}
+        <h1 className="font-display-lg text-4xl sm:text-5xl md:text-6xl lg:text-[76px] font-black text-on-surface dark:text-white mb-8 tracking-tight leading-tight drop-shadow-sm">
+          Live Streaming Agency Services{' '}
+          <span className="text-gradient italic pr-2 block sm:inline">
+            for Hosts and Agents
+          </span>
+        </h1>
 
         {description && (
           <p className="font-body-lg text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">

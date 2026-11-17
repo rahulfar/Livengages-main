@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { BlogNode } from '@/types/blog';
@@ -89,11 +90,23 @@ export function RichTextRenderer({ content }: RichTextRendererProps) {
             ul: ({ children }) => <ul>{children}</ul>,
             ol: ({ children }) => <ol>{children}</ol>,
             li: ({ children }) => <li>{children}</li>,
-            a: ({ href, children }) => (
-              <a href={href} target="_blank" rel="noopener noreferrer">
-                {children}
-              </a>
-            ),
+            a: ({ href, children }) => {
+              const url = href || '#';
+              const isInternal = url.startsWith('/') || url.startsWith('https://www.livengage.com');
+              if (isInternal) {
+                const targetUrl = url.replace('https://www.livengage.com', '') || '/';
+                return (
+                  <Link href={targetUrl} className="text-primary underline hover:text-primary-focus font-medium">
+                    {children}
+                  </Link>
+                );
+              }
+              return (
+                <a href={url} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary-focus font-medium">
+                  {children}
+                </a>
+              );
+            },
             blockquote: ({ children }) => <blockquote>{children}</blockquote>,
             img: ({ src, alt }) => <img src={src} alt={alt} />,
           }}

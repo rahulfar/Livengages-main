@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { FAQItemProps } from './FAQ.types';
 
@@ -29,15 +30,13 @@ export function FAQItem({ question, answer }: FAQItemProps) {
         aria-controls={panelId}
       >
         <span className="font-bold text-lg pr-4">{question}</span>
-        <span
+        <ChevronRight
           className={cn(
-            'material-symbols-outlined text-primary transition-transform duration-300 shrink-0',
+            'w-5 h-5 text-primary transition-transform duration-300 shrink-0',
             isOpen ? 'rotate-90' : ''
           )}
           aria-hidden="true"
-        >
-          chevron_right
-        </span>
+        />
       </button>
 
       {/* Answer panel */}

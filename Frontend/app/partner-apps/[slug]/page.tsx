@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { fetchAPI, getPartnerAppBySlugQuery, getAllPartnerAppsQuery } from '@/lib/api';
 import {
   PartnerAppHero,
@@ -106,6 +107,7 @@ export async function generateMetadata({
     'Join our verified live streaming agency program. Enjoy flexible hours, instant weekly payouts, and round-the-clock host support.';
 
   const canonicalUrl = `https://www.livengage.com/${slug.includes('agency') ? slug : `${slug}-agency`}`;
+  const isNoIndex = slug === 'poppo-live-agency';
 
   return {
     title: appTitle,
@@ -113,6 +115,14 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
+    ...(isNoIndex
+      ? {
+          robots: {
+            index: false,
+            follow: false,
+          },
+        }
+      : {}),
     openGraph: {
       title: appTitle,
       description: appDesc,
@@ -161,16 +171,28 @@ export default async function PartnerAppPage({
     { name: appName, url: canonicalUrl },
   ];
 
+  let alternateName: string | undefined = undefined;
+  if (resolvedParams.slug.includes('vone')) alternateName = 'Poppo Live';
+  if (resolvedParams.slug.includes('chill') || resolvedParams.slug.includes('chamet')) alternateName = 'Chamet';
+
   return (
     <main className="overflow-x-hidden bg-background dark:bg-[#0B0114] min-h-screen">
       <BreadcrumbJsonLd items={breadcrumbs} />
+      {resolvedParams.slug === 'poppo-live-agency' && (
+        <div className="bg-primary/10 border-b border-primary/20 py-3.5 px-6 text-center text-sm font-medium text-on-surface dark:text-white">
+          Notice for Indian Creators: The official compliant platform for Poppo Live in India is{' '}
+          <Link href="/vone-app-agency" className="text-primary font-bold underline ml-1 hover:text-primary-focus">
+            Vone App (Poppo Live India)
+          </Link>
+          . Please register via Vone App for direct UPI & INR settlements.
+        </div>
+      )}
       <SoftwareApplicationJsonLd
         name={appName}
+        alternateName={alternateName}
         description={appData.hero?.description || `${appName} live streaming application`}
         url={canonicalUrl}
         operatingSystem={fallback?.operatingSystem || 'Android, iOS'}
-        ratingValue={fallback?.ratingValue || '4.8'}
-        reviewCount={fallback?.reviewCount || '2500'}
       />
       {appData.faqs?.faqs && <FaqJsonLd faqs={appData.faqs.faqs} />}
 

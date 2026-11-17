@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Mail, Phone, Send } from 'lucide-react';
 
 export function Footer() {
   return (
     <footer className="bg-surface-container-low pt-[80px] pb-12 border-t border-outline-variant/50">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-16">
-        
         <div className="col-span-1">
           <div className="mb-8">
             <Image src="/Dark.svg" alt="Livengage" width={150} height={40} className="hidden dark:block" />
@@ -15,11 +15,21 @@ export function Footer() {
             Pioneering the global live streaming economy through transparency, education, and innovative technology.
           </p>
           <div className="flex gap-6 mt-8">
-            <Link href="mailto:support@livengage.com" className="text-on-surface-variant hover:text-primary transition-colors" aria-label="Email Support">
-              <span className="material-symbols-outlined">mail</span>
+            <Link
+              href="mailto:support@livengage.com"
+              className="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full bg-surface-container"
+              aria-label="Email Support"
+            >
+              <Mail className="w-5 h-5" />
             </Link>
-            <Link href="https://wa.me/918796802120" target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-primary transition-colors" aria-label="WhatsApp Support">
-              <span className="material-symbols-outlined">call</span>
+            <Link
+              href="https://wa.me/918796802120"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full bg-surface-container"
+              aria-label="WhatsApp Support"
+            >
+              <Phone className="w-5 h-5" />
             </Link>
           </div>
         </div>
@@ -31,15 +41,18 @@ export function Footer() {
             <li><Link href="/talent-recruitment" className="hover:text-primary transition-colors">Talent Recruitment</Link></li>
             <li><Link href="/agent-ecosystem" className="hover:text-primary transition-colors">Agent Onboarding</Link></li>
             <li><Link href="/blog" className="hover:text-primary transition-colors">Host & Agency Guides</Link></li>
+            <li><Link href="/earning-apps" className="hover:text-primary transition-colors">Live Earning Apps</Link></li>
           </ul>
         </div>
 
         <div>
           <h5 className="font-bold text-on-surface mb-8 font-headline-lg">Company</h5>
           <ul className="space-y-4 text-on-surface-variant text-sm">
+            <li><Link href="/about-us" className="hover:text-primary transition-colors">About Us</Link></li>
             <li><Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
             <li><Link href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms and Condition</Link></li>
             <li><Link href="/contact-us" className="hover:text-primary transition-colors">Contact Support</Link></li>
+            <li><Link href="/hi" className="hover:text-primary transition-colors">हिन्दी (Hindi)</Link></li>
           </ul>
         </div>
 
@@ -51,8 +64,8 @@ export function Footer() {
               className="bg-transparent border-none focus:ring-0 text-sm px-4 w-full text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none" 
               placeholder="Email Address" 
             />
-            <button className="cursor-pointer btn-gradient text-white p-3 rounded-full flex items-center justify-center">
-              <span className="material-symbols-outlined text-sm">send</span>
+            <button className="cursor-pointer btn-gradient text-white p-3 rounded-full flex items-center justify-center" aria-label="Subscribe">
+              <Send className="w-4 h-4" />
             </button>
           </div>
         </div>

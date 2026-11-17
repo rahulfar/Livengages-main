@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 export function PartnerAppTechReqs({ data }: { data: any }) {
   if (!data?.requirements || data.requirements.length === 0) return null;
   const { title, requirements } = data;

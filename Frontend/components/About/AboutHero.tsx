@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { getMediaUrl } from '@/lib/api';
 
 interface AboutHeroProps {
@@ -60,7 +61,7 @@ export function AboutHero({ data }: AboutHeroProps) {
             {primaryCtaLabel && primaryCtaHref && (
               <Link href={primaryCtaHref} className="btn-gradient text-white font-label-md text-label-md px-8 py-4 rounded-full shadow-lg dark:shadow-[0_0_20px_rgba(218,38,118,0.4)] hover:scale-105 transition-transform flex items-center justify-center gap-2 group">
                 {primaryCtaLabel}
-                <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform text-sm">arrow_forward</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             )}
             {secondaryCtaLabel && secondaryCtaHref && (

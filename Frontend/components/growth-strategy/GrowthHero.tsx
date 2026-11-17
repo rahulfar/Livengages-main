@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 import Link from 'next/link';
 import { GrowthHeroContent } from '@/types/growth-strategy';
 

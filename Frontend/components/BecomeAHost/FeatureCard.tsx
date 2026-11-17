@@ -1,3 +1,4 @@
+import { Icon } from '@/components/ui/Icon';
 interface FeatureCardProps {
   icon?: string;
   title?: string;

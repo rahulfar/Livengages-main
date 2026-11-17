@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getMediaUrl } from '@/lib/api';
 import type { ServiceCardProps } from './Services.types';
@@ -77,12 +78,7 @@ export function ServiceCard({
         aria-label={`${linkText} — ${title}`}
       >
         {linkText}
-        <span
-          className="material-symbols-outlined group-hover:translate-x-1 transition-transform"
-          aria-hidden="true"
-        >
-          arrow_forward
-        </span>
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
       </Link>
     </div>
   );

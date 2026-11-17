@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { Menu, X, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
@@ -33,13 +34,14 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   const pathname = usePathname();
+  const isHindi = pathname?.startsWith('/hi');
 
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'About Us', href: '/about-us' },
-    { name: 'Services', href: '/services' },
-    { name: 'Registration', href: '/become-a-host' },
-    { name: 'Blog', href: '/blog' },
+    { name: isHindi ? 'होम' : 'Home', href: isHindi ? '/hi' : '/' },
+    { name: isHindi ? 'हमारे बारे में' : 'About Us', href: '/about-us' },
+    { name: isHindi ? 'सेवाएं' : 'Services', href: '/services' },
+    { name: isHindi ? 'होस्ट बनें' : 'Registration', href: '/become-a-host' },
+    { name: isHindi ? 'ब्लॉग' : 'Blog', href: '/blog' },
   ];
 
   return (
@@ -50,23 +52,43 @@ export function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-0 md:px-12 py-0 md:py-6 relative">
-        <div className={cn("glass-card md:rounded-full px-6 md:px-8 py-4 flex items-center justify-between md:glowing-border relative z-50 border-b border-outline-variant/30 md:border-b-0", isScrolled && "shadow-xl bg-surface-container/90 md:bg-surface-container/90 bg-surface/95 dark:bg-surface-container-lowest/95 backdrop-blur-xl")}>
-          <Link href="/" className="flex items-center">
-            <Image src="/Dark.svg" alt="Livengage" width={150} height={40} className="hidden dark:block" priority />
-            <Image src="/Light.svg" alt="Livengage" width={150} height={40} className="block dark:hidden" priority />
+        <div
+          className={cn(
+            'glass-card md:rounded-full px-6 md:px-8 py-4 flex items-center justify-between md:glowing-border relative z-50 border-b border-outline-variant/30 md:border-b-0',
+            isScrolled &&
+              'shadow-xl bg-surface-container/90 md:bg-surface-container/90 bg-surface/95 dark:bg-surface-container-lowest/95 backdrop-blur-xl'
+          )}
+        >
+          <Link href={isHindi ? '/hi' : '/'} className="flex items-center">
+            <Image
+              src="/Dark.svg"
+              alt="Livengage"
+              width={150}
+              height={40}
+              className="hidden dark:block"
+              priority
+            />
+            <Image
+              src="/Light.svg"
+              alt="Livengage"
+              width={150}
+              height={40}
+              className="block dark:hidden"
+              priority
+            />
           </Link>
           <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link 
+                <Link
                   key={link.name}
-                  href={link.href} 
+                  href={link.href}
                   className={cn(
-                    "text-sm transition-colors",
-                    isActive 
-                      ? "font-semibold text-primary dark:text-white" 
-                      : "font-medium text-on-surface-variant hover:text-primary dark:hover:text-white"
+                    'text-sm transition-colors',
+                    isActive
+                      ? 'font-semibold text-primary dark:text-white'
+                      : 'font-medium text-on-surface-variant hover:text-primary dark:hover:text-white'
                   )}
                 >
                   {link.name}
@@ -75,65 +97,84 @@ export function Navbar() {
             })}
           </div>
           <div className="flex items-center gap-2 md:gap-4">
+            {/* Language Switcher per Task 16 */}
+            <Link
+              href={isHindi ? '/' : '/hi'}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-outline-variant/50 text-xs font-bold text-on-surface hover:text-primary dark:text-white transition-colors"
+              title={isHindi ? 'Switch to English' : 'हिंदी में देखें'}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>{isHindi ? 'EN' : 'हिन्दी'}</span>
+            </Link>
+
             <ThemeToggle />
-            <Link href="/contact-us" className="hidden lg:block text-sm font-bold text-primary dark:text-white px-4 py-2 cursor-pointer hover:bg-surface-container rounded-full transition-colors">Contact Us</Link>
-            
+            <Link
+              href="/contact-us"
+              className="hidden lg:block text-sm font-bold text-primary dark:text-white px-4 py-2 cursor-pointer hover:bg-surface-container rounded-full transition-colors"
+            >
+              {isHindi ? 'संपर्क करें' : 'Contact Us'}
+            </Link>
+
             {/* Mobile Menu Toggle Button */}
-            <button 
+            <button
               className="md:hidden flex items-center justify-center w-10 h-10 rounded-full text-on-surface dark:text-white hover:bg-surface-container transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
-              <span className="material-symbols-outlined text-2xl">{isMobileMenuOpen ? 'close' : 'menu'}</span>
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" aria-hidden="true" />
+              ) : (
+                <Menu className="w-6 h-6" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Side Drawer Menu */}
-        <div className={cn(
-          "md:hidden fixed top-0 left-0 w-[80%] max-w-[320px] h-[100dvh] glass-card !bg-surface/95 dark:!bg-surface-container-lowest/95 z-40 transition-transform duration-300 transform shadow-[20px_0_40px_rgba(0,0,0,0.1)] border-r border-outline-variant/30 dark:border-white/10",
-          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        )}>
+        <div
+          className={cn(
+            'md:hidden fixed top-0 left-0 w-[80%] max-w-[320px] h-[100dvh] glass-card !bg-surface/95 dark:!bg-surface-container-lowest/95 z-40 transition-transform duration-300 transform shadow-[20px_0_40px_rgba(0,0,0,0.1)] border-r border-outline-variant/30 dark:border-white/10',
+            isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          )}
+        >
           <div className="pt-[100px] p-8 flex flex-col gap-6 h-full overflow-y-auto">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
-                <Link 
+                <Link
                   key={link.name}
-                  href={link.href} 
+                  href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "text-xl transition-colors py-2",
-                    isActive 
-                      ? "font-black text-primary dark:text-white" 
-                      : "font-medium text-on-surface-variant hover:text-primary dark:hover:text-white"
+                    'text-lg py-2 transition-colors border-b border-outline-variant/20',
+                    isActive
+                      ? 'font-bold text-primary dark:text-white'
+                      : 'font-medium text-on-surface-variant'
                   )}
                 >
                   {link.name}
                 </Link>
               );
             })}
-            <div className="mt-auto pt-8 border-t border-outline-variant/30 dark:border-white/10">
-              <Link 
-                href="/contact-us" 
+            <div className="pt-4 flex flex-col gap-4">
+              <Link
+                href={isHindi ? '/' : '/hi'}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-center btn-gradient text-white font-bold py-4 rounded-full w-full shadow-lg text-lg"
+                className="flex items-center gap-2 text-sm font-bold text-primary dark:text-white"
               >
-                Contact Us
+                <Globe className="w-4 h-4" />
+                <span>{isHindi ? 'English Website' : 'हिन्दी वेबसाइट'}</span>
+              </Link>
+              <Link
+                href="/contact-us"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full text-center py-3 rounded-full btn-gradient text-white font-bold text-sm"
+              >
+                {isHindi ? 'संपर्क करें' : 'Contact Us'}
               </Link>
             </div>
           </div>
         </div>
-
-        {/* Backdrop Overlay */}
-        <div 
-          className={cn(
-            "md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-30 transition-opacity duration-300",
-            isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          )}
-          onClick={() => setIsMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
       </div>
     </nav>
   );

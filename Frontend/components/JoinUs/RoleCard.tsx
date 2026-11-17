@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Icon } from '@/components/ui/Icon';
 
 type AccentColor = 'primary' | 'tertiary';
 type CardVariant = 'primary' | 'dark';
@@ -52,7 +53,7 @@ export function RoleCard({
           className="absolute top-0 right-0 p-8 opacity-10 transform group-hover:scale-110 transition-transform pointer-events-none select-none -z-10"
           aria-hidden="true"
         >
-          <span className="material-symbols-outlined text-[120px]">{decorativeIcon}</span>
+          <Icon name={decorativeIcon} className="w-28 h-28" />
         </div>
       )}
 
@@ -63,9 +64,7 @@ export function RoleCard({
             className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 ${accent.iconBg} ${accent.iconText}`}
             aria-hidden="true"
           >
-            <span className="material-symbols-outlined text-2xl">
-              {icon}
-            </span>
+            <Icon name={icon} className="w-6 h-6" />
           </div>
         )}
 
@@ -88,12 +87,10 @@ export function RoleCard({
 
               return (
                 <li key={key} className="flex items-center gap-3">
-                  <span
-                    className={`material-symbols-outlined ${accent.checkText}`}
-                    aria-hidden="true"
-                  >
-                    check_circle
-                  </span>
+                  <Icon
+                    name="check_circle"
+                    className={`w-5 h-5 ${accent.checkText}`}
+                  />
                   <span className="text-base text-on-surface dark:text-[#E2E8F0]">{featureText}</span>
                 </li>
               );
