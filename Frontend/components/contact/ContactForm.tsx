@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackAgentFormSubmit } from '@/lib/analytics';
 
 interface ContactFormProps {
   title?: string;
@@ -41,6 +42,9 @@ export function ContactForm({ title = "Send an Inquiry", buttonText = "Dispatch 
       });
 
       if (res.ok) {
+        if (apiRoute.includes('agent')) {
+          trackAgentFormSubmit({ appName: formData.appName, country: formData.country });
+        }
         setStatus('success');
         setFormData({
           name: '',
@@ -160,13 +164,11 @@ export function ContactForm({ title = "Send an Inquiry", buttonText = "Dispatch 
               className="w-full bg-white dark:bg-[#0B0114] border border-outline-variant/30 dark:border-white/10 rounded-[18px] p-4 text-base focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none appearance-none text-on-surface dark:text-white"
             >
               <option value="" disabled>Select an App (Optional)</option>
-              <option value="Poppo Live">Poppo Live</option>
-              <option value="Chamet">Chamet</option>
+              <option value="Chill Chat (Chamet)">Chill Chat (Chamet)</option>
+              <option value="Vone App (Poppo Live)">Vone App (Poppo Live)</option>
               <option value="Niki Live">Niki Live</option>
-              <option value="Mico">Mico</option>
-              <option value="Tango">Tango</option>
-              <option value="UpLive">UpLive</option>
               <option value="Bigo Live">Bigo Live</option>
+              <option value="Mico">Mico</option>
               <option value="Other">Other</option>
             </select>
             <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-on-surface-variant dark:text-gray-400">

@@ -34,22 +34,22 @@ export const HOME_PAGE_DATA = {
         title: 'Talent Incubation',
         description: 'We provide the training, resources, and continuous support needed to maximize your audience engagement and earnings.',
         iconImage: { url: 'https://cdn-icons-png.flaticon.com/512/1903/1903112.png', alternativeText: 'Talent' },
-        linkText: 'Learn More',
-        href: '/services'
+        linkText: 'Become a Host',
+        href: '/become-a-host'
       },
       {
         title: 'Agency Management',
         description: 'We supply agents with the tools, operational frameworks, and high-commission structures required to manage large teams of successful streamers.',
         iconImage: { url: 'https://cdn-icons-png.flaticon.com/512/862/862828.png', alternativeText: 'Agency' },
-        linkText: 'Learn More',
-        href: '/services'
+        linkText: 'Become an Agent',
+        href: '/become-an-agent'
       },
       {
         title: 'Strategic Matchmaking',
         description: 'We pair the right talent with the right platforms, ensuring a perfect fit for your content style and audience demographics.',
         iconImage: { url: 'https://cdn-icons-png.flaticon.com/512/3233/3233483.png', alternativeText: 'Analytics' },
-        linkText: 'Learn More',
-        href: '/services'
+        linkText: 'Growth Strategy',
+        href: '/growth-strategy'
       }
     ]
   },
@@ -119,7 +119,7 @@ export const HOME_PAGE_DATA = {
     faqs: [
       {
         question: 'How do I become a host?',
-        answer: 'Simply fill out the application form on our Join Us page, and our team will match you with the best live-streaming app for your style.'
+        answer: 'Simply fill out the application form on our Become a Host page, and our team will match you with the best live-streaming app for your style.'
       },
       {
         question: 'What do I need to start?',
@@ -131,7 +131,7 @@ export const HOME_PAGE_DATA = {
       },
       {
         question: 'Which apps do you partner with?',
-        answer: 'We partner with the leading global platforms including Poppo Live, Chamet, Niki Live, Taka Live, and Crush Live.'
+        answer: 'We partner with the leading global platforms including Vone App (Poppo Live), Chill Chat (Chamet), Niki Live, Bigo Live, and Crush Live.'
       }
     ]
   },

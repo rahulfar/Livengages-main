@@ -107,7 +107,8 @@ export function PartnerAppHero({ data }: { data: any }) {
                <img 
                 className="w-full h-full object-cover opacity-100 dark:opacity-90 group-hover:scale-105 transition-transform duration-700" 
                 src={getMediaUrl(heroImage.url) || ''} 
-                alt={heroImage.alternativeText || 'App screenshot'}
+                alt={heroImage.alternativeText || `${titleHighlight || 'Partner App'} live streaming interface`}
+                fetchPriority="high"
               />
             </div>
           </div>

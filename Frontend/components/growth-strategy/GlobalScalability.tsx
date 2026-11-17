@@ -47,9 +47,9 @@ export function GlobalScalability() {
               >
                 language
               </span>
-              <h3 className="font-headline-lg text-headline-lg">24/7 Global NOC</h3>
+              <h3 className="font-headline-lg text-headline-lg">24/7 Creator Support</h3>
               <p className="opacity-80 mt-stack-sm">
-                Our Network Operations Center ensures real-time oversight of all global talent assets, 365 days a year.
+                Our dedicated talent operations center ensures real-time support and account guidance for global creators and agency partners, 365 days a year.
               </p>
             </div>
             <div className="space-y-stack-md mt-8">

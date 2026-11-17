@@ -6,12 +6,41 @@ import { PartnerAppsSection } from '@/components/Services/sections/PartnerAppsSe
 import { ServicesStats } from '@/components/Services/sections/ServicesStats';
 import { ServicesCTA } from '@/components/Services/sections/ServicesCTA';
 import { fetchAPI, getServicesPageQuery } from '@/lib/api';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
+import {
+  SERVICES_HERO,
+  SERVICES_LIST,
+  PARTNER_APPS_SECTION,
+  SERVICES_STATS,
+  SERVICES_CTA,
+} from '@/constants/services';
 
 export const metadata: Metadata = {
-  title: 'Services | LIVENGAGE — Live Streaming Solutions',
+  title: 'Live Streaming Agency Services',
   description:
-    'Explore LIVENGAGE services — talent recruitment, agent training, career management, and elite platform partnerships for live streaming creators worldwide.',
+    'Explore creator management, host incubation, sub-agency scaling, and official platform partnerships designed to maximize your live streaming revenue.',
+  alternates: {
+    canonical: 'https://www.livengage.com/services',
+  },
+  openGraph: {
+    title: 'Live Streaming Agency Services | Livengage',
+    description:
+      'Explore talent incubation, sub-agency scaling, and official app partnerships on Chamet, Poppo, and Niki Live.',
+    url: 'https://www.livengage.com/services',
+    siteName: 'Livengage',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Live Streaming Agency Services | Livengage',
+    description:
+      'Explore talent incubation, sub-agency scaling, and official app partnerships on Chamet, Poppo, and Niki Live.',
+    images: ['/og-image.png'],
+  },
 };
+
 export const revalidate = 0; // Disable caching for testing
 
 export default async function ServicesPage() {
@@ -21,48 +50,25 @@ export default async function ServicesPage() {
   // Support both Strapi v4 (data.attributes) and Strapi v5 (data directly)
   const pageData = strapiRes?.data?.attributes || strapiRes?.data || {};
 
-  const heroData = pageData.hero || pageData.Hero || null;
-  const servicesListData = pageData.servicesList || pageData.ServicesList || null;
-  const partnerAppsData = pageData.partnerApps || pageData.PartnerApps || null;
-  const statsData = pageData.stats || pageData.Stats || null;
-  const ctaData = pageData.cta || pageData.CTA || null;
+  const heroData = pageData.hero || pageData.Hero || SERVICES_HERO;
+  const servicesListData = pageData.servicesList || pageData.ServicesList || { items: SERVICES_LIST };
+  const partnerAppsData = pageData.partnerApps || pageData.PartnerApps || PARTNER_APPS_SECTION;
+  const statsData = pageData.stats || pageData.Stats || { stats: SERVICES_STATS };
+  const ctaData = pageData.cta || pageData.CTA || SERVICES_CTA;
 
-  const hasContent = !!(
-    heroData ||
-    servicesListData ||
-    partnerAppsData ||
-    statsData ||
-    ctaData
-  );
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' },
+  ];
 
   return (
     <main className="min-h-screen bg-[#F8FAFC] dark:bg-[#0B0114] relative overflow-x-hidden">
-      {!hasContent ? (
-        <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 md:px-12 bg-surface-container-lowest relative overflow-hidden">
-          {/* Subtle background glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <h1 className="font-display-lg text-6xl md:text-[120px] leading-tight text-on-surface mb-2 tracking-tight">
-              Coming Soon
-            </h1>
-            <h2 className="font-display-lg text-6xl md:text-[120px] leading-tight text-primary italic mb-8 tracking-tight">
-              To the stage.
-            </h2>
-            <p className="font-body-lg text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-              We are currently crafting our story. The content for this page will be available shortly. Stay tuned for an experience that redefines live entertainment.
-            </p>
-          </div>
-        </div>
-      ) : (
-        <>
-          <ServicesHero data={heroData} />
-          <ServicesGrid data={servicesListData} />
-          <PartnerAppsSection data={partnerAppsData} />
-          <ServicesStats data={statsData} />
-          <ServicesCTA data={ctaData} />
-        </>
-      )}
+      <BreadcrumbJsonLd items={breadcrumbs} />
+      <ServicesHero data={heroData} />
+      <ServicesGrid data={servicesListData} />
+      <PartnerAppsSection data={partnerAppsData} />
+      <ServicesStats data={statsData} />
+      <ServicesCTA data={ctaData} />
     </main>
   );
 }

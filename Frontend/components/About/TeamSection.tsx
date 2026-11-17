@@ -37,7 +37,7 @@ export function TeamSection({ data }: TeamSectionProps) {
   const { heading, description, members } = normalized;
   
   return (
-    <section className="py-[120px] bg-[#F4F6FF] dark:bg-transparent relative transform-gpu overflow-hidden">
+    <section id="team" className="py-[120px] bg-[#F4F6FF] dark:bg-transparent relative transform-gpu overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-[0.03] dark:opacity-[0.1] mix-blend-overlay"></div>
       <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] bg-primary-container/30 dark:bg-primary/15 rounded-full blur-[150px] pointer-events-none kinetic-shape"></div>

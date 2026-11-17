@@ -71,7 +71,7 @@ export const TIMELINE_MILESTONES = {
       year: '2023',
       title: 'Global App Partnerships',
       description:
-        'Secured direct partnerships with major platforms like Poppo Live, Chamet, and Niki Live to ensure VIP status for our hosts.',
+        'Secured direct partnerships with major platforms like Vone App (Poppo Live), Chill Chat (Chamet), and Niki Live to ensure VIP status for our hosts.',
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuB-iS2AMLhkHUQpYGMdlRfgtBbXEkm4H2sfFrdTrVQws46qI9l-MIEfXa7tH7vKag-lzt0q9pPfj-tWsi0bu-fepKwASom-W9Pdxq8w9ARBFDhKhF_6rvu23QuBMo1ARdZVFnAygUtcaCteTXWLguHCZJlcOlgQlHpvSD49bVION6MgyaNAzL5h7cYmHNmLVV3jyGhbWo6miLyi_N17eWnEQy_OWkNgBLu7kxcNGJQYlCeVvAhEm1VHAvTPaGv1GQHhodxYzCC1XQ',
       color: 'secondary' as const,
@@ -96,18 +96,18 @@ export const LEADERSHIP_TEAM = {
     'Our leadership brings together extensive experience in talent management, digital marketing, and app ecosystems.',
   members: [
     {
-      name: 'Nitin',
+      name: 'Nitin Sharma',
       role: 'Founder & CEO',
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuA3KCSXgJI-ltZipN14TzwXmzZTsHBu548ca2WVHSrSvBJpT7vKpJEdNK5ofuQlk8wUiQjZgnhV_uK2_tSxJZxhgTQffLqvLiz9x05VPdgtM8nGVQT5CDaHSNIiOZ4LRe8GF6eNpM3NnUJVTP53o0ev0d4Q_NJx9B8R2n-iTMzXZfN3WmzDDyuN6B0vMWBRCX3ezZ9jK1hFQTwQQhu7OU5Dpb1feaOL2sJDDDUr2KYyAJ-XH24bu5BbWZiffi6vXBqTnPztYY175A',
-      linkedinUrl: '#',
+      linkedinUrl: 'https://www.linkedin.com/company/livengage',
     },
     {
       name: 'Talent Scout Team',
-      role: 'Global Recruitment',
+      role: 'Global Recruitment & Host Management',
       image:
         'https://lh3.googleusercontent.com/aida-public/AB6AXuD7Xch7uoILnLG77SyOrTMbAPbo4RWA2sMh7OVuHI_H1nq5H6ZGYrbCoPrej3yuvv_QBOe7j3s_uB29dm1vyz0GsC9ac841B9QvPXW96DqOUypkfG0Cw6QUxAhpLWsjjP9dlzYWM5TzUZnkfOunVBdEcIs-mFr2rtTMSHYbqKDUB4MlM53qP7RFqVhHtQ9ofSFULShFG-KUHZzvZ3jzl2MJoSMN7BH5bjh12N49YA2jG-PRsiaL0Wn1o7ftaYf8Jaetbc6CXdxT3g',
-      linkedinUrl: '#',
+      linkedinUrl: 'https://www.linkedin.com/company/livengage',
     },
   ],
 };
@@ -116,8 +116,8 @@ export const ABOUT_CTA = {
   heading: 'Ready to Ignite Your Journey?',
   description:
     'Join a community that supports your growth. Transform your talent into a thriving online career.',
-  primaryCtaLabel: 'Apply Now',
-  primaryCtaHref: '/join-us',
+  primaryCtaLabel: 'Become a Host',
+  primaryCtaHref: '/become-a-host',
   secondaryCtaLabel: 'Contact Us',
-  secondaryCtaHref: '/contact',
+  secondaryCtaHref: '/contact-us',
 };

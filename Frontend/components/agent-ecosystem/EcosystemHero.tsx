@@ -50,7 +50,7 @@ export function EcosystemHero({
             {secondaryButtonText && (
               <Link
                 className="px-8 py-4 rounded-full border-2 border-outline-variant text-on-surface dark:text-white font-bold text-lg flex items-center justify-center hover:bg-surface-container dark:hover:border-primary-container transition-colors"
-                href="/terms-and-conditions"
+                href="/become-an-agent"
               >
                 {secondaryButtonText}
               </Link>
@@ -66,6 +66,7 @@ export function EcosystemHero({
             <Image
               alt={imageAlt}
               fill
+              priority
               className="object-cover group-hover:scale-105 transition-transform duration-700"
               src={imageUrl}
               sizes="(max-width: 1024px) 100vw, 50vw"

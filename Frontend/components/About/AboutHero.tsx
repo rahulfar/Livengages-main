@@ -73,7 +73,7 @@ export function AboutHero({ data }: AboutHeroProps) {
 
         {/* Image Side */}
         <div className="relative h-[350px] md:h-[500px] w-full rounded-3xl overflow-hidden glass-card dark:bg-white/5 dark:border-white/10 p-2 glowing-border shadow-xl z-10 order-first md:order-last">
-          <Image width={800} height={800} className="w-full h-full object-cover rounded-2xl" alt={heading || "About Studio"} src={imageUrl} />
+          <Image width={800} height={800} priority sizes="(max-width: 768px) 100vw, 50vw" className="w-full h-full object-cover rounded-2xl" alt={heading || "Livengage agency production studio and creator team"} src={imageUrl} />
         </div>
       </div>
     </section>

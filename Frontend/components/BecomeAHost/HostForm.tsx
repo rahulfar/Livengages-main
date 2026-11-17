@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { trackHostFormSubmit } from '@/lib/analytics';
 
 interface HostFormProps {
   title?: string;
@@ -40,6 +41,7 @@ export function HostForm({ title = "Apply to Become a Host", buttonText = "Submi
       });
 
       if (res.ok) {
+        trackHostFormSubmit({ country: formData.country });
         setStatus('success');
         setFormData({
           name: '',
@@ -69,7 +71,11 @@ export function HostForm({ title = "Apply to Become a Host", buttonText = "Submi
           <p className="text-on-surface-variant dark:text-[#94A3B8] mb-8">
             Thank you for applying. Our talent scouts will review your profile and get back to you shortly.
           </p>
-          <button
+          <p className="text-xs text-on-surface-variant dark:text-[#94A3B8] italic">
+          *Income Disclaimer: Creator earnings and revenue projections vary based on individual streaming hours, content engagement, and viewer gifting. Livengage provides professional tools, direct agency contracts, and incubation but does not guarantee fixed earnings.
+        </p>
+
+        <button
             onClick={() => setStatus('idle')}
             className="btn-gradient px-8 py-3 text-white rounded-full font-bold shadow-lg"
           >
@@ -187,6 +193,10 @@ export function HostForm({ title = "Apply to Become a Host", buttonText = "Submi
           ></textarea>
         </div>
         
+        <p className="text-xs text-on-surface-variant dark:text-[#94A3B8] italic">
+          *Income Disclaimer: Creator earnings and revenue projections vary based on individual streaming hours, content engagement, and viewer gifting. Livengage provides professional tools, direct agency contracts, and incubation but does not guarantee fixed earnings.
+        </p>
+
         <button
           className={`btn-gradient w-full md:w-auto px-12 py-5 text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 group transition-all shadow-lg dark:shadow-[0_0_20px_rgba(124,58,237,0.3)] ${
             status === 'loading' ? 'opacity-70 cursor-not-allowed' : 'hover:scale-105 active:scale-95'

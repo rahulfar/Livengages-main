@@ -3,26 +3,49 @@ import Link from 'next/link';
 import { blogService } from '@/lib/strapi/services/blogs';
 import { getMediaUrl } from '@/lib/strapi/client';
 import { BlogPost } from '@/types/blog';
-import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { notFound } from 'next/navigation';
+import { BreadcrumbJsonLd } from '@/components/JsonLd';
+import { DEFAULT_BLOGS } from '@/data/blogs';
 
 const getBlogUrl = (blog: BlogPost) => {
   const titleSlug = (blog.title || 'post')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
-  return `/blogs/${titleSlug}--${blog.documentId}`;
+  return `/blogs/${titleSlug}--${blog.documentId || blog.id}`;
 };
 
 export const revalidate = 60;
+
 export const metadata: Metadata = {
-  title: 'Blog | LIVENGAGE',
-  description: 'Insights, news, and stories from the LIVENGAGE team.',
+  title: 'Live Streaming Blog & Creator Guides',
+  description:
+    'Expert guides, algorithm tips, and agency strategies for hosts and agents on Chill Chat (Chamet), Vone, Poppo Live, and Niki Live.',
+  alternates: {
+    canonical: 'https://www.livengage.com/blogs',
+  },
+  openGraph: {
+    title: 'Live Streaming Blog & Creator Guides | Livengage',
+    description:
+      'Discover peak-hour streaming tips, algorithm hacks, host payout guides, and agency growth playbooks.',
+    url: 'https://www.livengage.com/blogs',
+    siteName: 'Livengage',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Live Streaming Blog & Creator Guides | Livengage',
+    description:
+      'Discover peak-hour streaming tips, algorithm hacks, host payout guides, and agency growth playbooks.',
+    images: ['/og-image.png'],
+  },
 };
 
 interface BlogsPageProps {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; category?: string }>;
 }
 
 export default async function BlogsPage({ searchParams }: BlogsPageProps) {
@@ -30,16 +53,19 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
   const currentPage = Math.max(1, parseInt(resolvedSearchParams.page || '1', 10));
   const PAGE_SIZE = 9;
 
-  const strapiRes = await blogService.getBlogs(currentPage, PAGE_SIZE);
-  const realBlogs: BlogPost[] = strapiRes?.data || [];
-  
-  const allBlogs: BlogPost[] = realBlogs;
-  const totalBlogs = allBlogs.length;
-  const totalPages = Math.ceil(totalBlogs / PAGE_SIZE);
+  let realBlogs: BlogPost[] = [];
+  try {
+    const strapiRes = await blogService.getBlogs(currentPage, PAGE_SIZE);
+    realBlogs = strapiRes?.data || [];
+  } catch (err) {
+    console.warn('[BlogsPage] Strapi fetch failed, using curated blogs:', err);
+  }
 
-  // Pagination logic:
-  // Page 1: 1 Featured Blog + 8 Regular Blogs = 9 items
-  // Page 2+: 9 Regular Blogs
+  // Combine real Strapi blogs with curated default blogs to guarantee rich content
+  const allBlogs: BlogPost[] = realBlogs.length > 0 ? realBlogs : DEFAULT_BLOGS;
+  const totalBlogs = allBlogs.length;
+  const totalPages = Math.max(1, Math.ceil(totalBlogs / PAGE_SIZE));
+
   let featuredBlog: BlogPost | null = null;
   let regularBlogs: BlogPost[] = [];
 
@@ -52,242 +78,168 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
     regularBlogs = allBlogs.slice(startIndex, endIndex);
   }
 
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Blog', url: '/blogs' },
+  ];
+
+  const categories = [
+    'All Insights',
+    'Host Guides',
+    'Algorithm Secrets',
+    'Agency Scaling',
+    'Earnings & Payouts',
+  ];
+
   return (
     <main className="min-h-screen relative overflow-hidden mesh-gradient">
+      <BreadcrumbJsonLd items={breadcrumbs} />
+
       {/* Background Gradient Overlay */}
       <div className="absolute inset-0 bg-background/50 backdrop-blur-[100px] pointer-events-none z-0" />
 
       <div className="relative z-10 pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-        
         {/* Header Section */}
-        <div className="mb-16 text-center md:text-left relative z-10">
-          <h1 className="font-display-md text-4xl md:text-6xl leading-tight text-on-surface mb-4 tracking-tight uppercase">
-            LIVENGAGE <span className="text-primary italic">// Insights</span>
+        <div className="mb-12 text-center md:text-left relative z-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            Creator Hub & Agency Knowledge Base
+          </div>
+          <h1 className="font-display-md text-4xl md:text-6xl leading-tight text-on-surface mb-4 tracking-tight">
+            Livengage <span className="text-primary italic">// Creator Guides</span>
           </h1>
-          <p className="font-body-lg text-lg md:text-xl text-on-surface-variant max-w-2xl">
-            Expert advice, industry news, and actionable strategies to help you scale your live-streaming career and grow your agency.
+          <p className="font-body-lg text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+            Insider algorithm strategies, host earnings guides, and agency playbooks to help you scale on top live streaming apps.
           </p>
         </div>
 
-        {totalBlogs === 0 ? (
-          <div className="py-24 text-center border border-outline/10 rounded-[32px] bg-surface-container-lowest">
-            <h2 className="font-display-md text-3xl text-on-surface mb-4">No blogs found</h2>
-            <p className="font-body text-on-surface-variant">Check back later for new stories and insights.</p>
-          </div>
-        ) : (
-          <div className="space-y-16">
-            
-            {/* Featured Blog (Page 1 Only) */}
-            {currentPage === 1 && featuredBlog && (
-              <Link 
-                href={getBlogUrl(featuredBlog)} 
-                className="group relative block w-full rounded-[40px] overflow-hidden min-h-[500px] flex flex-col justify-end p-8 md:p-16 border border-white/10 dark:border-white/5 shadow-2xl transition-all duration-500 hover:shadow-[0_0_50px_rgba(124,58,237,0.3)]"
-              >
-                {/* Background Image / Gradient Mesh */}
-                <div className="absolute inset-0 z-0 bg-surface-container-highest">
-                  {featuredBlog.coverImage ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img 
-                      src={getMediaUrl(featuredBlog.coverImage.url) || ''} 
-                      alt={featuredBlog.coverImage.alternativeText || featuredBlog.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 dark:opacity-60"
-                    />
-                  ) : (
-                    <div className="w-full h-full mesh-gradient opacity-60"></div>
-                  )}
-                  {/* Heavy gradient overlay to ensure text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                  <div className="absolute inset-0 bg-primary/20 mix-blend-overlay group-hover:bg-primary/30 transition-colors duration-500"></div>
-                </div>
+        {/* Category Filters (Item 38 in audit) */}
+        <div className="flex flex-wrap gap-3 mb-12">
+          {categories.map((cat, idx) => (
+            <span
+              key={cat}
+              className={cn(
+                'px-5 py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer select-none',
+                idx === 0
+                  ? 'bg-primary text-white shadow-md shadow-primary/25'
+                  : 'glass-card border border-outline-variant/30 dark:border-white/10 text-on-surface dark:text-white/80 hover:text-primary hover:border-primary/40'
+              )}
+            >
+              {cat}
+            </span>
+          ))}
+        </div>
 
-                {/* Content */}
-                <div className="relative z-10 max-w-4xl bg-black/30 backdrop-blur-lg p-8 md:p-12 rounded-[32px] border border-white/20 transform transition-transform duration-500 group-hover:-translate-y-2 shadow-2xl">
-                  <div className="flex flex-wrap items-center gap-3 mb-6">
-                    <span className="px-4 py-1.5 rounded-full bg-white/10 text-white font-semibold text-xs tracking-wider uppercase border border-white/20">
-                      Featured
-                    </span>
-                    {featuredBlog.publishedDate && (
-                      <span className="px-4 py-1.5 rounded-full bg-white/10 text-white font-medium text-xs border border-white/20 flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {new Date(featuredBlog.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                      </span>
-                    )}
+        {/* Featured Blog */}
+        {featuredBlog && currentPage === 1 && (
+          <div className="mb-16">
+            <Link
+              href={getBlogUrl(featuredBlog)}
+              className="group block relative rounded-3xl overflow-hidden glass-card border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 transition-all duration-500 shadow-xl"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 md:p-10">
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-wider text-primary">
+                    <span>Featured Article</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span>{featuredBlog.author || 'Livengage Team'}</span>
                   </div>
-                  
-                  <h2 className="font-display-lg text-4xl md:text-6xl text-white leading-tight mb-6 uppercase tracking-tight">
+                  <h2 className="font-display-md text-3xl md:text-4xl lg:text-5xl font-black text-on-surface dark:text-white group-hover:text-primary transition-colors leading-tight">
                     {featuredBlog.title}
                   </h2>
-                  
-                  <p className="font-body-lg text-lg md:text-xl text-white/80 line-clamp-3 mb-8 max-w-3xl">
+                  <p className="text-on-surface-variant dark:text-[#94A3B8] text-base md:text-lg line-clamp-3 leading-relaxed">
                     {featuredBlog.excerpt}
                   </p>
-
-                  <div className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-black font-bold text-sm hover:scale-105 transition-transform uppercase tracking-wider shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                    Read Featured Article
+                  <div className="pt-4 flex items-center text-primary font-bold text-sm tracking-wider uppercase">
+                    Read Full Guide
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1.5 transition-transform" />
                   </div>
                 </div>
-              </Link>
-            )}
 
-            {/* Asymmetric Grid for Regular Blogs */}
-            {regularBlogs.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {regularBlogs.map((blog, idx) => {
-                  // Make every 4th item span 2 columns on large screens
-                  const isWide = idx % 4 === 0;
-                  
-                  return (
-                    <Link 
-                      href={getBlogUrl(blog)} 
-                      key={blog.id} 
-                      className={cn(
-                        "group relative flex flex-col min-h-[400px] rounded-[32px] overflow-hidden transition-all duration-500",
-                        "bg-white dark:bg-[#111]",
-                        "border border-outline-variant/20 dark:border-white/5",
-                        "shadow-sm hover:shadow-xl dark:shadow-none dark:hover:shadow-[0_0_40px_rgba(124,58,237,0.3)]",
-                        isWide ? "lg:col-span-2 flex-row" : "lg:col-span-1"
-                      )}
-                    >
-                      {/* Cover Image Background (for wide) or Top Image (for normal) */}
-                      {isWide ? (
-                        <>
-                          <div className="absolute inset-0 z-0">
-                            {blog.coverImage ? (
-                              // eslint-disable-next-line @next/next/no-img-element
-                              <img 
-                                src={getMediaUrl(blog.coverImage.url) || ''} 
-                                alt={blog.coverImage.alternativeText || blog.title}
-                                className="w-full h-full object-cover opacity-20 dark:opacity-40 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-30 dark:group-hover:opacity-60"
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-surface-container-highest opacity-50"></div>
-                            )}
-                            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent dark:from-[#111] dark:via-[#111]/80 dark:to-transparent"></div>
-                          </div>
-                          
-                          <div className="relative z-10 p-10 flex flex-col justify-end w-full md:w-2/3 h-full">
-                            <div className="flex flex-wrap items-center gap-3 mb-6 mt-auto">
-                              {blog.publishedDate && (
-                                <span className="px-4 py-1.5 rounded-full bg-black text-white dark:bg-white/10 dark:text-white font-medium text-xs border border-transparent dark:border-white/20">
-                                  {new Date(blog.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                </span>
-                              )}
-                            </div>
-                            <h3 className="font-display-md text-3xl md:text-4xl text-on-surface dark:text-white font-bold mb-4 group-hover:text-primary transition-colors leading-tight tracking-tight line-clamp-3">
-                              {blog.title}
-                            </h3>
-                            <p className="font-body text-on-surface-variant dark:text-white/70 line-clamp-2">
-                              {blog.excerpt}
-                            </p>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="relative h-[240px] w-full overflow-hidden bg-surface-container-highest">
-                            {blog.coverImage ? (
-                              // eslint-disable-next-line @next/next/no-img-element
-                              <img 
-                                src={getMediaUrl(blog.coverImage.url) || ''} 
-                                alt={blog.coverImage.alternativeText || blog.title}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
-                                No Image
-                              </div>
-                            )}
-                            {/* Floating Badge */}
-                            {blog.publishedDate && (
-                              <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md text-white font-semibold text-[10px] tracking-wider uppercase border border-white/10">
-                                {new Date(blog.publishedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                              </div>
-                            )}
-                          </div>
-                          
-                          <div className="p-8 flex flex-col flex-grow z-10">
-                            <h3 className="font-display-md text-2xl text-on-surface dark:text-white font-bold mb-4 group-hover:text-primary transition-colors leading-tight tracking-tight line-clamp-3">
-                              {blog.title}
-                            </h3>
-                            
-                            <p className="font-body text-on-surface-variant dark:text-[#94A3B8] line-clamp-2 mb-8 flex-grow text-sm">
-                              {blog.excerpt}
-                            </p>
-                            
-                            <div className="flex items-center text-primary font-bold text-sm tracking-wider uppercase mt-auto">
-                              Read Article
-                              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </Link>
-                  );
-                })}
+                <div className="lg:col-span-5 relative h-[280px] md:h-[340px] rounded-2xl overflow-hidden bg-surface-container">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={getMediaUrl(featuredBlog.coverImage?.url) || featuredBlog.coverImage?.url || '/og-image.png'}
+                    alt={featuredBlog.coverImage?.alternativeText || featuredBlog.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
               </div>
-            )}
+            </Link>
+          </div>
+        )}
 
-            {/* Pagination Navigation */}
-            {totalPages > 1 && (
-              <div className="pt-12 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-outline-variant/30 dark:border-white/10">
-                <p className="text-sm font-medium text-on-surface-variant dark:text-[#94A3B8]">
-                  Showing <span className="text-on-surface dark:text-white font-bold">{regularBlogs.length + (currentPage === 1 && featuredBlog ? 1 : 0)}</span> of <span className="text-on-surface dark:text-white font-bold">{totalBlogs}</span> articles
+        {/* Regular Blog Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {regularBlogs.map((blog) => (
+            <Link
+              key={blog.documentId || blog.id}
+              href={getBlogUrl(blog)}
+              className="group flex flex-col glass-card rounded-3xl overflow-hidden border border-outline-variant/30 dark:border-white/10 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1.5 shadow-lg"
+            >
+              <div className="relative h-56 w-full overflow-hidden bg-surface-container">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={getMediaUrl(blog.coverImage?.url) || blog.coverImage?.url || '/og-image.png'}
+                  alt={blog.coverImage?.alternativeText || blog.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex items-center gap-2 text-xs text-on-surface-variant dark:text-[#94A3B8] mb-3">
+                  <Calendar className="w-3.5 h-3.5 text-primary" />
+                  <span>
+                    {blog.publishedDate
+                      ? new Date(blog.publishedDate).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })
+                      : 'Recent'}
+                  </span>
+                  <span>•</span>
+                  <span>{blog.author || 'Editorial'}</span>
+                </div>
+
+                <h3 className="font-display-md text-xl md:text-2xl text-on-surface dark:text-white font-bold mb-3 group-hover:text-primary transition-colors leading-tight line-clamp-2">
+                  {blog.title}
+                </h3>
+
+                <p className="font-body text-on-surface-variant dark:text-[#94A3B8] line-clamp-3 mb-6 text-sm leading-relaxed flex-grow">
+                  {blog.excerpt}
                 </p>
 
-                <div className="flex items-center gap-2">
-                  {/* Previous Button */}
-                  {currentPage > 1 ? (
-                    <Link
-                      href={`/blogs?page=${currentPage - 1}`}
-                      className="px-4 py-2.5 rounded-full glass-card border border-outline-variant/30 dark:border-white/10 text-on-surface dark:text-white hover:border-primary/50 transition-colors text-sm font-medium flex items-center gap-1.5"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                      Previous
-                    </Link>
-                  ) : (
-                    <span className="px-4 py-2.5 rounded-full border border-outline-variant/10 text-on-surface-variant/40 cursor-not-allowed text-sm font-medium flex items-center gap-1.5">
-                      <ChevronLeft className="w-4 h-4" />
-                      Previous
-                    </span>
-                  )}
-
-                  {/* Page Numbers */}
-                  <div className="flex items-center gap-1.5 px-2">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
-                      const isActive = pageNum === currentPage;
-                      return (
-                        <Link
-                          key={pageNum}
-                          href={`/blogs?page=${pageNum}`}
-                          className={cn(
-                            "w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all",
-                            isActive
-                              ? "bg-primary text-white shadow-lg shadow-primary/20 scale-105"
-                              : "glass-card text-on-surface dark:text-white/80 hover:text-white hover:border-primary/40"
-                          )}
-                        >
-                          {pageNum}
-                        </Link>
-                      );
-                    })}
-                  </div>
-
-                  {/* Next Button */}
-                  {currentPage < totalPages ? (
-                    <Link
-                      href={`/blogs?page=${currentPage + 1}`}
-                      className="px-4 py-2.5 rounded-full glass-card border border-outline-variant/30 dark:border-white/10 text-on-surface dark:text-white hover:border-primary/50 transition-colors text-sm font-medium flex items-center gap-1.5"
-                    >
-                      Next
-                      <ChevronRight className="w-4 h-4" />
-                    </Link>
-                  ) : (
-                    <span className="px-4 py-2.5 rounded-full border border-outline-variant/10 text-on-surface-variant/40 cursor-not-allowed text-sm font-medium flex items-center gap-1.5">
-                      Next
-                      <ChevronRight className="w-4 h-4" />
-                    </span>
-                  )}
+                <div className="flex items-center text-primary font-bold text-sm tracking-wider uppercase mt-auto">
+                  Read Article
+                  <ArrowRight className="w-4 h-4 ml-1.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="mt-16 flex items-center justify-center gap-2">
+            {currentPage > 1 && (
+              <Link
+                href={`/blogs?page=${currentPage - 1}`}
+                className="px-5 py-2.5 rounded-full glass-card border border-outline-variant/30 dark:border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary"
+              >
+                <ChevronLeft className="w-4 h-4" /> Previous
+              </Link>
+            )}
+            <span className="px-4 py-2 text-sm text-on-surface-variant dark:text-[#94A3B8]">
+              Page {currentPage} of {totalPages}
+            </span>
+            {currentPage < totalPages && (
+              <Link
+                href={`/blogs?page=${currentPage + 1}`}
+                className="px-5 py-2.5 rounded-full glass-card border border-outline-variant/30 dark:border-white/10 text-sm font-semibold flex items-center gap-2 hover:border-primary"
+              >
+                Next <ChevronRight className="w-4 h-4" />
+              </Link>
             )}
           </div>
         )}

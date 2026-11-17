@@ -110,7 +110,8 @@ export function HeroSection({ data }: HeroSectionProps) {
           <div className="absolute -inset-4 bg-gradient-to-tr from-primary to-tertiary rounded-[2rem] opacity-20 blur-2xl pointer-events-none"></div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            alt={imageAlt}
+            alt={imageAlt || "Livengage live streaming host on camera"}
+            fetchPriority="high"
             className="w-full h-full object-cover rounded-[2rem] shadow-2xl relative z-10"
             src={imageUrl || "https://images.unsplash.com/photo-1616469829581-73993eb86b02?q=80&w=2000&auto=format&fit=crop"}
           />

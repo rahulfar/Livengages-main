@@ -26,7 +26,7 @@ export function RequirementsSection({ data }: RequirementsSectionProps) {
             Streaming Requirements
           </h2>
           <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
-            We seek charismatic individuals who can captivate a global audience. Check if you have what it takes to be an EliteStaff streamer.
+            We seek charismatic individuals who can captivate a global audience. Check if you have what it takes to be a Livengage streamer and host.
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-gutter">

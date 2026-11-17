@@ -71,6 +71,7 @@ export function TalentHero({
             <Image
               alt={imageAlt}
               fill
+              priority
               className="object-cover group-hover:scale-105 transition-transform duration-700"
               src={imageUrl}
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -28,7 +28,7 @@ export function SeamlessIntegration({ data }: SeamlessIntegrationProps) {
               {data.title || 'Seamless Integration'}
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg">
-              {data.description || 'EliteStaff provides the bridge between platform potential and executive staffing.'}
+              {data.description || 'Livengage provides the bridge between creator talent and top-tier live streaming app partnerships.'}
             </p>
             <div className="space-y-4">
               {(data.Features || []).map((feature, i) => (

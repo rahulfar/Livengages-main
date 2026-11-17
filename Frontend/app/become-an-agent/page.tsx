@@ -1,11 +1,32 @@
 import type { Metadata } from 'next';
 import { AgentApplicationForm } from '@/components/AgentForm/AgentApplicationForm';
 import { fetchAPI, getBecomeAnAgentPageQuery, getMediaUrl } from '@/lib/api';
+import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'LIVENGAGE | Start Your Own Live Streaming Agency',
+  title: 'Start Your Live Streaming Agency | Sub-Agency Program',
   description:
-    "Leverage the LIVENGAGE infrastructure to build, manage, and scale a high-performance team of streamers on the world's leading platforms.",
+    'Build and scale your own live streaming sub-agency. Access direct platform partnerships, automated payouts, and highest commission tier overrides.',
+  alternates: {
+    canonical: 'https://www.livengage.com/become-an-agent',
+  },
+  openGraph: {
+    title: 'Start Your Live Streaming Agency | Sub-Agency Program | Livengage',
+    description:
+      'Leverage the Livengage agency network to recruit, manage, and monetize a high-earning roster of streamers worldwide.',
+    url: 'https://www.livengage.com/become-an-agent',
+    siteName: 'Livengage',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Start Your Live Streaming Agency | Sub-Agency Program | Livengage',
+    description:
+      'Leverage the Livengage agency network to recruit, manage, and monetize a high-earning roster of streamers worldwide.',
+    images: ['/og-image.png'],
+  },
 };
 
 export const revalidate = 0; // Disable caching for testing
@@ -79,6 +100,12 @@ export default async function BecomeAnAgentPage() {
 
   return (
     <main className="bg-background text-on-background overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Become an Agent', url: '/become-an-agent' },
+        ]}
+      />
       {/* Hero Section */}
       {hero && (
         <section className="relative pt-[160px] pb-28 lg:pb-section px-6 md:px-12 overflow-hidden min-h-[921px] flex items-center mesh-gradient">

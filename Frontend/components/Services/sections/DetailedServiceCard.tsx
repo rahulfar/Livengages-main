@@ -66,7 +66,7 @@ export function DetailedServiceCard({
     else if (t.includes('management') || t.includes('career')) displayIcon = 'trending_up';
     else if (t.includes('growth') || t.includes('scale')) displayIcon = 'rocket_launch';
     else if (t.includes('support')) displayIcon = 'support_agent';
-    else displayIcon = 'workpaces';
+    else displayIcon = 'workspaces';
   }
 
   return (

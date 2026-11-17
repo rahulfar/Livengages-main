@@ -49,7 +49,7 @@ export function Hero({ data }: Props) {
             <div className="mt-16 flex items-center gap-8">
               <div className="flex -space-x-4">
                 {data?.avatars && data.avatars.slice(0, 2).map((avatar: any, i: number) => (
-                  <Image key={i} alt={`User ${i}`} width={48} height={48} className="w-12 h-12 rounded-full border-4 border-surface object-cover" src={getMediaUrl(avatar.url) || ''} />
+                  <Image key={i} alt={avatar.alternativeText || `Verified Livengage streaming creator ${i + 1}`} width={48} height={48} className="w-12 h-12 rounded-full border-4 border-surface object-cover" src={getMediaUrl(avatar.url) || ''} />
                 ))}
                 {data?.creatorCount && (
                   <div className="w-12 h-12 rounded-full border-4 border-surface bg-primary-container flex items-center justify-center text-xs font-bold text-on-primary-container dark:text-white dark:shadow-[0_0_10px_rgba(124,58,237,0.5)]">
@@ -69,7 +69,9 @@ export function Hero({ data }: Props) {
           <div className="lg:col-span-5 relative w-full h-[350px] md:h-[450px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
             <Image 
               fill 
-              alt={data.heroImage.alternativeText || "Hero Image"} 
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              alt={data.heroImage.alternativeText || "Livengage verified live streaming creator broadcasting on top partner apps"} 
               className="object-cover" 
               src={getMediaUrl(data.heroImage.url) || ''} 
             />

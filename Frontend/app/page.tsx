@@ -6,6 +6,8 @@ import { WhyChooseUs } from '@/components/WhyChooseUs';
 import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { CTA } from '@/components/CTA';
+import { FaqJsonLd } from '@/components/JsonLd';
+import { HOME_PAGE_DATA } from '@/data/home';
 
 import { pageService } from '@/lib/strapi/services/pages';
 import { partnerAppService } from '@/lib/strapi/services/partnerApps';
@@ -27,6 +29,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <FaqJsonLd faqs={data.faq?.faqs || HOME_PAGE_DATA.faq.faqs} />
       {data.hero && <Hero data={data.hero} />}
       {data.stats && <Stats data={data.stats} />}
       {data.services && <Services data={data.services} />}

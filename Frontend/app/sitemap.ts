@@ -3,51 +3,135 @@ import { blogService } from '@/lib/strapi/services/blogs';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.livengage.com';
+  const now = new Date();
 
-  // 1. Static Pages
-  const staticPages = [
-    '',
-    '/about-us',
-    '/services',
-    '/agent-ecosystem',
-    '/growth-strategy',
-    '/talent-recruitment',
-    '/become-a-host',
-    '/become-an-agent',
-    '/join-us',
-    '/contact-us',
-    '/blogs',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1 : 0.8,
-  }));
+  // 1. Core High-Priority Landing Pages
+  const mainPages: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/become-a-host`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/become-an-agent`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/agent-ecosystem`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/growth-strategy`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/talent-recruitment`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/about-us`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/contact-us`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/blogs`,
+      lastModified: now,
+      changeFrequency: 'daily',
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms-and-conditions`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+  ];
 
-  // 2. Dynamic Blog Pages
-  let blogPages: MetadataRoute.Sitemap = [];
+  // 2. Keyword-Rich Partner App Pages (Item 5 in audit)
+  const partnerAppPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/vone-app-agency`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/chill-chat-agency`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/niki-live-agency`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/poppo-live-agency`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+  ];
+
+  // 3. Dynamic Blog Pages
+  let dynamicBlogPages: MetadataRoute.Sitemap = [];
   try {
-    // Fetch top 100 blogs for the sitemap
-    const strapiRes = await blogService.getBlogs(1, 100); 
+    const strapiRes = await blogService.getBlogs(1, 100);
     const blogs = strapiRes?.data || [];
-    
-    blogPages = blogs.map((blog) => {
+
+    dynamicBlogPages = blogs.map((blog) => {
       const titleSlug = (blog.title || 'post')
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
-      const urlSlug = `${titleSlug}--${blog.documentId}`;
-      
+      const urlSlug = blog.documentId ? `${titleSlug}--${blog.documentId}` : titleSlug;
+
       return {
         url: `${baseUrl}/blogs/${urlSlug}`,
-        lastModified: new Date(blog.updatedAt || blog.publishedAt || new Date()),
-        changeFrequency: 'monthly' as const,
-        priority: 0.6,
+        lastModified: new Date(blog.updatedAt || blog.publishedAt || now),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
       };
     });
   } catch (error) {
     console.error('[Sitemap] Blog fetch failed', error);
   }
 
-  return [...staticPages, ...blogPages];
+  return [...mainPages, ...partnerAppPages, ...dynamicBlogPages];
 }

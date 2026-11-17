@@ -6,6 +6,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/theme-provider';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/JsonLd';
 import './globals.css';
 
 /* ── Fonts ──────────────────────────────────────────────────────────────────
@@ -15,14 +16,12 @@ import './globals.css';
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter-var',
-  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-jakarta-var',
-  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -34,27 +33,42 @@ export const metadata: Metadata = {
     template: '%s | Livengage',
   },
   description:
-    'A trusted live streaming agency connecting creators with the best live streaming apps globally. We provide expertise for hosts and agents on Chamet, Poppo, Niki Live, and more.',
+    'A trusted live streaming agency connecting creators with top apps globally. Professional guidance for hosts and agents on Chill Chat (Chamet), Vone, Poppo, and Niki Live.',
+  alternates: {
+    canonical: 'https://www.livengage.com',
+    languages: {
+      'en-IN': 'https://www.livengage.com',
+      'en': 'https://www.livengage.com',
+      'x-default': 'https://www.livengage.com',
+    },
+  },
   openGraph: {
-    title: 'Livengage | Best Live Streaming Agency',
+    title: 'Livengage | Best Live Streaming Agency for Hosts & Agents',
     description: 'Turn your passion into a highly profitable career with Livengage.',
     url: 'https://www.livengage.com',
     siteName: 'Livengage',
     images: [
       {
-        url: '/Favicon.png', // Fallback to favicon until a dedicated og-image is added
+        url: '/og-image.png',
         width: 1200,
         height: 630,
+        alt: 'Livengage Live Streaming Agency',
       },
     ],
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Livengage | Best Live Streaming Agency',
+    title: 'Livengage | Best Live Streaming Agency for Hosts & Agents',
     description: 'Turn your passion into a highly profitable career with Livengage.',
-    images: ['/Favicon.png'],
+    images: ['/og-image.png'],
+  },
+  verification: {
+    google: 'google-site-verification-placeholder',
+    other: {
+      'msvalidate.01': 'bing-site-verification-placeholder',
+    },
   },
   robots: {
     index: true,
@@ -79,11 +93,17 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Material Symbols Outlined icon font — not available via next/font/google */}
+        {/* Preconnect for Google Fonts & Icons (Core Web Vitals LCP optimization) */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Material Symbols Outlined icon font */}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
         />
+        {/* Organization and WebSite Structured Data */}
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
         {/* Google Tag Manager */}
         <Script
           id="gtm-script"

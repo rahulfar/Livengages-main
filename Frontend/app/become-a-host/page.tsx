@@ -6,13 +6,65 @@ import { RequirementsSection } from '@/components/BecomeAHost/RequirementsSectio
 import { BenefitsSection } from '@/components/BecomeAHost/BenefitsSection';
 import { ApplicationSection } from '@/components/BecomeAHost/ApplicationSection';
 import { fetchAPI, getBecomeAHostPageQuery } from '@/lib/api';
+import { BreadcrumbJsonLd, HowToJsonLd, FaqJsonLd } from '@/components/JsonLd';
+import {
+  HOST_HERO,
+  HOST_STATS,
+  HOST_REQUIREMENTS,
+  HOST_BENEFITS,
+  HOST_APPLICATION_DATA,
+} from '@/constants/become-a-host';
 
 export const metadata: Metadata = {
-  title: 'Become a Professional Live Streamer | LIVENGAGE',
+  title: 'Become a Live Streaming Host | Top Paying Apps',
   description:
-    "Take center stage on the world's leading streaming platforms. Join LIVENGAGE to represent premium global apps with professional support, high-end training, and guaranteed growth.",
+    'Apply as a verified live streaming host on top paying apps like Chill Chat (Chamet), Vone App, and Niki Live. Enjoy flexible hours, creator coaching, and fast weekly payouts.',
+  alternates: {
+    canonical: 'https://www.livengage.com/become-a-host',
+  },
+  openGraph: {
+    title: 'Become a Live Streaming Host | Top Paying Apps | Livengage',
+    description:
+      'Turn your charisma into high weekly income. Join Livengage as a verified live streaming host with direct contracts and dedicated mentorship.',
+    url: 'https://www.livengage.com/become-a-host',
+    siteName: 'Livengage',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Become a Live Streaming Host | Top Paying Apps | Livengage',
+    description:
+      'Turn your charisma into high weekly income. Join Livengage as a verified live streaming host with direct contracts and dedicated mentorship.',
+    images: ['/og-image.png'],
+  },
 };
+
 export const revalidate = 0; // Disable caching for testing
+
+const HOST_FAQS = [
+  {
+    question: 'How much can a live streaming host earn with Livengage?',
+    answer:
+      'Earnings depend on your streaming hours, content engagement, and viewer gifting. Top-performing hosts earn substantial weekly payouts through verified in-app gifting and agency milestone rewards.',
+  },
+  {
+    question: 'Do I have to pay any registration fees to join?',
+    answer:
+      'No. Joining Livengage as a host is 100% free with zero registration fees or hidden startup costs.',
+  },
+  {
+    question: 'Which live streaming apps can I broadcast on?',
+    answer:
+      'We represent creators on major global platforms including Chill Chat (Chamet), Vone App (Poppo Live), Niki Live, and Bigo Live.',
+  },
+  {
+    question: 'How and when do I receive payouts in India?',
+    answer:
+      'Payouts are distributed weekly directly into your bank account, UPI, or Payoneer with full transparency and instant transaction tracking.',
+  },
+];
 
 export default async function BecomeAHostPage() {
   const query = getBecomeAHostPageQuery();
@@ -21,61 +73,59 @@ export default async function BecomeAHostPage() {
   // Support both Strapi v4 (data.attributes) and Strapi v5 (data directly)
   const raw = strapiRes?.data?.attributes || strapiRes?.data || {};
 
-  // Schema uses PascalCase at top level — normalize to camelCase for components
-  // Also normalize nested PascalCase: Requirements.Items, Benefits.Items, ApplicationSection.Steps
   const rawRequirements = raw.Requirements || raw.requirements;
   const rawBenefits     = raw.Benefits     || raw.benefits;
   const rawAppSection   = raw.ApplicationSection || raw.applicationSection;
 
   const pageData = {
-    hero: raw.Hero || raw.hero,
-    stats: raw.Stats || raw.stats,
+    hero: (raw.Hero || raw.hero) || HOST_HERO,
+    stats: (raw.Stats || raw.stats) || { stats: HOST_STATS },
     requirements: rawRequirements
       ? { ...rawRequirements, items: rawRequirements.Items || rawRequirements.items }
-      : null,
+      : { items: HOST_REQUIREMENTS },
     benefits: rawBenefits
       ? { ...rawBenefits, items: rawBenefits.Items || rawBenefits.items }
-      : null,
+      : { items: HOST_BENEFITS },
     applicationSection: rawAppSection
       ? { ...rawAppSection, steps: rawAppSection.Steps || rawAppSection.steps }
-      : null,
+      : HOST_APPLICATION_DATA,
   };
 
-  const hasContent = !!(
-    pageData.hero ||
-    pageData.stats ||
-    pageData.requirements ||
-    pageData.benefits ||
-    pageData.applicationSection
-  );
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Become a Host', url: '/become-a-host' },
+  ];
+
+  const howToSteps = [
+    {
+      name: 'Submit Application',
+      text: 'Fill out the host application form with your basic details and streaming interests.',
+    },
+    {
+      name: 'Platform Matching & Audition',
+      text: 'Our talent scouts evaluate your style and match you with the highest-earning app ecosystem.',
+    },
+    {
+      name: 'Account Verification & VIP Status',
+      text: 'Receive agency VIP badge, access exclusive host features, and start broadcasting.',
+    },
+    {
+      name: 'Go Live & Earn Weekly Payouts',
+      text: 'Stream to international audiences, collect gifts, and withdraw weekly earnings.',
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-background">
-      {!hasContent ? (
-        <div className="flex flex-col items-center justify-center min-h-[80vh] text-center px-6 md:px-12 bg-surface-container-lowest relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-            <h1 className="font-display-lg text-6xl md:text-[120px] leading-tight text-on-surface mb-2 tracking-tight">
-              Coming Soon
-            </h1>
-            <h2 className="font-display-lg text-6xl md:text-[120px] leading-tight text-primary italic mb-8 tracking-tight">
-              To the stage.
-            </h2>
-            <p className="font-body-lg text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-              We are currently crafting our story. The content for this page will be available shortly. Stay tuned for an experience that redefines live entertainment.
-            </p>
-          </div>
-        </div>
-      ) : (
-        <>
-          <HeroSection data={pageData.hero} />
-          <StatsSection data={pageData.stats} />
-          <RequirementsSection data={pageData.requirements} />
-          <BenefitsSection data={pageData.benefits} />
-          <ApplicationSection data={pageData.applicationSection} />
-        </>
-      )}
+      <BreadcrumbJsonLd items={breadcrumbs} />
+      <HowToJsonLd steps={howToSteps} />
+      <FaqJsonLd faqs={HOST_FAQS} />
+
+      <HeroSection data={pageData.hero} />
+      <StatsSection data={pageData.stats} />
+      <RequirementsSection data={pageData.requirements} />
+      <BenefitsSection data={pageData.benefits} />
+      <ApplicationSection data={pageData.applicationSection} />
     </main>
   );
 }

@@ -38,7 +38,7 @@ export function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about-us' },
     { name: 'Services', href: '/services' },
-    { name: 'Registration', href: '/join-us' },
+    { name: 'Registration', href: '/become-a-host' },
     { name: 'Blogs', href: '/blogs' },
   ];
 

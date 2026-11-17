@@ -12,18 +12,70 @@ import {
   OPERATIONAL_NETWORKS,
   GLOBAL_MAP_DATA,
 } from '@/constants/contact';
+import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: "LIVENGAGE | Let's Connect Globally",
+  title: 'Contact Livengage | 24/7 Creator & Agency Support',
   description:
-    "Whether you are expanding operations or launching a new project, our expert team is here to support you at every step.",
+    'Get in touch with the Livengage team for live streaming host applications, sub-agency contracts, or creator support. We provide 24/7 assistance across 20+ countries.',
+  alternates: {
+    canonical: 'https://www.livengage.com/contact-us',
+  },
+  openGraph: {
+    title: 'Contact Livengage | 24/7 Creator & Agency Support',
+    description:
+      'Connect with our global talent managers and sub-agency coordinators. 24/7 host onboarding and payout assistance.',
+    url: 'https://www.livengage.com/contact-us',
+    siteName: 'Livengage',
+    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Livengage | 24/7 Creator & Agency Support',
+    description:
+      'Connect with our global talent managers and sub-agency coordinators. 24/7 host onboarding and payout assistance.',
+    images: ['/og-image.png'],
+  },
 };
+
+const CONTACT_FAQS = [
+  {
+    question: 'How fast does Livengage review host applications?',
+    answer:
+      'Our dedicated talent acquisition team reviews and processes host applications within 24 hours. Once accepted, you will receive personalized onboarding and account setup assistance.',
+  },
+  {
+    question: 'How do live streaming payouts work for creators in India and globally?',
+    answer:
+      'Livengage supports direct bank transfers, UPI, Payoneer, and international wire transfers with automated weekly and bi-weekly settlements in local currencies.',
+  },
+  {
+    question: 'Can I register as an agency if I already manage streamers?',
+    answer:
+      'Yes. Livengage offers enterprise sub-agency partnerships with direct platform contracts on Chill Chat (Chamet), Vone, and Niki Live, offering highest commission overrides.',
+  },
+  {
+    question: 'What are the technical requirements to start live streaming?',
+    answer:
+      'All you need is a smartphone with a quality camera, a stable internet connection (Wi-Fi or 4G/5G), and an engaging personality. We provide coaching to maximize your earnings.',
+  },
+];
 
 export default function ContactPage() {
   const showForm = true;
 
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Contact Us', url: '/contact-us' },
+  ];
+
   return (
     <main className="bg-[#F8FAFC] dark:bg-gradient-to-b dark:from-[#160126] dark:to-[#0B0114] text-on-background overflow-x-hidden pt-20 min-h-screen">
+      <BreadcrumbJsonLd items={breadcrumbs} />
+      <FaqJsonLd faqs={CONTACT_FAQS} />
+
       <ContactHero data={CONTACT_HERO} />
 
       {/* Contact Channels & Form Grid */}
@@ -36,7 +88,7 @@ export default function ContactPage() {
             </div>
           )}
           {/* Right: Contact Channels */}
-          <div className={showForm ? "lg:col-span-4" : "lg:col-span-12"}>
+          <div className={showForm ? 'lg:col-span-4' : 'lg:col-span-12'}>
             <ContactInfoCards data={{ items: CONTACT_CHANNELS as any }} />
           </div>
         </div>
@@ -47,6 +99,36 @@ export default function ContactPage() {
         <div className="max-w-[1280px] mx-auto px-[32px]">
           <OperationalNetworks data={{ networks: OPERATIONAL_NETWORKS as any }} />
           <GlobalMap data={GLOBAL_MAP_DATA} />
+        </div>
+      </section>
+
+      {/* Support FAQ Section (Item 38 in audit) */}
+      <section className="py-[80px] max-w-4xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-12">
+          <h2 className="font-display-md text-3xl md:text-4xl font-bold text-on-surface dark:text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-on-surface-variant dark:text-[#94A3B8]">
+            Quick answers about applying, payments, and agency partnerships.
+          </p>
+        </div>
+        <div className="space-y-4">
+          {CONTACT_FAQS.map((faq, index) => (
+            <details
+              key={index}
+              className="glass-card rounded-2xl p-6 border border-outline-variant/30 dark:border-white/10 group cursor-pointer"
+            >
+              <summary className="font-bold text-lg text-on-surface dark:text-white list-none flex justify-between items-center select-none">
+                <span>{faq.question}</span>
+                <span className="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">
+                  keyboard_arrow_down
+                </span>
+              </summary>
+              <p className="mt-4 text-on-surface-variant dark:text-[#94A3B8] leading-relaxed">
+                {faq.answer}
+              </p>
+            </details>
+          ))}
         </div>
       </section>
     </main>

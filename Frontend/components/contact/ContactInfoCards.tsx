@@ -50,6 +50,8 @@ export function ContactInfoCards({ data }: ContactInfoCardsProps) {
               <a
                 className={`${colorClass} font-semibold hover:underline transition-all`}
                 href={channel.linkHref}
+                target={channel.linkHref.startsWith('http') ? '_blank' : undefined}
+                rel={channel.linkHref.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
                 {channel.linkText}
               </a>
