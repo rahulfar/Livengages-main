@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const { name, email, phoneNumber, country, appName, message } = body;
 
     // 1. Save to Strapi
-    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
+    const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || process.env.NEXT_PUBLIC_API_URL || 'https://api.livengage.com';
     
     let strapiSuccess = false;
     let strapiErrorDetails = null;

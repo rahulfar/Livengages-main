@@ -1,7 +1,7 @@
 import { getDummyDataForPath } from '../../data';
 import { StrapiResponse } from './types';
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'https://api.livengage.com';
 
 /**
  * Helper to build a query string from a parameters array.
