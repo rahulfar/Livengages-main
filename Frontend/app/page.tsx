@@ -7,6 +7,7 @@ import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { CTA } from '@/components/CTA';
 import { FaqJsonLd } from '@/components/JsonLd';
+import { TrustComplianceSection } from '@/components/TrustBadges/TrustComplianceSection';
 import { HOME_PAGE_DATA } from '@/data/home';
 import { FALLBACK_PARTNER_APPS } from '@/data/partner-apps';
 
@@ -115,6 +116,7 @@ export default async function HomePage() {
       {data.services && <Services data={data.services} />}
       {featuredPartnerApps.length > 0 && <PartnerApps data={{ heading: "Featured Partner Apps", apps: featuredPartnerApps }} />}
       {data.whyChooseUs && <WhyChooseUs data={data.whyChooseUs} />}
+      <TrustComplianceSection />
       {data.testimonials && <Testimonials data={data.testimonials} />}
       {data.faq && <FAQ data={data.faq} />}
       {data.cta && <CTA data={data.cta} />}

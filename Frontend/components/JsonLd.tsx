@@ -36,6 +36,7 @@ export function OrganizationJsonLd() {
       'https://www.youtube.com/@livengage',
       'https://twitter.com/livengage',
       'https://www.linkedin.com/company/livengage',
+      'https://t.me/livengage',
     ],
     address: {
       '@type': 'PostalAddress',

@@ -188,11 +188,15 @@ export function ContactForm({ title = "Send an Inquiry", buttonText = "Dispatch 
             value={formData.message}
             onChange={handleChange}
             className="w-full bg-white dark:bg-[#0B0114] border border-outline-variant/30 dark:border-white/10 rounded-[18px] p-4 text-base focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none resize-y min-h-[150px] text-on-surface dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600"
-            placeholder="Tell us about your upcoming project or staffing needs..."
+            placeholder="Tell us about your streaming goals, agency background, or questions..."
             rows={6}
             required
           ></textarea>
         </div>
+
+        <p className="text-xs text-on-surface-variant dark:text-[#94A3B8] italic">
+          *Income Disclaimer: Creator earnings and revenue projections vary based on streaming hours, content engagement, and viewer gifting. Livengage provides professional coaching, tools, and direct platform contracts with zero upfront fees.
+        </p>
         
         <button
           className={`btn-gradient w-full md:w-auto px-12 py-5 text-white rounded-full font-bold text-lg flex items-center justify-center gap-2 group transition-all shadow-lg dark:shadow-[0_0_20px_rgba(124,58,237,0.3)] ${
