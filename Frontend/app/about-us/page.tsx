@@ -7,6 +7,7 @@ import { TeamSection } from '@/components/About/TeamSection';
 import { AboutCTA } from '@/components/About/AboutCTA';
 import { pageService } from '@/lib/strapi/services/pages';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
+import { ABOUT_US_PAGE_DATA } from '@/data/about-us';
 
 export const metadata: Metadata = {
   title: 'About Our Live Streaming Agency',
@@ -38,17 +39,22 @@ export const revalidate = 0; // Disable caching for testing
 
 export default async function AboutPage() {
   // Fetch data from Strapi API
-  const apiData = await pageService.getAboutUsPage() as any;
+  let apiData: any = null;
+  try {
+    apiData = await pageService.getAboutUsPage();
+  } catch (err) {
+    console.warn('[AboutPage] Data fetch warning:', err);
+  }
   // Support both Strapi v4 (data.attributes) and Strapi v5 (data directly)
   const strapiData = apiData?.data?.attributes || apiData?.data || {};
 
-  // Map data directly from Strapi
-  const heroData = strapiData.Hero || null;
-  const missionVisionData = strapiData.MissionVision || null;
-  const coreValuesData = strapiData.CoreValues || null;
-  const timelineData = strapiData.Timeline || null;
-  const leadershipData = strapiData.Leadership || null;
-  const ctaData = strapiData.CTA || null;
+  // Map data with fallbacks
+  const heroData = (strapiData.Hero || strapiData.hero) || ABOUT_US_PAGE_DATA.hero;
+  const missionVisionData = (strapiData.MissionVision || strapiData.missionVision) || ABOUT_US_PAGE_DATA.missionVision;
+  const coreValuesData = (strapiData.CoreValues || strapiData.coreValues) || { items: ABOUT_US_PAGE_DATA.coreValues.items };
+  const timelineData = (strapiData.Timeline || strapiData.timeline) || { items: ABOUT_US_PAGE_DATA.timeline.items };
+  const leadershipData = (strapiData.Leadership || strapiData.leadership) || { members: ABOUT_US_PAGE_DATA.leadership.members };
+  const ctaData = (strapiData.CTA || strapiData.cta) || ABOUT_US_PAGE_DATA.cta;
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },

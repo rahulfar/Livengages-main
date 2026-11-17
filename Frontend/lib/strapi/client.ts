@@ -56,7 +56,15 @@ export async function strapiFetch<T>(
     const data = await response.json();
     return data as StrapiResponse<T>;
   } catch (error) {
-    console.error(`[Strapi Client] Exception:`, error);
+    console.warn(`[Strapi Client] Backend unreachable for ${path}, using static fallback data`);
+    try {
+      const dummyData = getDummyDataForPath(path);
+      if (dummyData) {
+        return dummyData as StrapiResponse<T>;
+      }
+    } catch (e) {
+      console.warn('[Strapi Client Fallback Error]', e);
+    }
     return { data: null };
   }
 }

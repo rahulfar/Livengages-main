@@ -2,6 +2,12 @@ import type { Metadata } from 'next';
 import { AgentApplicationForm } from '@/components/AgentForm/AgentApplicationForm';
 import { fetchAPI, getBecomeAnAgentPageQuery, getMediaUrl } from '@/lib/api';
 import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
+import {
+  BECOME_AN_AGENT_HERO,
+  BECOME_AN_AGENT_RESPONSIBILITIES,
+  BECOME_AN_AGENT_REVENUE_MODEL,
+  BECOME_AN_AGENT_APPLICATION,
+} from '@/constants/become-an-agent';
 
 export const metadata: Metadata = {
   title: 'Start Your Live Streaming Agency | Sub-Agency Program',
@@ -41,10 +47,10 @@ export default async function BecomeAnAgentPage() {
   // Schema is mixed: Hero/ResponsibilitiesSection/ApplicationSection are PascalCase,
   // revenueModelSection is camelCase — normalize all to camelCase for components
   const pageData = {
-    hero:                    raw.Hero                    || raw.hero,
-    responsibilitiesSection: raw.ResponsibilitiesSection || raw.responsibilitiesSection,
-    revenueModelSection:     raw.revenueModelSection,
-    applicationSection:      raw.ApplicationSection      || raw.applicationSection,
+    hero:                    (raw.Hero || raw.hero) || BECOME_AN_AGENT_HERO,
+    responsibilitiesSection: (raw.ResponsibilitiesSection || raw.responsibilitiesSection) || BECOME_AN_AGENT_RESPONSIBILITIES,
+    revenueModelSection:     raw.revenueModelSection || BECOME_AN_AGENT_REVENUE_MODEL,
+    applicationSection:      (raw.ApplicationSection || raw.applicationSection) || BECOME_AN_AGENT_APPLICATION,
   };
 
   const hasContent = !!(

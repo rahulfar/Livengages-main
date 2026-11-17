@@ -45,7 +45,15 @@ export async function fetchAPI(path: string, options: RequestInit = {}) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error(`Fetch API Error:`, error);
+    console.warn(`[Fetch API] Backend unreachable for ${path}, using static fallback data`);
+    try {
+      const dummyData = getDummyDataForPath(path);
+      if (dummyData) {
+        return dummyData;
+      }
+    } catch (e) {
+      console.warn('[Fetch API Fallback Error]', e);
+    }
     return null;
   }
 }

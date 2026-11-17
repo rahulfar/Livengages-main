@@ -8,6 +8,7 @@ import { FAQ } from '@/components/FAQ';
 import { CTA } from '@/components/CTA';
 import { FaqJsonLd } from '@/components/JsonLd';
 import { HOME_PAGE_DATA } from '@/data/home';
+import { FALLBACK_PARTNER_APPS } from '@/data/partner-apps';
 
 import { pageService } from '@/lib/strapi/services/pages';
 import { partnerAppService } from '@/lib/strapi/services/partnerApps';
@@ -19,13 +20,39 @@ import { partnerAppService } from '@/lib/strapi/services/partnerApps';
  * route shares them.
  */
 export default async function HomePage() {
-  const [strapiRes, partnerAppsRes] = await Promise.all([
-    pageService.getHomePage(),
-    partnerAppService.getFeaturedPartnerApps()
-  ]);
+  let strapiRes: any = null;
+  let partnerAppsRes: any = null;
+
+  try {
+    const results = await Promise.allSettled([
+      pageService.getHomePage(),
+      partnerAppService.getFeaturedPartnerApps()
+    ]);
+    if (results[0].status === 'fulfilled') strapiRes = results[0].value;
+    if (results[1].status === 'fulfilled') partnerAppsRes = results[1].value;
+  } catch (err) {
+    console.warn('[HomePage] Data fetch warning:', err);
+  }
   
-  const data: any = strapiRes?.data || {};
-  const featuredPartnerApps = partnerAppsRes?.data || [];
+  const rawData: any = strapiRes?.data || {};
+  const data = {
+    hero: rawData.hero || HOME_PAGE_DATA.hero,
+    stats: rawData.stats || HOME_PAGE_DATA.stats,
+    services: rawData.services || HOME_PAGE_DATA.services,
+    whyChooseUs: rawData.whyChooseUs || HOME_PAGE_DATA.whyChooseUs,
+    testimonials: rawData.testimonials || HOME_PAGE_DATA.testimonials,
+    faq: rawData.faq || HOME_PAGE_DATA.faq,
+    cta: rawData.cta || HOME_PAGE_DATA.cta,
+  };
+
+  const rawApps = partnerAppsRes?.data || [];
+  const fallbackAppList = Object.values(FALLBACK_PARTNER_APPS).slice(0, 4).map((app) => ({
+    id: app.slug,
+    name: app.name,
+    slug: app.slug,
+    hero: app.hero,
+  }));
+  const featuredPartnerApps = rawApps.length > 0 ? rawApps : fallbackAppList;
 
   return (
     <>
