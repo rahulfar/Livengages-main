@@ -19,16 +19,16 @@ import {
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Agent Ecosystem & Sub-Agency Platform',
+  title: 'Live Streaming Sub-Agency Program – Livengage',
   description:
-    "Scale your agency with Livengage's management infrastructure, real-time analytics, and direct contracts on leading global live streaming apps.",
+    'Build a sub-agency with Livengage: recruit hosts, use our agency dashboard, get fast payouts and 24/7 partner support. Zero startup fees.',
   alternates: {
     canonical: 'https://www.livengage.com/agent-ecosystem',
   },
   openGraph: {
-    title: 'Agent Ecosystem & Sub-Agency Platform | Livengage',
+    title: 'Live Streaming Sub-Agency Program – Livengage',
     description:
-      'Scale your live streaming agency with Livengage management infrastructure, high commission tiers, and 24/7 partner support.',
+      'Build a sub-agency with Livengage: recruit hosts, use our agency dashboard, get fast payouts and 24/7 partner support. Zero startup fees.',
     url: 'https://www.livengage.com/agent-ecosystem',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agent Ecosystem & Sub-Agency Platform | Livengage',
+    title: 'Live Streaming Sub-Agency Program – Livengage',
     description:
-      'Scale your live streaming agency with Livengage management infrastructure, high commission tiers, and 24/7 partner support.',
+      'Build a sub-agency with Livengage: recruit hosts, use our agency dashboard, get fast payouts and 24/7 partner support. Zero startup fees.',
     images: ['/og-image.png'],
   },
 };

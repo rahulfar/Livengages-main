@@ -16,16 +16,16 @@ import {
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Live Streaming Talent Recruitment',
+  title: 'Live Streaming Talent Recruitment – Livengage',
   description:
-    "Join Livengage's global talent network. We scout, train, and match aspiring creators with high-earning live video platforms tailored to their strengths.",
+    'We scout and train new live streaming talent. Apply, get matched to the right app and start streaming with a dedicated Livengage manager.',
   alternates: {
     canonical: 'https://www.livengage.com/talent-recruitment',
   },
   openGraph: {
-    title: 'Live Streaming Talent Recruitment | Livengage',
+    title: 'Live Streaming Talent Recruitment – Livengage',
     description:
-      'We scout, train, and match high-potential creators with top global live streaming platforms for maximum monetization.',
+      'We scout and train new live streaming talent. Apply, get matched to the right app and start streaming with a dedicated Livengage manager.',
     url: 'https://www.livengage.com/talent-recruitment',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Live Streaming Talent Recruitment | Livengage',
+    title: 'Live Streaming Talent Recruitment – Livengage',
     description:
-      'We scout, train, and match high-potential creators with top global live streaming platforms for maximum monetization.',
+      'We scout and train new live streaming talent. Apply, get matched to the right app and start streaming with a dedicated Livengage manager.',
     images: ['/og-image.png'],
   },
 };

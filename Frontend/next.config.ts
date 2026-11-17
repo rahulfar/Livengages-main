@@ -130,16 +130,75 @@ const nextConfig: NextConfig = {
         destination: '/poppo-live-agency',
         permanent: true,
       },
-      // 5. /blog hub alias (Item 18 in audit)
+      // 5. /blogs to /blog guides hub (Item 18 in audit)
       {
-        source: '/blog',
-        destination: '/blogs',
+        source: '/blogs',
+        destination: '/blog',
+        permanent: true,
+      },
+      // 6. Old blog slugs with random IDs and typos to clean keyword URLs (Section 5 & 13 in audit)
+      {
+        source: '/blogs/livengage-camera-guide--di7bl9tg',
+        destination: '/blog/live-streaming-camera-setup-tips',
+        permanent: true,
+      },
+      {
+        source: '/blogs/algorithm-hacks-how-to-get-featured-on-popular-page-poppo-chamet',
+        destination: '/blog/live-streaming-camera-setup-tips',
+        permanent: true,
+      },
+      {
+        source: '/blogs/a-practicaguide-to-building-a-successful-live-streaming-agency--e5uu',
+        destination: '/blog/how-to-build-a-live-streaming-agency',
+        permanent: true,
+      },
+      {
+        source: '/blogs/how-to-start-and-scale-a-live-streaming-sub-agency',
+        destination: '/blog/how-to-build-a-live-streaming-agency',
+        permanent: true,
+      },
+      {
+        source: '/blogs/how-to-earn-on-chamet-app-a-host-guide--zz6o',
+        destination: '/blog/how-to-earn-on-chill-chat-chamet',
+        permanent: true,
+      },
+      {
+        source: '/blogs/how-to-earn-on-chamet-app-host-guide',
+        destination: '/blog/how-to-earn-on-chill-chat-chamet',
+        permanent: true,
+      },
+      {
+        source: '/blogs/top-live-streaming-apps-for-creators-in-india',
+        destination: '/blog/how-to-earn-on-chill-chat-chamet',
+        permanent: true,
+      },
+      {
+        source: '/blogs/how-to-start-streaming-build-an-audience-earn--eiw2',
+        destination: '/blog/how-to-start-live-streaming-and-earn',
+        permanent: true,
+      },
+      {
+        source: '/blogs/live-streamer-monetization-guide-gifts-targets-payouts',
+        destination: '/blog/how-to-start-live-streaming-and-earn',
+        permanent: true,
+      },
+      {
+        source: '/blog/chill-chat/how-to-earn-on-chill-chat-chamet',
+        destination: '/blog/how-to-earn-on-chill-chat-chamet',
         permanent: true,
       },
     ];
   },
   async rewrites() {
     return [
+      {
+        source: '/blog',
+        destination: '/blogs',
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/blogs/:slug',
+      },
       {
         source: '/vone-app-agency',
         destination: '/partner-apps/vone-app-agency',

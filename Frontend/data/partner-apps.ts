@@ -46,16 +46,16 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'vone-app-agency',
     name: 'Vone App (Poppo Live)',
     appName: 'Vone App',
-    metaTitle: 'Vone App Agency & Host Guide',
+    metaTitle: 'Vone App (Poppo Live) Agency India – Livengage',
     metaDescription:
-      'Join Vone App as a verified host or agent partner. Enjoy flexible hours, instant weekly payouts, high traffic, and dedicated Livengage agency support.',
+      'Join the Vone app (Poppo Live) as a host or agent in India. How Vone works, how hosts earn, payouts via UPI and bank, and free registration with Livengage.',
     operatingSystem: 'Android, iOS',
     ratingValue: '4.9',
     reviewCount: '3420',
     hero: {
       badgeText: 'Verified Agency Program',
-      titlePart1: 'Earn Daily with Video Calls & Live Streams on',
-      titleHighlight: 'Vone App (Poppo Live)',
+      titlePart1: 'Earn on the Vone App (Poppo Live) as a Host or Agent',
+      titleHighlight: '',
       description:
         'Connect with global callers, convert gifts to cash, and scale your sub-agency with guaranteed high traffic and instant weekly settlements.',
       primaryCtaLabel: 'Apply as a Host',
@@ -111,16 +111,16 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'chill-chat-agency',
     name: 'Chill Chat (Chamet)',
     appName: 'Chill Chat',
-    metaTitle: 'Chill Chat Agency (Chamet) Guide',
+    metaTitle: 'Chill Chat (Chamet) Agency India: Host Registration',
     metaDescription:
-      'Maximize your earnings on Chill Chat (Chamet Live). Unlock top-tier gifting rates, global video chat traffic, and full Livengage agency support.',
+      'Chamet is now Chill Chat in India. Join Chill Chat as a host or agent with Livengage: how it works, how hosts earn, and free registration with full support.',
     operatingSystem: 'Android, iOS',
     ratingValue: '4.8',
     reviewCount: '5890',
     hero: {
       badgeText: 'Top Tier Global Platform',
-      titlePart1: 'Maximize Your Earning Potential with',
-      titleHighlight: 'Chill Chat (Chamet)',
+      titlePart1: 'Join Chill Chat (Chamet) as a Host or Agent in India',
+      titleHighlight: '',
       description:
         "Join the world's leading video chat platform. Unlock top-tier gifting rates, round-the-clock call requests, and full sub-agency management support.",
       primaryCtaLabel: 'Apply as a Host',
@@ -171,16 +171,16 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'niki-live-agency',
     name: 'Niki Live',
     appName: 'Niki Live',
-    metaTitle: 'Niki Live Agency & Host Guide',
+    metaTitle: 'Niki Live Agency – Host Registration & Earnings',
     metaDescription:
-      'Stream, connect, and grow your agency on Niki Live. Accessible payout targets, high commission structures, and 24/7 Livengage agency backing.',
+      'Become a Niki Live host or agent with Livengage. How Niki Live works, how hosts earn from gifts and calls, and how to register for free.',
     operatingSystem: 'Android, iOS',
     ratingValue: '4.7',
     reviewCount: '2100',
     hero: {
       badgeText: 'Beginner Friendly Platform',
-      titlePart1: 'Stream, Connect, and Grow Your Agency on',
-      titleHighlight: 'Niki Live',
+      titlePart1: 'Earn on Niki Live as a Host',
+      titleHighlight: '',
       description:
         'Turn your talent into daily earnings with flexible party room streaming, accessible payout targets, and high commission agency structures.',
       primaryCtaLabel: 'Become a Host',
@@ -226,16 +226,16 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'poppo-live-agency',
     name: 'Poppo Live',
     appName: 'Poppo Live',
-    metaTitle: 'Poppo Live Agency & Host Guide',
+    metaTitle: 'Vone App (Poppo Live) Agency India – Livengage',
     metaDescription:
-      'Start your streaming career or build your agency network on Poppo Live. Enjoy flexible hours, instant weekly settlements, and round-the-clock agency support.',
+      'Join the Vone app (Poppo Live) as a host or agent in India. How Vone works, how hosts earn, payouts via UPI and bank, and free registration with Livengage.',
     operatingSystem: 'Android, iOS',
     ratingValue: '4.8',
     reviewCount: '4500',
     hero: {
       badgeText: 'Official Agency Partner',
-      titlePart1: 'Become a Verified Host & Agency Partner on',
-      titleHighlight: 'Poppo Live',
+      titlePart1: 'Earn on the Vone App (Poppo Live) as a Host or Agent',
+      titleHighlight: '',
       description:
         'Start your live streaming career or build your sub-agency network on Poppo Live. Enjoy flexible hours, instant weekly payouts, and round-the-clock agency support.',
       primaryCtaLabel: 'Apply as a Host',

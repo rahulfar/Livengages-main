@@ -27,8 +27,10 @@ export function Footer() {
         <div>
           <h5 className="font-bold text-on-surface mb-8 font-headline-lg">Solutions</h5>
           <ul className="space-y-4 text-on-surface-variant text-sm">
+            <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
             <li><Link href="/talent-recruitment" className="hover:text-primary transition-colors">Talent Recruitment</Link></li>
             <li><Link href="/agent-ecosystem" className="hover:text-primary transition-colors">Agent Onboarding</Link></li>
+            <li><Link href="/blog" className="hover:text-primary transition-colors">Host & Agency Guides</Link></li>
           </ul>
         </div>
 

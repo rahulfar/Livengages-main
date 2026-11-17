@@ -1,8 +1,8 @@
 export const SERVICES_HERO = {
   badge: 'Livengage Support',
-  heading: 'Elevating Talent,\nEmpowering Agents',
+  heading: 'Live Streaming Agency Services for Hosts and Agents',
   description:
-    'At Livengage, we provide end-to-end support to ensure you succeed in the digital broadcasting world. Discover how we can help you scale.',
+    'Host recruitment, agent training, platform placement and 24/7 support for live streaming creators on Vone, Chill Chat, Niki Live and Bigo Live.',
 };
 
 export const SERVICES_LIST = [

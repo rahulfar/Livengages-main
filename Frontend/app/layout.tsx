@@ -29,11 +29,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.livengage.com'),
   title: {
-    default: 'Livengage | Best Live Streaming Agency for Hosts & Agents',
-    template: '%s | Livengage',
+    default: 'Livengage – Live Streaming Agency for Hosts & Agents',
+    template: '%s',
   },
   description:
-    'A trusted live streaming agency connecting creators with top apps globally. Professional guidance for hosts and agents on Chill Chat (Chamet), Vone, Poppo, and Niki Live.',
+    'Join Livengage, the live streaming agency for hosts and agents on Vone (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join, India support.',
   alternates: {
     canonical: 'https://www.livengage.com',
     languages: {
@@ -43,8 +43,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Livengage | Best Live Streaming Agency for Hosts & Agents',
-    description: 'Turn your passion into a highly profitable career with Livengage.',
+    title: 'Livengage – Live Streaming Agency for Hosts & Agents',
+    description:
+      'Join Livengage, the live streaming agency for hosts and agents on Vone (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join, India support.',
     url: 'https://www.livengage.com',
     siteName: 'Livengage',
     images: [
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Livengage Live Streaming Agency',
+        alt: 'Livengage – Live Streaming Agency for Hosts & Agents',
       },
     ],
     locale: 'en_IN',
@@ -60,8 +61,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Livengage | Best Live Streaming Agency for Hosts & Agents',
-    description: 'Turn your passion into a highly profitable career with Livengage.',
+    title: 'Livengage – Live Streaming Agency for Hosts & Agents',
+    description:
+      'Join Livengage, the live streaming agency for hosts and agents on Vone (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join, India support.',
     images: ['/og-image.png'],
   },
   verification: {

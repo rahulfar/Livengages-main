@@ -7,17 +7,17 @@ import {
 
 export const TALENT_HERO: TalentHeroContent = {
   badge: 'Livengage Scouting Program',
-  titleLight: 'We Are Looking for',
-  titleHighlight: 'Exceptional Personalities.',
+  titleLight: 'Live Streaming Talent Recruitment:',
+  titleHighlight: 'Apply to Become a Host',
   description:
-    'Livengage is actively scouting charismatic, dedicated, and entertaining individuals. We believe that with the right guidance, anyone can become a social star.',
+    'We scout and train new live streaming talent. Apply, get matched to the right app and start streaming with a dedicated Livengage manager.',
   primaryButtonText: 'Submit Application',
   secondaryButtonText: 'Learn More',
   imageUrl:
     'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2000&auto=format&fit=crop',
   imageAlt:
     'A charismatic streamer engaging with their audience in a high-tech studio with neon ambient lighting.',
-  retentionRate: '100%',
+  retentionRate: '98%',
 };
 
 export const SCOUTING_PROCESS_STEPS: ScoutingProcessStep[] = [

@@ -7,9 +7,9 @@ import {
 
 export const ECOSYSTEM_HERO_DATA: EcosystemHeroContent = {
   badge: 'Official Agency Partner',
-  title: 'Build Your Own Sub-Agency. Start Earning Today.',
+  title: 'Build a Live Streaming Sub-Agency with Livengage',
   description:
-    "Join Livengage as an Official Partner Agent. Leverage our direct app partnerships to recruit hosts, build your sub-agency, and earn the highest commissions in the industry—with zero startup costs or hidden fees.",
+    'Build a sub-agency with Livengage: recruit hosts, use our agency dashboard, get fast payouts and 24/7 partner support. Zero startup fees.',
   primaryButtonText: 'Register as an Agent',
   secondaryButtonText: 'View Agent Benefits',
   imageUrl:

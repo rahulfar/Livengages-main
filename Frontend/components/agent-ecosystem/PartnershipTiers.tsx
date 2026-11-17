@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { PartnershipTier } from '@/types/agent-ecosystem';
 
 interface PartnershipTiersProps {
@@ -76,13 +77,16 @@ export function PartnershipTiers({ tiers }: PartnershipTiersProps) {
                     ))}
                   </ul>
 
-                  <button className={`w-full py-4 rounded-xl font-bold transition-all ${
-                    isHighlight 
-                      ? 'btn-gradient text-white shadow-lg hover:shadow-primary/50' 
-                      : 'bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-white hover:bg-surface-container-highest dark:hover:bg-white/10 border border-outline-variant/50 dark:border-white/10'
-                  }`}>
+                  <Link 
+                    href="/become-an-agent#apply"
+                    className={`w-full py-4 rounded-xl font-bold transition-all text-center flex items-center justify-center ${
+                      isHighlight 
+                        ? 'btn-gradient text-white shadow-lg hover:shadow-primary/50' 
+                        : 'bg-surface-container-high dark:bg-white/5 text-on-surface dark:text-white hover:bg-surface-container-highest dark:hover:bg-white/10 border border-outline-variant/50 dark:border-white/10'
+                    }`}
+                  >
                     Apply for {tier.title}
-                  </button>
+                  </Link>
                 </div>
               </div>
             );

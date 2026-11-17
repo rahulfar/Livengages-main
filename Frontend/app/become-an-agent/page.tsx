@@ -12,16 +12,16 @@ import {
 import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Start Your Live Streaming Agency',
+  title: 'Start Your Live Streaming Agency – Livengage',
   description:
-    'Build and scale your own live streaming sub-agency. Access direct platform partnerships, automated payouts, and highest commission tier overrides.',
+    'Build your own live streaming agency with Livengage. Recruit hosts on Vone, Chill Chat and Niki Live, track your team and earn tiered commission. Free to start.',
   alternates: {
     canonical: 'https://www.livengage.com/become-an-agent',
   },
   openGraph: {
-    title: 'Start Your Live Streaming Agency | Livengage',
+    title: 'Start Your Live Streaming Agency – Livengage',
     description:
-      'Leverage the Livengage agency network to recruit, manage, and monetize a high-earning roster of streamers worldwide.',
+      'Build your own live streaming agency with Livengage. Recruit hosts on Vone, Chill Chat and Niki Live, track your team and earn tiered commission. Free to start.',
     url: 'https://www.livengage.com/become-an-agent',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Start Your Live Streaming Agency | Livengage',
+    title: 'Start Your Live Streaming Agency – Livengage',
     description:
-      'Leverage the Livengage agency network to recruit, manage, and monetize a high-earning roster of streamers worldwide.',
+      'Build your own live streaming agency with Livengage. Recruit hosts on Vone, Chill Chat and Niki Live, track your team and earn tiered commission. Free to start.',
     images: ['/og-image.png'],
   },
 };

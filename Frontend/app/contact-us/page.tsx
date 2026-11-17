@@ -17,16 +17,16 @@ import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
 import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Contact 24/7 Creator & Agency Support',
+  title: 'Contact Livengage – WhatsApp & Email Support',
   description:
-    'Get in touch with the Livengage team for live streaming host applications, sub-agency contracts, or creator support. We provide 24/7 assistance across 20+ countries.',
+    'Questions about becoming a host or agent? Chat with Livengage on WhatsApp or email our support team. We reply in minutes, 24/7.',
   alternates: {
     canonical: 'https://www.livengage.com/contact-us',
   },
   openGraph: {
-    title: 'Contact 24/7 Creator & Agency Support | Livengage',
+    title: 'Contact Livengage – WhatsApp & Email Support',
     description:
-      'Connect with our global talent managers and sub-agency coordinators. 24/7 host onboarding and payout assistance.',
+      'Questions about becoming a host or agent? Chat with Livengage on WhatsApp or email our support team. We reply in minutes, 24/7.',
     url: 'https://www.livengage.com/contact-us',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact 24/7 Creator & Agency Support | Livengage',
+    title: 'Contact Livengage – WhatsApp & Email Support',
     description:
-      'Connect with our global talent managers and sub-agency coordinators. 24/7 host onboarding and payout assistance.',
+      'Questions about becoming a host or agent? Chat with Livengage on WhatsApp or email our support team. We reply in minutes, 24/7.',
     images: ['/og-image.png'],
   },
 };

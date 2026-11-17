@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const canonicalUrl = `https://www.livengage.com/blogs/${slug}`;
+  const canonicalUrl = `https://www.livengage.com/blog/${slug}`;
   const imageUrl = getMediaUrl(blog.coverImage?.url) || blog.coverImage?.url || 'https://www.livengage.com/og-image.png';
 
   return {
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${blog.title} | Livengage`,
+      title: blog.title,
       description: blog.excerpt,
       url: canonicalUrl,
       siteName: 'Livengage',

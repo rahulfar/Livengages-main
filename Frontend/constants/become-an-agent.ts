@@ -91,11 +91,11 @@ export const BECOME_AN_AGENT_REVENUE_MODEL = {
     title: 'Monthly Earnings Projection',
     teamSize1: '10 Active Streamers',
     override1: '12% Average Override',
-    revenue1: '$2,400 / mo',
+    revenue1: '₹1,95,000 / mo ($2,400)',
     teamSize2: '35 Active Streamers',
     override2: '20% Average Override',
-    revenue2: '$9,800 / mo',
-    disclaimer: '* Projections based on average streamer activity and gifting metrics across partner apps.',
+    revenue2: '₹8,00,000 / mo ($9,800)',
+    disclaimer: '* Projections based on average streamer activity and gifting metrics across partner apps. Payouts in INR via direct bank transfer and UPI.',
   },
 };
 

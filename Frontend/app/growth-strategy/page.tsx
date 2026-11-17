@@ -20,16 +20,16 @@ import {
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Creator Growth Strategy & Monetization',
+  title: 'Live Streaming Growth Strategy for Hosts – Livengage',
   description:
-    'Accelerate audience engagement and maximize gifting revenue with proven streaming frameworks, peak-hour strategies, and cross-platform growth.',
+    'Grow your live streaming income with stream reviews, PK battle tips, app algorithm updates and 1-on-1 mentoring from the Livengage team.',
   alternates: {
     canonical: 'https://www.livengage.com/growth-strategy',
   },
   openGraph: {
-    title: 'Creator Growth Strategy & Monetization | Livengage',
+    title: 'Live Streaming Growth Strategy for Hosts – Livengage',
     description:
-      'Proven live streaming frameworks, algorithm optimizations, and peak-hour streaming strategies for top creators.',
+      'Grow your live streaming income with stream reviews, PK battle tips, app algorithm updates and 1-on-1 mentoring from the Livengage team.',
     url: 'https://www.livengage.com/growth-strategy',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Creator Growth Strategy & Monetization | Livengage',
+    title: 'Live Streaming Growth Strategy for Hosts – Livengage',
     description:
-      'Proven live streaming frameworks, algorithm optimizations, and peak-hour streaming strategies for top creators.',
+      'Grow your live streaming income with stream reviews, PK battle tips, app algorithm updates and 1-on-1 mentoring from the Livengage team.',
     images: ['/og-image.png'],
   },
 };

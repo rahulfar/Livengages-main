@@ -18,16 +18,16 @@ import {
 import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Live Streaming Agency Services',
+  title: 'Live Streaming Agency Services – Livengage',
   description:
-    'Explore creator management, host incubation, sub-agency scaling, and official platform partnerships designed to maximize your live streaming revenue.',
+    'Host recruitment, agent training, platform placement and 24/7 support for live streaming creators on Vone, Chill Chat, Niki Live and Bigo Live.',
   alternates: {
     canonical: 'https://www.livengage.com/services',
   },
   openGraph: {
-    title: 'Live Streaming Agency Services | Livengage',
+    title: 'Live Streaming Agency Services – Livengage',
     description:
-      'Explore talent incubation, sub-agency scaling, and official app partnerships on Chamet, Poppo, and Niki Live.',
+      'Host recruitment, agent training, platform placement and 24/7 support for live streaming creators on Vone, Chill Chat, Niki Live and Bigo Live.',
     url: 'https://www.livengage.com/services',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Live Streaming Agency Services | Livengage',
+    title: 'Live Streaming Agency Services – Livengage',
     description:
-      'Explore talent incubation, sub-agency scaling, and official app partnerships on Chamet, Poppo, and Niki Live.',
+      'Host recruitment, agent training, platform placement and 24/7 support for live streaming creators on Vone, Chill Chat, Niki Live and Bigo Live.',
     images: ['/og-image.png'],
   },
 };

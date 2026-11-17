@@ -1,13 +1,13 @@
 export const ABOUT_US_PAGE_DATA = {
   hero: {
     badge: 'OUR STORY',
-    heading: 'We are LIVENGAGE',
+    heading: 'About Livengage: The Team Behind Your Live Streaming Career',
     description: 'Transforming passion into profession. We are the architects behind the world’s most successful live-streaming creators, building sustainable careers and global media brands.',
     bgImage: { url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80' },
-    primaryCtaLabel: 'Join the Family',
+    primaryCtaLabel: "I'm Ready",
     primaryCtaHref: '/become-a-host',
-    secondaryCtaLabel: 'Meet the Team',
-    secondaryCtaHref: '#team',
+    secondaryCtaLabel: 'Show Me How',
+    secondaryCtaHref: '/become-an-agent',
   },
   missionVision: {
     missionHeading: 'Our Mission',

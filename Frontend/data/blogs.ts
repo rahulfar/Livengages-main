@@ -3,11 +3,11 @@ import { BlogPost } from '@/types/blog';
 export const DEFAULT_BLOGS: any[] = [
   {
     id: 1,
-    documentId: 'g7826z6e6q1qbjoufa7hq5c2',
-    title: 'Algorithm Hacks: How to Get Featured on the Popular Page of Poppo & Chamet',
-    slug: 'algorithm-hacks-how-to-get-featured-on-popular-page-poppo-chamet',
+    documentId: 'live-streaming-camera-setup-tips',
+    title: 'Live Streaming Camera Setup: 9 Phone-Only Tips',
+    slug: 'live-streaming-camera-setup-tips',
     excerpt:
-      'Discover insider algorithm strategies to get your live streams featured on the Popular tab of Vone App (Poppo Live) and Chill Chat (Chamet). Learn peak-hour timing, engagement ratios, and retention rules.',
+      '9 phone-only tips for clearer live streams: lighting, camera height, distance, background and a pre-stream routine any host can follow.',
     content: `
 Ever wonder why some hosts are always at the top of the live streaming directory while others stay buried below? Most creators assume you have to spend thousands on coins or gifts to reach the front page. But here is the industry secret: the live streaming algorithms prioritize viewer engagement velocity and retention far more than direct gifts.
 
@@ -66,11 +66,11 @@ Yes. Official agency partners like Livengage provide verified creator badges, pr
   },
   {
     id: 2,
-    documentId: 'agency-guide-2026-scale',
-    title: 'How to Start and Scale a Live Streaming Sub-Agency in 2026',
-    slug: 'how-to-start-and-scale-a-live-streaming-sub-agency',
+    documentId: 'how-to-build-a-live-streaming-agency',
+    title: 'How to Build a Successful Live Streaming Agency',
+    slug: 'how-to-build-a-live-streaming-agency',
     excerpt:
-      'A complete step-by-step agency playbook for recruiting hosts, managing commission tiers, and partnering directly with top live streaming apps.',
+      'A practical guide to building a live streaming agency: finding hosts, training them, supporting them and growing your team step by step.',
     content: `
 The global live streaming economy has transformed from individual hobby broadcasting into a multi-billion dollar agency business. Today, master agencies and sub-agencies earn consistent monthly override commissions by recruiting, training, and managing teams of talent.
 
@@ -116,11 +116,11 @@ Agent commissions are calculated automatically and distributed bi-weekly directl
   },
   {
     id: 3,
-    documentId: 'top-apps-india-creators',
-    title: 'Top Live Streaming Apps for Creators in India: Earnings, Rules & Payouts',
-    slug: 'top-live-streaming-apps-for-creators-in-india',
+    documentId: 'how-to-earn-on-chill-chat-chamet',
+    title: 'How to Earn on Chill Chat (Chamet): Host Guide 2026',
+    slug: 'how-to-earn-on-chill-chat-chamet',
     excerpt:
-      'Compare the highest paying live streaming platforms for Indian creators: Vone App, Chill Chat (Chamet), Niki Live, and Bigo Live with payment methods like UPI and bank transfer.',
+      'How Chill Chat (formerly Chamet) hosts earn: private calls, virtual gifts, PK events and daily tasks, plus how beans turn into cash in India.',
     content: `
 For creators based in India, choosing the right live video platform can mean the difference between modest hobby earnings and life-changing income. Different apps cater to different content styles, demographics, and payout structures.
 
@@ -169,11 +169,11 @@ A valid government identity proof (Aadhaar, Passport, or Voter ID) and an active
   },
   {
     id: 4,
-    documentId: 'live-streamer-monetization-guide',
-    title: 'Live Streamer Monetization Guide: Gifts, Targets & Weekly Payouts',
-    slug: 'live-streamer-monetization-guide-gifts-targets-payouts',
+    documentId: 'how-to-start-live-streaming-and-earn',
+    title: 'How to Start Live Streaming, Build an Audience & Earn',
+    slug: 'how-to-start-live-streaming-and-earn',
     excerpt:
-      'Understand how diamond and coin conversion works across major apps, how to hit daily targets, and how agency representation protects your weekly income.',
+      'New to live streaming? Set up your profile, go live with confidence, build a loyal audience and start earning on Chill Chat and Vone.',
     content: `
 Monetization in live streaming operates differently from standard YouTube AdSense or brand sponsorship deals. Instead of waiting for monthly view thresholds, live streaming hosts earn daily revenue through direct viewer gifting, virtual currency conversions, and platform milestone rewards.
 

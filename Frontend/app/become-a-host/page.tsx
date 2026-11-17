@@ -18,16 +18,16 @@ import {
 import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Become a Live Streamer & Earn Daily',
+  title: 'Become a Live Streaming Host – Free, Earn From Home',
   description:
-    'Apply as a verified live streaming host on top paying apps like Chill Chat (Chamet), Vone App, and Niki Live. Enjoy flexible hours, creator coaching, and fast weekly payouts.',
+    'Become a live streaming host on Vone, Chill Chat and Niki Live. Free to join, step-by-step training, India payouts via UPI and bank. Apply in 2 minutes.',
   alternates: {
     canonical: 'https://www.livengage.com/become-a-host',
   },
   openGraph: {
-    title: 'Become a Live Streamer & Earn Daily | Livengage',
+    title: 'Become a Live Streaming Host – Free, Earn From Home',
     description:
-      'Turn your charisma into high weekly income. Join Livengage as a verified live streaming host with direct contracts and dedicated mentorship.',
+      'Become a live streaming host on Vone, Chill Chat and Niki Live. Free to join, step-by-step training, India payouts via UPI and bank. Apply in 2 minutes.',
     url: 'https://www.livengage.com/become-a-host',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Become a Live Streamer & Earn Daily | Livengage',
+    title: 'Become a Live Streaming Host – Free, Earn From Home',
     description:
-      'Turn your charisma into high weekly income. Join Livengage as a verified live streaming host with direct contracts and dedicated mentorship.',
+      'Become a live streaming host on Vone, Chill Chat and Niki Live. Free to join, step-by-step training, India payouts via UPI and bank. Apply in 2 minutes.',
     images: ['/og-image.png'],
   },
 };
@@ -49,7 +49,7 @@ const HOST_FAQS = [
   {
     question: 'How much can a live streaming host earn with Livengage?',
     answer:
-      'Earnings depend on your streaming hours, content engagement, and viewer gifting. Top-performing hosts earn substantial weekly payouts through verified in-app gifting and agency milestone rewards.',
+      'Earnings depend on your streaming hours, content engagement, and viewer gifting. Top-performing hosts earn substantial weekly payouts through verified in-app gifting, target milestones, and agency performance bonuses.',
   },
   {
     question: 'Do I have to pay any registration fees to join?',
@@ -59,12 +59,37 @@ const HOST_FAQS = [
   {
     question: 'Which live streaming apps can I broadcast on?',
     answer:
-      'We represent creators on major global platforms including Chill Chat (Chamet), Vone App (Poppo Live), Niki Live, and Bigo Live.',
+      'We represent creators on major global platforms including Vone App (Poppo Live), Chill Chat (Chamet), Niki Live, and Bigo Live.',
   },
   {
     question: 'How and when do I receive payouts in India?',
     answer:
-      'Payouts are distributed weekly directly into your bank account, UPI, or Payoneer with full transparency and instant transaction tracking.',
+      'Payouts in India are distributed weekly directly into your bank account (NEFT/IMPS) or UPI with full transparency and zero deduction fees.',
+  },
+  {
+    question: 'What is the difference between Vone App and Poppo Live?',
+    answer:
+      'Vone App is the optimized regional version running on the Poppo Live video streaming architecture, allowing smooth coin and gift redemption in India.',
+  },
+  {
+    question: 'Is Chamet now Chill Chat in India?',
+    answer:
+      'Yes, Chamet operates as Chill Chat in India. Creators access the same global user base, gifting rates, and live video features with complete local support.',
+  },
+  {
+    question: 'How many hours do I need to stream daily?',
+    answer:
+      'Most platforms recommend a minimum of 2 hours per day (15–20 days per month) to hit active bonus thresholds, but you can set your own flexible schedule.',
+  },
+  {
+    question: 'Do I need professional cameras or equipment to start?',
+    answer:
+      'No. A modern smartphone with a clear camera, stable 4G/5G or Wi-Fi internet, and good room lighting (or a basic ring light) is all you need to start.',
+  },
+  {
+    question: 'How fast does agency verification and VIP badge activation take?',
+    answer:
+      'Once you submit your application, our team reviews and fast-tracks your host verification and VIP agency badge within 24 hours.',
   },
 ];
 
@@ -128,6 +153,40 @@ export default async function BecomeAHostPage() {
       <RequirementsSection data={pageData.requirements} />
       <BenefitsSection data={pageData.benefits} />
       <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
+
+      {/* Host FAQs Section */}
+      <section className="py-20 px-6 md:px-12 max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <span className="text-xs uppercase font-bold text-primary tracking-widest px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 inline-block mb-3">
+            Host Help & Payouts
+          </span>
+          <h2 className="font-display-md text-3xl md:text-5xl font-extrabold text-on-surface dark:text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-on-surface-variant dark:text-[#94A3B8] text-lg">
+            Everything you need to know about starting your streaming journey, targets, and weekly India payouts.
+          </p>
+        </div>
+        <div className="space-y-4">
+          {HOST_FAQS.map((faq, index) => (
+            <details
+              key={index}
+              className="glass-card rounded-2xl p-6 border border-outline-variant/30 dark:border-white/10 group cursor-pointer"
+            >
+              <summary className="font-bold text-lg text-on-surface dark:text-white list-none flex justify-between items-center select-none">
+                <span>{faq.question}</span>
+                <span className="material-symbols-outlined text-primary group-open:rotate-180 transition-transform">
+                  keyboard_arrow_down
+                </span>
+              </summary>
+              <p className="mt-4 text-on-surface-variant dark:text-[#94A3B8] leading-relaxed">
+                {faq.answer}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+
       <ApplicationSection data={pageData.applicationSection} />
     </main>
   );

@@ -12,16 +12,16 @@ import { ABOUT_US_PAGE_DATA } from '@/data/about-us';
 import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'About Our Live Streaming Agency',
+  title: 'About Livengage – Our Story, Team & Creator Network',
   description:
-    'Discover how Livengage empowers live streaming hosts and agency leaders globally with transparent revenue sharing, creator mentorship, and 24/7 support.',
+    'Meet the team behind Livengage, a live streaming agency supporting creators in 50+ countries since 2018. Our story, values and how we support hosts.',
   alternates: {
     canonical: 'https://www.livengage.com/about-us',
   },
   openGraph: {
-    title: 'About Our Live Streaming Agency | Livengage',
+    title: 'About Livengage – Our Story, Team & Creator Network',
     description:
-      'Learn about Livengage: our mission, global app partnerships, leadership team, and creator incubation network.',
+      'Meet the team behind Livengage, a live streaming agency supporting creators in 50+ countries since 2018. Our story, values and how we support hosts.',
     url: 'https://www.livengage.com/about-us',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Our Live Streaming Agency | Livengage',
+    title: 'About Livengage – Our Story, Team & Creator Network',
     description:
-      'Learn about Livengage: our mission, global app partnerships, leadership team, and creator incubation network.',
+      'Meet the team behind Livengage, a live streaming agency supporting creators in 50+ countries since 2018. Our story, values and how we support hosts.',
     images: ['/og-image.png'],
   },
 };

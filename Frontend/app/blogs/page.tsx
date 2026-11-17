@@ -11,27 +11,28 @@ import { PartnerApps } from '@/components/PartnerApps';
 import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 const getBlogUrl = (blog: BlogPost) => {
+  if (blog.slug) return `/blog/${blog.slug}`;
   const titleSlug = (blog.title || 'post')
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
-  return `/blogs/${titleSlug}--${blog.documentId || blog.id}`;
+  return `/blog/${titleSlug}`;
 };
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: 'Live Streaming Blog & Creator Guides',
+  title: 'Live Streaming Host & Agency Guides | Livengage',
   description:
-    'Expert guides, algorithm tips, and agency strategies for hosts and agents on Chill Chat (Chamet), Vone, Poppo Live, and Niki Live.',
+    'Free guides for live streaming hosts and agents: how to earn on Vone and Chill Chat, payouts in India, camera setup and growing your agency.',
   alternates: {
-    canonical: 'https://www.livengage.com/blogs',
+    canonical: 'https://www.livengage.com/blog',
   },
   openGraph: {
-    title: 'Live Streaming Blog & Creator Guides | Livengage',
+    title: 'Live Streaming Host & Agency Guides | Livengage',
     description:
-      'Discover peak-hour streaming tips, algorithm hacks, host payout guides, and agency growth playbooks.',
-    url: 'https://www.livengage.com/blogs',
+      'Free guides for live streaming hosts and agents: how to earn on Vone and Chill Chat, payouts in India, camera setup and growing your agency.',
+    url: 'https://www.livengage.com/blog',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
     locale: 'en_IN',
@@ -39,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Live Streaming Blog & Creator Guides | Livengage',
+    title: 'Live Streaming Host & Agency Guides | Livengage',
     description:
-      'Discover peak-hour streaming tips, algorithm hacks, host payout guides, and agency growth playbooks.',
+      'Free guides for live streaming hosts and agents: how to earn on Vone and Chill Chat, payouts in India, camera setup and growing your agency.',
     images: ['/og-image.png'],
   },
 };
@@ -82,15 +83,16 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },
-    { name: 'Blog', url: '/blogs' },
+    { name: 'Blog', url: '/blog' },
   ];
 
   const categories = [
     'All Insights',
-    'Host Guides',
-    'Algorithm Secrets',
-    'Agency Scaling',
-    'Earnings & Payouts',
+    'Vone',
+    'Chill Chat',
+    'Niki Live',
+    'Agents',
+    'Hindi',
   ];
 
   return (
@@ -108,10 +110,10 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
             Creator Hub & Agency Knowledge Base
           </div>
           <h1 className="font-display-md text-4xl md:text-6xl leading-tight text-on-surface mb-4 tracking-tight">
-            Livengage <span className="text-primary italic">// Creator Guides</span>
+            Live Streaming Host and Agency Guides
           </h1>
           <p className="font-body-lg text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
-            Insider algorithm strategies, host earnings guides, and agency playbooks to help you scale on top live streaming apps.
+            Free guides for live streaming hosts and agents: how to earn on Vone and Chill Chat, payouts in India, camera setup and growing your agency.
           </p>
         </div>
 

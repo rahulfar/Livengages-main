@@ -13,16 +13,16 @@ import {
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 
 export const metadata: Metadata = {
-  title: 'Terms and Conditions',
+  title: 'Terms & Conditions – Livengage',
   description:
-    'Review the terms and conditions for hosts, sub-agencies, and creators partnering with the Livengage live streaming agency network.',
+    'The terms that apply when you use the Livengage website and join as a live streaming host or agent.',
   alternates: {
     canonical: 'https://www.livengage.com/terms-and-conditions',
   },
   openGraph: {
-    title: 'Terms and Conditions | Livengage',
+    title: 'Terms & Conditions – Livengage',
     description:
-      'Review terms and conditions for creators and sub-agencies on Livengage.',
+      'The terms that apply when you use the Livengage website and join as a live streaming host or agent.',
     url: 'https://www.livengage.com/terms-and-conditions',
     siteName: 'Livengage',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Terms and Conditions | Livengage',
+    title: 'Terms & Conditions – Livengage',
     description:
-      'Review terms and conditions for creators and sub-agencies on Livengage.',
+      'The terms that apply when you use the Livengage website and join as a live streaming host or agent.',
     images: ['/og-image.png'],
   },
 };

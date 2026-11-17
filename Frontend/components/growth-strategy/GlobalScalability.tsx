@@ -26,10 +26,10 @@ export function GlobalScalability() {
             />
             <div className="relative z-10 bg-surface-container/80 dark:bg-black/40 p-6 rounded-xl backdrop-blur-md border border-outline-variant/30 dark:border-white/10 w-max transition-colors">
               <h3 className="font-headline-lg text-headline-lg text-primary dark:text-white font-bold transition-colors">
-                Cross-Border Deployment
+                Global Creator Monetization
               </h3>
               <p className="text-on-surface-variant dark:text-white/80 max-w-md font-medium mt-2 transition-colors">
-                Seamless regulatory and logistical synchronization for international brand activations.
+                High-converting live video broadcasts, viewer gifting, and PK battles connecting hosts across India, Asia, and worldwide.
               </p>
             </div>
           </div>
@@ -45,25 +45,25 @@ export function GlobalScalability() {
                 style={{ fontVariationSettings: "'FILL' 1" }}
                 aria-hidden="true"
               >
-                language
+                support_agent
               </span>
-              <h3 className="font-headline-lg text-headline-lg">24/7 Creator Support</h3>
+              <h3 className="font-headline-lg text-headline-lg">24/7 Creator & Agent Support</h3>
               <p className="opacity-80 mt-stack-sm">
-                Our dedicated talent operations center ensures real-time support and account guidance for global creators and agency partners, 365 days a year.
+                Our dedicated talent operations team provides real-time guidance, stream audits, and dispute resolution for creators and agency partners 365 days a year.
               </p>
             </div>
             <div className="space-y-stack-md mt-8">
               <div className="flex justify-between border-b border-white/20 pb-2">
-                <span>LATAM Coverage</span>
-                <span className="font-bold">100%</span>
+                <span>Active Hosts</span>
+                <span className="font-bold">10,000+</span>
               </div>
               <div className="flex justify-between border-b border-white/20 pb-2">
-                <span>EMEA Nodes</span>
-                <span className="font-bold">842</span>
+                <span>Partner Platforms</span>
+                <span className="font-bold">5+ Apps</span>
               </div>
               <div className="flex justify-between border-b border-white/20 pb-2">
-                <span>APAC Growth</span>
-                <span className="font-bold">+24%</span>
+                <span>Weekly Settlements</span>
+                <span className="font-bold">100% on time</span>
               </div>
             </div>
           </div>

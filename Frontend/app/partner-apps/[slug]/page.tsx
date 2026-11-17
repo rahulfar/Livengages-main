@@ -96,10 +96,9 @@ export async function generateMetadata({
   }
 
   const fallback = FALLBACK_PARTNER_APPS[slug];
-  const rawTitle =
+  const appTitle =
     fallback?.metaTitle ||
-    `${appData.name || appData.hero?.titleHighlight || 'Live Streaming'} Agency & Host Guide`;
-  const cleanTitle = rawTitle.replace(/\s*\|\s*Livengage\s*$/i, '').trim();
+    `${appData.name || 'Live Streaming'} Agency & Host Guide – Livengage`;
 
   const appDesc =
     fallback?.metaDescription ||
@@ -109,13 +108,13 @@ export async function generateMetadata({
   const canonicalUrl = `https://www.livengage.com/${slug.includes('agency') ? slug : `${slug}-agency`}`;
 
   return {
-    title: cleanTitle,
+    title: appTitle,
     description: appDesc,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${cleanTitle} | Livengage`,
+      title: appTitle,
       description: appDesc,
       url: canonicalUrl,
       siteName: 'Livengage',
@@ -124,7 +123,7 @@ export async function generateMetadata({
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: `${cleanTitle} | Livengage`,
+          alt: appTitle,
         },
       ],
       locale: 'en_IN',
@@ -132,7 +131,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${cleanTitle} | Livengage`,
+      title: appTitle,
       description: appDesc,
       images: ['/og-image.png'],
     },

@@ -7,9 +7,9 @@ import {
 
 export const GROWTH_HERO_DATA: GrowthHeroContent = {
   badge: 'Growth Strategy',
-  title: 'Accelerate Your Streaming Career',
+  title: 'Live Streaming Growth Strategy for Hosts and Agents',
   description:
-    "Success in live streaming isn't just luck—it's strategy. Livengage provides hosts and agents with proven frameworks to build a global fanbase, dominate app algorithms, and multiply your daily earnings.",
+    'Grow your live streaming income with stream reviews, PK battle tips, app algorithm updates and 1-on-1 mentoring from the Livengage team.',
   primaryButtonText: 'Become a Host',
   secondaryButtonText: 'Become an Agent',
 };

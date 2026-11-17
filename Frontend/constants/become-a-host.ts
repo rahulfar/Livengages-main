@@ -8,9 +8,9 @@ import {
 
 export const HOST_HERO: HeroContent = {
   badge: 'Live Streaming Careers',
-  heading: 'Step into the Spotlight. Broadcast to the World.',
+  heading: 'Become a Live Streaming Host and Start Earning',
   description:
-    "Ready to showcase your talent? Whether you sing, dance, game, or just love chatting, Livengage helps you get paid for doing what you love. Join a global community of creators today.",
+    "Ready to showcase your talent? Whether you sing, dance, game, or just love chatting, Livengage helps you get paid for doing what you love on Vone App (Poppo Live), Chill Chat (Chamet), and Niki Live with India payouts via UPI and bank.",
   primaryCtaLabel: 'Apply as a Host Now',
   primaryCtaHref: '#apply-now',
   secondaryCtaLabel: 'View Requirements',

@@ -6,10 +6,10 @@ import {
 } from '@/types/contact';
 
 export const CONTACT_HERO: ContactHeroContent = {
-  titleStart: "Let's Connect",
-  highlightWord: 'Globally',
+  titleStart: 'Contact',
+  highlightWord: 'Livengage',
   description:
-    'Whether you are a creator seeking top earnings or an agent scaling your streaming business, our team provides 24/7 guidance and verified support.',
+    'Questions about becoming a host or agent? Chat with Livengage on WhatsApp or email our support team. We reply in minutes, 24/7.',
 };
 
 export const CONTACT_CHANNELS: ContactChannel[] = [

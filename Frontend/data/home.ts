@@ -1,10 +1,10 @@
 export const HOME_PAGE_DATA = {
   hero: {
-    badgeText: 'NEW ERA OF LIVE',
-    headingPart1: 'Ignite Your',
-    headingHighlight: 'Live-Streaming',
-    headingPart3: 'Career.',
-    description: 'The premier talent agency connecting passionate creators and driven agents with top global live-streaming platforms. Turn your talent into a thriving business today.',
+    badgeText: 'Official Live Streaming Agency',
+    headingPart1: 'Earn as a',
+    headingHighlight: 'Live Streaming Host',
+    headingPart3: 'or Agency Partner',
+    description: 'Livengage is an official live streaming agency connecting creators and partner agents with leading platforms including Vone App (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join with dedicated India support.',
     primaryCtaLabel: 'Become a Host',
     primaryCtaHref: '/become-a-host',
     secondaryCtaLabel: 'Become an Agent',

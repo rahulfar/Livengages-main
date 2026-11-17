@@ -62,7 +62,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.75,
     },
     {
-      url: `${baseUrl}/blogs`,
+      url: `${baseUrl}/blog`,
       lastModified: now,
       changeFrequency: 'daily',
       priority: 0.85,
@@ -120,10 +120,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
-      const urlSlug = blog.documentId ? `${titleSlug}--${blog.documentId}` : titleSlug;
+      const urlSlug = blog.slug || (blog.documentId ? `${titleSlug}--${blog.documentId}` : titleSlug);
 
       return {
-        url: `${baseUrl}/blogs/${urlSlug}`,
+        url: `${baseUrl}/blog/${urlSlug}`,
         lastModified: new Date(blog.updatedAt || blog.publishedAt || now),
         changeFrequency: 'weekly' as const,
         priority: 0.7,
