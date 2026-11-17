@@ -7,6 +7,8 @@ import { ArrowRight, Calendar, ChevronLeft, ChevronRight, Sparkles } from 'lucid
 import { cn } from '@/lib/utils';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { DEFAULT_BLOGS } from '@/data/blogs';
+import { PartnerApps } from '@/components/PartnerApps';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 const getBlogUrl = (blog: BlogPost) => {
   const titleSlug = (blog.title || 'post')
@@ -244,6 +246,8 @@ export default async function BlogsPage({ searchParams }: BlogsPageProps) {
           </div>
         )}
       </div>
+
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
     </main>
   );
 }

@@ -8,6 +8,8 @@ import {
 } from '@/components/growth-strategy';
 
 import { CTA } from '@/components/CTA';
+import { PartnerApps } from '@/components/PartnerApps';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 import {
   GROWTH_HERO_DATA,
@@ -56,6 +58,7 @@ export default function GrowthStrategyPage() {
       <StrategicAnalytics {...STRATEGIC_ANALYTICS_DATA} />
       <GlobalScalability />
       <RevenueArchitecture {...REVENUE_ARCHITECTURE_DATA} />
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
       <CTA 
         data={{
           headingPart1: 'Ready to',

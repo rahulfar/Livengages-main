@@ -5,6 +5,7 @@ import { StatsSection } from '@/components/BecomeAHost/StatsSection';
 import { RequirementsSection } from '@/components/BecomeAHost/RequirementsSection';
 import { BenefitsSection } from '@/components/BecomeAHost/BenefitsSection';
 import { ApplicationSection } from '@/components/BecomeAHost/ApplicationSection';
+import { PartnerApps } from '@/components/PartnerApps';
 import { fetchAPI, getBecomeAHostPageQuery } from '@/lib/api';
 import { BreadcrumbJsonLd, HowToJsonLd, FaqJsonLd } from '@/components/JsonLd';
 import {
@@ -14,16 +15,17 @@ import {
   HOST_BENEFITS,
   HOST_APPLICATION_DATA,
 } from '@/constants/become-a-host';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Become a Live Streaming Host | Top Paying Apps',
+  title: 'Become a Live Streamer & Earn Daily',
   description:
     'Apply as a verified live streaming host on top paying apps like Chill Chat (Chamet), Vone App, and Niki Live. Enjoy flexible hours, creator coaching, and fast weekly payouts.',
   alternates: {
     canonical: 'https://www.livengage.com/become-a-host',
   },
   openGraph: {
-    title: 'Become a Live Streaming Host | Top Paying Apps | Livengage',
+    title: 'Become a Live Streamer & Earn Daily | Livengage',
     description:
       'Turn your charisma into high weekly income. Join Livengage as a verified live streaming host with direct contracts and dedicated mentorship.',
     url: 'https://www.livengage.com/become-a-host',
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Become a Live Streaming Host | Top Paying Apps | Livengage',
+    title: 'Become a Live Streamer & Earn Daily | Livengage',
     description:
       'Turn your charisma into high weekly income. Join Livengage as a verified live streaming host with direct contracts and dedicated mentorship.',
     images: ['/og-image.png'],
@@ -125,6 +127,7 @@ export default async function BecomeAHostPage() {
       <StatsSection data={pageData.stats} />
       <RequirementsSection data={pageData.requirements} />
       <BenefitsSection data={pageData.benefits} />
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
       <ApplicationSection data={pageData.applicationSection} />
     </main>
   );

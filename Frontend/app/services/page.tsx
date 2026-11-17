@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ServicesHero } from '@/components/Services/sections/ServicesHero';
 import { ServicesGrid } from '@/components/Services/sections/ServicesGrid';
 import { PartnerAppsSection } from '@/components/Services/sections/PartnerAppsSection';
+import { PartnerApps } from '@/components/PartnerApps';
 import { ServicesStats } from '@/components/Services/sections/ServicesStats';
 import { ServicesCTA } from '@/components/Services/sections/ServicesCTA';
 import { fetchAPI, getServicesPageQuery } from '@/lib/api';
@@ -14,6 +15,7 @@ import {
   SERVICES_STATS,
   SERVICES_CTA,
 } from '@/constants/services';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
   title: 'Live Streaming Agency Services',
@@ -66,6 +68,7 @@ export default async function ServicesPage() {
       <BreadcrumbJsonLd items={breadcrumbs} />
       <ServicesHero data={heroData} />
       <ServicesGrid data={servicesListData} />
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
       <PartnerAppsSection data={partnerAppsData} />
       <ServicesStats data={statsData} />
       <ServicesCTA data={ctaData} />

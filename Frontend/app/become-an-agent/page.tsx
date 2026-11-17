@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { AgentApplicationForm } from '@/components/AgentForm/AgentApplicationForm';
+import { PartnerApps } from '@/components/PartnerApps';
 import { fetchAPI, getBecomeAnAgentPageQuery, getMediaUrl } from '@/lib/api';
 import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
 import {
@@ -8,16 +9,17 @@ import {
   BECOME_AN_AGENT_REVENUE_MODEL,
   BECOME_AN_AGENT_APPLICATION,
 } from '@/constants/become-an-agent';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Start Your Live Streaming Agency | Sub-Agency Program',
+  title: 'Start Your Live Streaming Agency',
   description:
     'Build and scale your own live streaming sub-agency. Access direct platform partnerships, automated payouts, and highest commission tier overrides.',
   alternates: {
     canonical: 'https://www.livengage.com/become-an-agent',
   },
   openGraph: {
-    title: 'Start Your Live Streaming Agency | Sub-Agency Program | Livengage',
+    title: 'Start Your Live Streaming Agency | Livengage',
     description:
       'Leverage the Livengage agency network to recruit, manage, and monetize a high-earning roster of streamers worldwide.',
     url: 'https://www.livengage.com/become-an-agent',
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Start Your Live Streaming Agency | Sub-Agency Program | Livengage',
+    title: 'Start Your Live Streaming Agency | Livengage',
     description:
       'Leverage the Livengage agency network to recruit, manage, and monetize a high-earning roster of streamers worldwide.',
     images: ['/og-image.png'],
@@ -377,6 +379,9 @@ export default async function BecomeAnAgentPage() {
         </section>
       )}
 
+
+      {/* Featured Partner Apps Section */}
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
 
       {/* Application Form Section */}
       {applicationSection && (

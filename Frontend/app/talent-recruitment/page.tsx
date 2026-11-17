@@ -4,6 +4,8 @@ import { TalentHero } from '@/components/talent-recruitment/TheTalentHero';
 import { ScoutingProcess } from '@/components/talent-recruitment/TheScoutingProcess';
 import { ValueProposition } from '@/components/talent-recruitment/TheValueProposition';
 import { TalentCTA } from '@/components/talent-recruitment/TheTalentCTA';
+import { PartnerApps } from '@/components/PartnerApps';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 import {
   TALENT_HERO,
@@ -51,6 +53,7 @@ export default function TalentRecruitmentPage() {
       <TalentHero {...TALENT_HERO} />
       <ScoutingProcess steps={SCOUTING_PROCESS_STEPS} />
       <ValueProposition {...VALUE_PROPOSITION} />
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
       <TalentCTA {...TALENT_CTA} />
     </main>
   );

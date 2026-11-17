@@ -6,6 +6,7 @@ import {
   OperationalNetworks,
   GlobalMap,
 } from '@/components/contact';
+import { PartnerApps } from '@/components/PartnerApps';
 import {
   CONTACT_HERO,
   CONTACT_CHANNELS,
@@ -13,16 +14,17 @@ import {
   GLOBAL_MAP_DATA,
 } from '@/constants/contact';
 import { BreadcrumbJsonLd, FaqJsonLd } from '@/components/JsonLd';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
-  title: 'Contact Livengage | 24/7 Creator & Agency Support',
+  title: 'Contact 24/7 Creator & Agency Support',
   description:
     'Get in touch with the Livengage team for live streaming host applications, sub-agency contracts, or creator support. We provide 24/7 assistance across 20+ countries.',
   alternates: {
     canonical: 'https://www.livengage.com/contact-us',
   },
   openGraph: {
-    title: 'Contact Livengage | 24/7 Creator & Agency Support',
+    title: 'Contact 24/7 Creator & Agency Support | Livengage',
     description:
       'Connect with our global talent managers and sub-agency coordinators. 24/7 host onboarding and payout assistance.',
     url: 'https://www.livengage.com/contact-us',
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Livengage | 24/7 Creator & Agency Support',
+    title: 'Contact 24/7 Creator & Agency Support | Livengage',
     description:
       'Connect with our global talent managers and sub-agency coordinators. 24/7 host onboarding and payout assistance.',
     images: ['/og-image.png'],
@@ -101,6 +103,8 @@ export default function ContactPage() {
           <GlobalMap data={GLOBAL_MAP_DATA} />
         </div>
       </section>
+
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
 
       {/* Support FAQ Section (Item 38 in audit) */}
       <section className="py-[80px] max-w-4xl mx-auto px-6 md:px-12">

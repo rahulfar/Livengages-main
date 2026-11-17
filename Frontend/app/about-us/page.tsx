@@ -5,9 +5,11 @@ import { ValuesGrid } from '@/components/About/ValuesGrid';
 import { Timeline } from '@/components/About/Timeline';
 import { TeamSection } from '@/components/About/TeamSection';
 import { AboutCTA } from '@/components/About/AboutCTA';
+import { PartnerApps } from '@/components/PartnerApps';
 import { pageService } from '@/lib/strapi/services/pages';
 import { BreadcrumbJsonLd } from '@/components/JsonLd';
 import { ABOUT_US_PAGE_DATA } from '@/data/about-us';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export const metadata: Metadata = {
   title: 'About Our Live Streaming Agency',
@@ -69,6 +71,7 @@ export default async function AboutPage() {
       <ValuesGrid data={coreValuesData} />
       <Timeline data={timelineData} />
       <TeamSection data={leadershipData} />
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
       <AboutCTA data={ctaData} />
     </main>
   );

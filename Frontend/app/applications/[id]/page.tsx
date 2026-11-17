@@ -10,7 +10,7 @@ export async function generateMetadata({
 }: ApplicationDetailPageProps): Promise<Metadata> {
   const { id } = await params;
   return {
-    title: `Application ${id} | Livengage`,
+    title: `Application Status #${id}`,
   };
 }
 

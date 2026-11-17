@@ -46,7 +46,7 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'vone-app-agency',
     name: 'Vone App (Poppo Live)',
     appName: 'Vone App',
-    metaTitle: 'Vone App Agency & Host Guide | Earn Daily Video Calls | Livengage',
+    metaTitle: 'Vone App Agency & Host Guide',
     metaDescription:
       'Join Vone App as a verified host or agent partner. Enjoy flexible hours, instant weekly payouts, high traffic, and dedicated Livengage agency support.',
     operatingSystem: 'Android, iOS',
@@ -111,7 +111,7 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'chill-chat-agency',
     name: 'Chill Chat (Chamet)',
     appName: 'Chill Chat',
-    metaTitle: 'Chill Chat Agency (Chamet) | Top Host & Agent Program | Livengage',
+    metaTitle: 'Chill Chat Agency (Chamet) Guide',
     metaDescription:
       'Maximize your earnings on Chill Chat (Chamet Live). Unlock top-tier gifting rates, global video chat traffic, and full Livengage agency support.',
     operatingSystem: 'Android, iOS',
@@ -171,7 +171,7 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'niki-live-agency',
     name: 'Niki Live',
     appName: 'Niki Live',
-    metaTitle: 'Niki Live Agency & Host Guide | Party Room Streaming | Livengage',
+    metaTitle: 'Niki Live Agency & Host Guide',
     metaDescription:
       'Stream, connect, and grow your agency on Niki Live. Accessible payout targets, high commission structures, and 24/7 Livengage agency backing.',
     operatingSystem: 'Android, iOS',
@@ -226,7 +226,7 @@ export const FALLBACK_PARTNER_APPS: Record<string, FallbackPartnerApp> = {
     slug: 'poppo-live-agency',
     name: 'Poppo Live',
     appName: 'Poppo Live',
-    metaTitle: 'Poppo Live Agency & Host Program | VIP Payouts & Support | Livengage',
+    metaTitle: 'Poppo Live Agency & Host Guide',
     metaDescription:
       'Start your streaming career or build your agency network on Poppo Live. Enjoy flexible hours, instant weekly settlements, and round-the-clock agency support.',
     operatingSystem: 'Android, iOS',

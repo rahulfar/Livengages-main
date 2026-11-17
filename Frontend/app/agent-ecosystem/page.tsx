@@ -7,6 +7,8 @@ import {
   EcosystemStats,
   EcosystemCTA,
 } from '@/components/agent-ecosystem';
+import { PartnerApps } from '@/components/PartnerApps';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 import {
   ECOSYSTEM_HERO_DATA,
@@ -55,6 +57,7 @@ export default function AgentEcosystemPage() {
       <EcosystemFeatures />
       <PartnershipTiers tiers={PARTNERSHIP_TIERS} />
       <EcosystemStats stats={ECOSYSTEM_STATS} />
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
       <EcosystemCTA {...ECOSYSTEM_CTA_DATA} />
     </main>
   );

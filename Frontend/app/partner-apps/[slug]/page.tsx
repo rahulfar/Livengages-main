@@ -18,7 +18,9 @@ import {
   BreadcrumbJsonLd,
   FaqJsonLd,
 } from '@/components/JsonLd';
+import { PartnerApps } from '@/components/PartnerApps';
 import { FALLBACK_PARTNER_APPS } from '@/data/partner-apps';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 export async function generateStaticParams() {
   const staticSlugs = [
@@ -94,9 +96,11 @@ export async function generateMetadata({
   }
 
   const fallback = FALLBACK_PARTNER_APPS[slug];
-  const appTitle =
+  const rawTitle =
     fallback?.metaTitle ||
-    `${appData.name || appData.hero?.titleHighlight || 'Live Streaming'} Agency & Host Guide | Livengage`;
+    `${appData.name || appData.hero?.titleHighlight || 'Live Streaming'} Agency & Host Guide`;
+  const cleanTitle = rawTitle.replace(/\s*\|\s*Livengage\s*$/i, '').trim();
+
   const appDesc =
     fallback?.metaDescription ||
     appData.hero?.description ||
@@ -105,13 +109,13 @@ export async function generateMetadata({
   const canonicalUrl = `https://www.livengage.com/${slug.includes('agency') ? slug : `${slug}-agency`}`;
 
   return {
-    title: appTitle,
+    title: cleanTitle,
     description: appDesc,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: appTitle,
+      title: `${cleanTitle} | Livengage`,
       description: appDesc,
       url: canonicalUrl,
       siteName: 'Livengage',
@@ -120,7 +124,7 @@ export async function generateMetadata({
           url: '/og-image.png',
           width: 1200,
           height: 630,
-          alt: appTitle,
+          alt: `${cleanTitle} | Livengage`,
         },
       ],
       locale: 'en_IN',
@@ -128,7 +132,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: appTitle,
+      title: `${cleanTitle} | Livengage`,
       description: appDesc,
       images: ['/og-image.png'],
     },
@@ -181,6 +185,7 @@ export default async function PartnerAppPage({
       {appData.faqs && <PartnerAppFaq data={appData.faqs} />}
       {appData.supportHub && <PartnerAppSupport data={appData.supportHub} />}
       {appData.technicalRequirements && <PartnerAppTechReqs data={appData.technicalRequirements} />}
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
     </main>
   );
 }

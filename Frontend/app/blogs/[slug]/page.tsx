@@ -8,6 +8,8 @@ import { RichTextRenderer } from '@/components/Blog/RichTextRenderer';
 import { ArrowLeft, Calendar, User, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { BreadcrumbJsonLd, ArticleJsonLd } from '@/components/JsonLd';
 import { DEFAULT_BLOGS } from '@/data/blogs';
+import { PartnerApps } from '@/components/PartnerApps';
+import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -220,6 +222,8 @@ export default async function BlogDetailPage({ params }: Props) {
           </div>
         </div>
       </div>
+
+      <PartnerApps data={{ heading: "Featured Partner Apps", apps: EXACT_FEATURED_PARTNER_APPS }} />
     </main>
   );
 }
