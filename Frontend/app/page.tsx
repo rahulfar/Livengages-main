@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Hero } from '@/components/Hero';
 import { Stats } from '@/components/Stats';
 import { Services } from '@/components/Services';
@@ -13,6 +14,28 @@ import { EXACT_FEATURED_PARTNER_APPS } from '@/data/featured-partner-apps';
 
 import { pageService } from '@/lib/strapi/services/pages';
 import { partnerAppService } from '@/lib/strapi/services/partnerApps';
+
+export const metadata: Metadata = {
+  title: 'Livengage – Live Streaming Agency for Hosts & Agents',
+  description:
+    'Join Livengage, the live streaming agency for hosts and agents on Vone (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join, India support.',
+  alternates: {
+    canonical: 'https://www.livengage.com',
+  },
+  openGraph: {
+    title: 'Livengage – Live Streaming Agency for Hosts & Agents',
+    description:
+      'Join Livengage, the live streaming agency for hosts and agents on Vone (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join, India support.',
+    url: 'https://www.livengage.com',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Livengage – Live Streaming Agency for Hosts & Agents',
+    description:
+      'Join Livengage, the live streaming agency for hosts and agents on Vone (Poppo Live), Chill Chat (Chamet), Niki Live and Bigo Live. Free to join, India support.',
+  },
+};
 
 /**
  * Homepage — composes all section components.
