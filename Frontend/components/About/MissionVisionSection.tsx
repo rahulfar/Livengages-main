@@ -24,11 +24,11 @@ export function MissionVisionSection({ data }: MissionVisionProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
         {/* Mission */}
         {(missionHeading || missionDescription) && (
-          <div className="relative bg-white dark:glass-card rounded-3xl p-10 md:p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(124,58,237,0.2)] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-outline-variant/30 dark:border-white/10 group overflow-hidden">
+          <div className="relative bg-white/95 dark:bg-[#1a052e]/85 backdrop-blur-xl rounded-3xl p-10 md:p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(124,58,237,0.25)] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-outline-variant/30 dark:border-white/10 group overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             <div className="relative z-10">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-inner border border-primary/10 dark:border-white/10">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 dark:bg-primary/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-inner border border-primary/10 dark:border-white/10">
                 <span
                   className="material-symbols-outlined text-primary text-[40px]"
                   style={{ fontVariationSettings: "'FILL' 1" }}
@@ -38,12 +38,12 @@ export function MissionVisionSection({ data }: MissionVisionProps) {
                 </span>
               </div>
               {missionHeading && (
-                <h2 className="font-display-md text-3xl font-black text-on-surface dark:text-white mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
+                <h2 className="font-display-md text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
                   {missionHeading}
                 </h2>
               )}
               {missionDescription && (
-                <p className="font-body-lg text-lg text-on-surface-variant dark:text-white/80 leading-relaxed">
+                <p className="font-body-lg text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
                   {missionDescription}
                 </p>
               )}
@@ -53,11 +53,11 @@ export function MissionVisionSection({ data }: MissionVisionProps) {
 
         {/* Vision */}
         {(visionHeading || visionDescription) && (
-          <div className="relative bg-white dark:glass-card rounded-3xl p-10 md:p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(218,38,118,0.2)] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-outline-variant/30 dark:border-white/10 group overflow-hidden">
+          <div className="relative bg-white/95 dark:bg-[#1a052e]/85 backdrop-blur-xl rounded-3xl p-10 md:p-12 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(218,38,118,0.25)] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-outline-variant/30 dark:border-white/10 group overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-secondary-container/10 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
             <div className="relative z-10">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary-container/10 to-secondary-container/5 dark:bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-inner border border-secondary-container/10 dark:border-white/10">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-secondary-container/10 to-secondary-container/5 dark:bg-secondary-container/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 shadow-inner border border-secondary-container/10 dark:border-white/10">
                 <span
                   className="material-symbols-outlined text-secondary-container text-[40px]"
                   style={{ fontVariationSettings: "'FILL' 1" }}
@@ -67,12 +67,12 @@ export function MissionVisionSection({ data }: MissionVisionProps) {
                 </span>
               </div>
               {visionHeading && (
-                <h2 className="font-display-md text-3xl font-black text-on-surface dark:text-white mb-4 tracking-tight group-hover:text-secondary-container transition-colors duration-300">
+                <h2 className="font-display-md text-3xl font-black text-slate-900 dark:text-white mb-4 tracking-tight group-hover:text-secondary-container transition-colors duration-300">
                   {visionHeading}
                 </h2>
               )}
               {visionDescription && (
-                <p className="font-body-lg text-lg text-on-surface-variant dark:text-white/80 leading-relaxed">
+                <p className="font-body-lg text-lg text-slate-700 dark:text-slate-200 leading-relaxed">
                   {visionDescription}
                 </p>
               )}
